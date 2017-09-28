@@ -1,0 +1,42 @@
+{
+  "name": "black-canary-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./server/server.js",
+  "homepage": "http://localhost:3068",
+  "proxy": "http://localhost:3069",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "express-sessions": "^1.0.6",
+    "gsap": "^1.20.2",
+    "jquery": "^3.2.1",
+    "massive": "^3.2.2",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.0",
+    "pg": "^7.2.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.11",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^4.4.1",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
+  },
+  "scripts": {
+    "start-js": "PORT=3068 react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+  }
+}
