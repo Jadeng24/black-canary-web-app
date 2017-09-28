@@ -1,1 +1,12 @@
+@import './sass/reset';
+@import './sass/_mixins.scss';
+@import './sass/_variables.scss';
 
+@import "./components/Contacts/_Contacts.scss";
+@import './components/Groups/_Groups.scss';
+@import './components/Home/_Home.scss';
+@import './components/LevelOne/_LevelOne.scss';
+@import './components/LevelThree/LevelThree.scss';
+@import './components/LevelTwo/LevelTwo.scss';
+@import './components/Profile/_Profile.scss';
+@import './components/Situations/_Situations.scss';
