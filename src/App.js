@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="App">
           Bye, React Native.
-          <a href="/auth"><button>Login</button></a>
+          <a href="http://localhost:3069/auth"><button>Login</button></a>
       </div>
     );
   }

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     lastName VARCHAR (40),
     email VARCHAR (80) NOT NULL,
     profilePic VARCHAR (200),
-    auth0_id VARCHAR(100) NOT NULL,
+    auth_id VARCHAR(100) NOT NULL,
     safe_haven VARCHAR (200),
     socketID VARCHAR (100)
 );
