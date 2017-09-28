@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './main.css';
+import router from './router'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-          Bye, React Native.
-          <a href="/auth"><button>Login</button></a>
-      </div>
+     <div>
+       {router}
+     </div>
     );
   }
 }
