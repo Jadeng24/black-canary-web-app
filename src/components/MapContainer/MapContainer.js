@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {geolocated} from 'react-geolocated'
+// import {geolocated} from 'react-geolocated'
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
 import io from 'socket.io-client'
 import config from './config'
@@ -21,13 +21,52 @@ export class MapContainer extends Component {
                     lat: 47.657362, 
                     lng: -121.824340,
                     icon: userIcon},
-            key: process.env.REACT_APP_GOOGLE_API_KEY
+            friends: [
+                {
+                    name: 'Andi', 
+                    lat: 48.657362, 
+                    lng: -121.824340,
+                    icon: friends
+                },
+                {
+                    name: 'Janise', 
+                    lat: 37.437793, 
+                    lng: -122.133636,
+                    icon: friends
+                },
+                {
+                    name: 'Abby', 
+                    lat: 40.33503, 
+                    lng: -111.708984,
+                    icon: friends
+                },
+                {
+                    name: 'Alan', 
+                    lat: 80.43033, 
+                    lng: -93.867187,
+                    icon: friends
+                }
+
+            ],
+
         }
         
     }
 
+    moveJanise(){
+        setInterval(() => {
+            let friends = this.state.friends.slice(0);
+            console.log(friends);
+            let janise = Object.assign({},this.state.friends[1]);
+            janise.lng += 0.1;
+            friends.splice(1, 1, janise);
+            this.setState({
+                friends: friends
+            })
+        }, 1000);
+    }
+
     componentWillMount(){
-        // let key = process.env.REACT_APP_GOOGLE_API_KEY
         navigator.geolocation.getCurrentPosition(position => 
             this.setState({
                 user: {
@@ -37,8 +76,12 @@ export class MapContainer extends Component {
                     lng: position.coords.longitude
                 }
             }) 
-            // {console.log(position.coords.latitude, position.coords.longitude)}
+            
         )
+    }
+
+    componentDidMount() {
+        this.moveJanise();
     }
 
     render() {
@@ -48,11 +91,13 @@ export class MapContainer extends Component {
                 margin: '0 auto'};
         
         return(
-            <div className="mapContain">
-                <Map className="map" style={style} google={this.props.google} zoom={9} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={this.state.styles}>
+            <div className="mapContainer">
+                <Map className="map" style={style} google={this.props.google} zoom={8} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={this.state.styles}>
                     <Marker icon={this.state.user.icon} name={this.state.user.name} position={{lat: this.state.user.lat, lng: this.state.user.lng}} /> 
-                    <Marker icon={friends} name={this.state.user.name} position={{lat: 40.758701, lng: -111.876183}} /> 
-                    
+                    {this.state.friends.map(e => {
+                        return <Marker key={e.name} icon={e.icon} name={e.name} position={{lat: e.lat, lng: e.lng}} />
+                    })
+                     }
                 </Map>
             </div>
         );
