@@ -31,7 +31,7 @@
     "socket.io-client": "^2.0.3"
   },
   "scripts": {
-    "start-js": "SET PORT=3068 && react-scripts start",
+    "start-js": "PORT=3068 && react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
