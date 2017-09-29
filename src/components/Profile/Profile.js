@@ -4,6 +4,10 @@ const socket = io('http://localhost:3069');
 
 export default class Profile extends Component{
 
+    componentDidMount(){
+        socket.emit('save socket_id', {socketID: socket.id})
+    }
+
     render(){
         return(
             <div>
