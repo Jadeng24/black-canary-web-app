@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     profilePic VARCHAR (200),
     auth_id VARCHAR(100) NOT NULL,
     safe_haven VARCHAR (200),
-    socketID VARCHAR (100)
+    socket_id VARCHAR (100)
 );
 
 
