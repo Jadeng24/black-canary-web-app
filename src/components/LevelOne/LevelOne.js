@@ -1,48 +1,44 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-const socket = io('http://localhost:3069');
-// import CheckBox from 'react-native-checkbox';
+// const socket = io('http://localhost:3069');
+
+// import blackCanaryLogo from './../../images/canaryLogoWithoutWords.svg';
 
 
-class Level1 extends Component {
+export default class Level1 extends Component {
   constructor() {
       super();
 
       this.state = {
         message: '',
+        recipients: [],
+        timeActive: 0,
         timeOptions: [
           {
-            selected: false,
             time: 1,
             timeMS: 3600000
           },
           {
-            selected: false,
             time: 2,
             timeMS: (2 * 3600000)
           },
           {
-            selected: false,
             time: 3,
             timeMS: (3 * 3600000)
           },
           {
-            selected: false,
             time: 5,
             timeMS: (5 * 3600000)
           },
           {
-            selected: false,
             time: 10,
             timeMS: (10 * 3600000)
           },
           {
-            selected: false,
             time: 18,
             timeMS: (18 * 3600000)
           },
           {
-            selected: false,
             time: 24,
             timeMS: (24 * 3600000)
           }
@@ -169,128 +165,34 @@ class Level1 extends Component {
   }
 
   componentDidMount(){
-    let x = this.state.contacts.slice(0);
-    x.map((e, index, array) => {
-        e.isRecipient = false
-        array[index] = e
-    })
-    this.setState({
-        contacts: x
-    })
-  }
-
-  toggleRecipients(event, contact) {
-    event.preventDefault();
-
-    let cont = this.state.contacts.slice(0);
-
-    if(contact.isRecipient) {
-      contact.isRecipient = false;
-      cont.map((e, index, array) => {
-        if((e.hasOwnProperty('userID') && e.userID === contact.userID) || (e.hasOwnProperty('groupName') && e.groupName === contact.groupName)) {
-          array[index] = contact;
-        }
-      })
-      //make false
-      //update contact
-    } else {
-      contact.isRecipient = true;
-      cont.map((e, index, array) => {
-        if((e.hasOwnProperty('userID') && e.userID === contact.userID) || (e.hasOwnProperty('groupName') && e.groupName === contact.groupName)) {
-          array[index] = contact;
-        }
-      })
-
-      //make true
-      //update contact
-    }
-
-    this.setState({
-        contacts: cont
-    })
 
   }
 
-  toggleTime(event, timeOpt) {
-    event.preventDefault();
-
-    timeOpt.selected = true;
-
-    let options = this.state.timeOptions.slice(0);
-    options.map((e, index, array) => {
-      if (e.time === timeOpt.time) {
-        array[index] = timeOpt;
-      } else {
-        e.selected = false;
-        array[index] = e
-      }
-    });
-
-    this.setState({
-        timeOptions: options
-    })
-
-  }
-
-  static navigationOptions = {
-    title: 'LEVEL 1',
-    headerStyle: { backgroundColor: '#111' },
-    headerTitleStyle: { color: '#ffe8af' }
-  };
 
   render() {
 
-    const {navigate} = this.props.navigation;
-
     return (
-        <div style={styles.container}>
-          <ScrollView style={{width: '100%', height:'200%', backgroundColor: '#111'}}>
-            <div style={styles.textViewsHeader}>
-              <div style={styles.pageHeader}>SITUATION</div>
+        <div>
+          <header>{/*this.props.params.situation*/'Level 1'}</header>
+          <section className="situtationContainer">
+            <div>
+              <h3>Message:</h3>
+              <textarea></textarea>
             </div>
-            <div style={styles.textViewsMessage}>
-              <div style={styles.infoHeadersMessage}>MESSAGE:</div>
-              <div style={styles.message}><TextInput ref="message" autoCapitalize={'characters'} blurOnSubmit={true} style={{color: '#EFEFEF', fontSize: 18}} multiline={true} numberOfLines={4} editable={true} maxLength = {180} onChangeText={(text) => this.setState({message: text})} value={this.state.message}/></View>
+            <div>
+              <h3>To:</h3>
+              {/*Contacts map --> buttons that animate on click and add a list of recipients*/}
             </div>
-            <div style={styles.textViewsTo}>
-              <div style={styles.infoHeadersTo}>TO: {this.state.contacts.map((e, index) => {
-                if (e.isRecipient) {
-                  if(e.hasOwnProperty('firstName')){
-                    return e.firstName.toUpperCase() + ' ' + e.lastName.toUpperCase() + '; '
-                  } else {
-                    return e.groupName.toUpperCase() + '; '
-                  }
-                }
-
-              })}</div>
-              <ScrollViedivw style={styles.scrollContacts}>
-              {
-                this.state.contacts.map(contact => {
-                  if(contact.hasOwnProperty('firstName')){
-                    return <Button key={contact.username} ref={contact.username} style={{color: contact.isRecipient? '#111' : '#EFEFEF', backgroundColor: contact.isRecipient? '#ffe8af':'rgba(17,17,17,0.65)', height: 35, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, width: '100%', textAlign: 'left'}} onPress={(e) => this.toggleRecipients(e,contact)}>{contact.firstName.toUpperCase() + ' ' + contact.lastName.toUpperCase()}</Button>
-                  } else {
-                    return <Button key={contact.groupName} ref={contact.groupName} style={{color: contact.isRecipient? '#111' : '#EFEFEF', backgroundColor: contact.isRecipient? '#ffe8af':'rgba(17,17,17,0.65)', height: 35, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, width: '100%', textAlign: 'left'}} onPress={(e) => this.toggleRecipients(e,contact)}>{contact.groupName.toUpperCase()}</Button>
-                  }
-                })
-              }
-              </ScrollView>
+            <div>
+              <h3>Time Active:</h3>
+              <select>
+              {/*Time options map*/}
+              </select>
             </div>
-            <div style={styles.textViewsTime}>
-              <div style={styles.infoHeadersTime}>TIME ACTIVE (HOURS):</div>
-               <ScrollView style={styles.scrollContacts}>
-              {
-                this.state.timeOptions.map(option => {
-                  return <Button key={option.time} ref={option.time} style={{color: option.selected? '#111' : '#EFEFEF', backgroundColor: option.selected? '#ffe8af':'rgba(17,17,17,0.65)', height: 35, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, width: '100%', textAlign: 'left'}} onPress={(e) => this.toggleTime(e,option)}>{option.time}</Button>
-                })
-              }
-              </ScrollView>
+            <div>
+              <button>SEND</button>
             </div>
-            <div style={styles.textViews}>
-              <Image source={require('./../images/blackCanary.svg')} style={{width: 20, height: 20}}/>
-              <Button style={styles.button}>SEND</Button>
-            </div>
-          </ScrollView>
-
+          </section>
         </div>
     );
   }
