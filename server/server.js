@@ -53,6 +53,7 @@ passport.use(new Auth0Strategy({
                 console.log('user found',user)
                 return done(null, {id: user[0].id})
             } else {
+            //if they're logging in with google, profilePic should be profile.picture
                 db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
                 .then(user => {
                     return done(null, {id: user[0].id});
@@ -112,6 +113,9 @@ passport.use(new Auth0Strategy({
       res.redirect(302, '/#/')
   });
 
+
+
+  
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
