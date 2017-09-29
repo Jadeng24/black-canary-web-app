@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
+const socket = io('http://localhost:3069');
 // import CheckBox from 'react-native-checkbox';
 
 
@@ -261,7 +263,7 @@ class Level1 extends Component {
                 }
 
               })}</div>
-              <ScrollViedivw style={styles.scrollContacts}>              
+              <ScrollViedivw style={styles.scrollContacts}>
               {
                 this.state.contacts.map(contact => {
                   if(contact.hasOwnProperty('firstName')){
