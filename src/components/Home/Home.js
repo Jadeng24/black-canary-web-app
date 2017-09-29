@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 
 import map from '../../images/placeholder_map.gif'
 
+const socket = io('http://localhost:3069');
 
 // const socket = io('http://localhost:3069');
 
