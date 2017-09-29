@@ -10,21 +10,6 @@ import friends from './../../images/blackCanaryFriends_30px.png';
 //CHANGE ONCE HOSTED
 // const socket = io('http://localhost:3069')
 
-// import Geolocation from './../Geolocation/Geolocation'
-// require('dotenv').config()
-
-
-// class MapContainer extends React.Component {
-//   render() {
-//     return (
-//         <div>
-            
-//         </div>
-//     )
-//   }
-// }
-
-
 
 export class MapContainer extends Component {
     
