@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "./server/server.js",
-  "homepage": "http://localhost:3068",
+  "homepage": "http://localhost:3070",
   "proxy": "http://localhost:3069",
   "dependencies": {
     "axios": "^0.16.2",
@@ -31,7 +31,7 @@
     "socket.io-client": "^2.0.3"
   },
   "scripts": {
-    "start-js": "PORT=3068 && react-scripts start",
+    "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
