@@ -14,6 +14,8 @@ const express = require('express')
     , io = sockets(server)
     , port = process.env.PORT;
 
+    let currentUser = {};
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(session({
@@ -51,12 +53,12 @@ passport.use(new Auth0Strategy({
         .then( user => {
             if(user[0]) {
                 console.log('user found',user)
-                return done(null, {id: user[0].id})
+                return done(null, user[0].id)
             } else {
             //if they're logging in with google, profilePic should be profile.picture
                 db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
                 .then(user => {
-                    return done(null, {id: user[0].id});
+                    return done(null, user[0].id);
                 })
             }
         })
@@ -78,12 +80,13 @@ passport.use(new Auth0Strategy({
   
   passport.serializeUser((user, done)=> {
       // console.log('serialize', user)
+      currentUser = user;
       done(null, user)
   });
 
   passport.deserializeUser((obj, done)=> {
       // console.log('line 80', obj)
-      app.get('db').find_session_user([obj.id])
+      app.get('db').find_user([obj.auth_id])
       .then( user=> {
       // console.log('deserialize', user)
          done(null, user[0]);
@@ -127,6 +130,11 @@ io.on('connection', socket => {
     //     //app.get('db').getUserInfo();     
     //     socket.emit('hearbeat', data)
     // }
+
+    socket.on('save socket_id', data => {
+        console.log('data', data,'current user:', currentUser)
+        app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+    })
     
     socket.on('send location', data => {
         // app.post data to active_locations table in db
