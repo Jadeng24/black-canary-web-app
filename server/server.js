@@ -131,36 +131,39 @@ io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
 
 // heartbeat updates the connected user every second
-    setInterval(heartbeat, 1000);
-    function heartbeat(){
-        let userInfo, groups, friends, activeLocations;
-        //app.get all info from db to send in heartbeat
-        app.get('db').get_user_info([currentUser.id])
-            .then(user=> {
-                userInfo: user;
-            });
+    // setInterval(heartbeat, 1000);
+    // function heartbeat(){
+    //     let userInfo, groups, friends, activeLocations;
+    //     //app.get all info from db to send in heartbeat
+    //     app.get('db').get_user_info([currentUser.id])
+    //         .then(user=> {
+    //             userInfo: user;
+    //         });
             
-        // app.get('db').get_groups_by_user_id([currentUser.id])
-        //     .then(data=> {
-        //         groups: data
-        //     });
+    //     // app.get('db').get_groups_by_user_id([currentUser.id])
+    //     //     .then(data=> {
+    //     //         groups: data
+    //     //     });
 
-        // app.get('db').get_friends_by_user_id([currentUser.id])
-        //     .then(data=> {
-        //     friends: data
-        //     });
+    //     // app.get('db').get_friends_by_user_id([currentUser.id])
+    //     //     .then(data=> {
+    //     //     friends: data
+    //     //     });
 
-        // app.get('db').get_active_locations([currentUser.id])
-        //     .then(data => {
-        //         activeLocations: data
-        //     });
+    //     // app.get('db').get_active_locations([currentUser.id])
+    //     //     .then(data => {
+    //     //         activeLocations: data
+    //     //     });
 
-        socket.emit('hearbeat', data)
-    }
+    //     socket.emit('hearbeat', data)
+    // }
 
     socket.on('save socket_id', data => {
-        console.log('data', data,'current user:', currentUser)
-        app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
+        currentUser ? 
+            app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+        :
+            null;
     })
     
     socket.on('send location', data => {
