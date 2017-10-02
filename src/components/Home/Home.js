@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
-import map from '../../images/placeholder_map.gif'
+// import map from '../../images/placeholder_map.gif'
 
-const socket = io('http://localhost:3069');
+// const socket = io('http://localhost:3069');
 
 // const socket = io('http://localhost:3069');
 
@@ -19,7 +19,7 @@ export default class Home extends Component{
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
                     <Link to='/situations'> <p className="head">LOGIN</p> </Link>
                 </div>
-                <MapContainer id="map" />
+                {/* <MapContainer id="map" /> */}
             </div>
         )
     }
