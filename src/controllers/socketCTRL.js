@@ -2,7 +2,7 @@
 //or server.js
 
 module.exports = {
-    heartbeat: function(){ //in menu? component 
+    heartbeat: function(){ //in home component 
         //DONE //write socket.emit('heartbeat') from server
         //DONE //write action in reducer.js to save to state
         socket.on('heartbeat', data=> {

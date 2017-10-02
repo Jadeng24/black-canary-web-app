@@ -8,7 +8,6 @@ import editIcon from '../../images/whiteEditIcon.svg'
 const socket = io('http://localhost:3069');
 
 export default class Profile extends Component{
-
     constructor(){
         super()
 
@@ -31,6 +30,10 @@ export default class Profile extends Component{
         this.setState({
             toggleName: false
         })
+    }
+    
+    componentDidMount(){
+        socket.emit('save socket_id', {socketID: socket.id})
     }
 
     render(){
