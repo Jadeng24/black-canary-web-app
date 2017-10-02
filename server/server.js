@@ -117,19 +117,46 @@ passport.use(new Auth0Strategy({
   });
 
 
+//=================== UNFINISHED ENDPOINTS ==========================//
+
+
+//get groups -- select user info, friends info
+//get friends --select user info, friends info
+//get active locations
+//send/receive messages
 
   
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
 
-//heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     //app.get all info from db to send in heartbeat
-    //     //app.get('db').getUserInfo();     
-    //     socket.emit('hearbeat', data)
-    // }
+// heartbeat updates the connected user every second
+    setInterval(heartbeat, 1000);
+    function heartbeat(){
+        let userInfo, groups, friends, activeLocations;
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                userInfo: user;
+            });
+            
+        // app.get('db').get_groups_by_user_id([currentUser.id])
+        //     .then(data=> {
+        //         groups: data
+        //     });
+
+        // app.get('db').get_friends_by_user_id([currentUser.id])
+        //     .then(data=> {
+        //     friends: data
+        //     });
+
+        // app.get('db').get_active_locations([currentUser.id])
+        //     .then(data => {
+        //         activeLocations: data
+        //     });
+
+        socket.emit('hearbeat', data)
+    }
 
     socket.on('save socket_id', data => {
         console.log('data', data,'current user:', currentUser)
@@ -150,7 +177,15 @@ io.on('connection', socket => {
     })
 
     socket.on('delete user', userId => {
-        //app.delete user by userId
+        app.get('db').delete_user([userId])
+    })
+
+    socket.on('update group', group=> {
+        app.get('db').update_group([group.friendIds, group.name, group.id]);
+    })
+
+    socket.on('delete group', groupId=> {
+        app.get('db').delete_group([groupId])
     })
 
     socket.on('disconnect', ()=> {
