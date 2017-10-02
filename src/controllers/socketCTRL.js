@@ -1,22 +1,20 @@
 //these functions are invoked in their components' componentsDidMount() life cycle method
-//or server.js
+
 
 module.exports = {
-    heartbeat: function(){ //in home component 
-        //DONE //write socket.emit('heartbeat') from server
-        //DONE //write action in reducer.js to save to state
+    heartbeat: function(getFriendsList, getUserInfo, getGroups, getActiveLocations){ //in home component 
         socket.on('heartbeat', data=> {
-            //save friends: data.friends,
-            //save userInfo: data.user,
-            //save groups: data.groups,
-            //save activeLocations: data.activeLocations
+            //pass in action reducers to heartbeat function in component
+            getFriendsList(data.friends);
+            getUserInfo(data.user);
+            getGroups(data.groups);
+            getActiveLocations(data.activeLocations);
         })
     },
-    updateUser: function(){ //in profile component
-        //DONE //write socket.emit('update user') from server
-        //DONE //write action in reducer.js to save to state
-        socket.on('update user', data=>{
-            //save userInfo: data.user
+    updateUser: function(getUserInfo){ //in profile component
+        socket.on('update user', user=>{
+            //pass in getUserInfo action reducer in component
+            getUserInfo(user)
         })
     },
     activeLocations: function(){ //on home page/landing page with map
@@ -28,18 +26,21 @@ module.exports = {
     
 
     //emit sockets
-    sendLocation: function(recipients){ //in situations, send objects with user info with user location, array of recipient ids to add to the active_locations table in db
-        //DONE //write socket.on('send location') in server, post to db
+    sendLocation: function(user, recipients){ //in situations, send objects with user info with user location, array of recipient ids to add to the active_locations table in db
         socket.emit('send location', {user, recipients})
     },
-    editUser: function(){ //on profile page, update username or safe haven and send the whole user object
-        //DONE //write socket.on('update user info') in server to save user object to db
-        socket.emit('update user info', {user})
+    editUser: function(user){ //on profile page, update username or safe haven and send the whole user object
+        socket.emit('update user info', {username: user.username, userId:user.id})
     },
-    deleteUser: function(){ //on profile page, delete user and send the user id to server
-        //DONE //write socket.on('delete user') in server to delete user from db by user id
+    deleteUser: function(userId){ //on profile page, delete user and send the user id to server
         socket.emit('delete user', {userId})
+    },
+    addFriendToGroup: function(group){ //on contact/group page
+        //in component, add friend id to array in reducer and send the array in socket.emit
+        socket.emit('add friend to group', group)
+    },
+    deleteGroup: function(groupId){
+        socket.emit('delete group', groupId)
     }
-    
 
 };
