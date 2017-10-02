@@ -81,37 +81,161 @@ table {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  border: 1px solid red;
   background-color: #111;
   z-index: 20;
   color: #efefef;
   font-family: "ABeeZee", sans-serif; }
-  #login div {
+  #login .loginWrapper {
     width: 100vw;
-    display: flex; }
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap; }
+    #login .loginWrapper .imgWrapper {
+      width: 100vw;
+      position: relative; }
+      #login .loginWrapper .imgWrapper #spotlight1 {
+        background-color: rgba(239, 239, 239, 0.3);
+        height: 320px;
+        width: 320px;
+        border-radius: 50%;
+        position: absolute;
+        top: none;
+        left: none; }
+      #login .loginWrapper .imgWrapper #spotlight2 {
+        background-color: rgba(254, 243, 110, 0.3);
+        height: 320px;
+        width: 320px;
+        border-radius: 50%;
+        position: absolute;
+        top: none;
+        left: none; }
+    #login .loginWrapper .imgWrapper,
+    #login .loginWrapper .infoWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    #login .loginWrapper .infoWrapper {
+      width: 250px;
+      flex-wrap: wrap; }
+      #login .loginWrapper .infoWrapper button {
+        width: 250px;
+        background-color: rgba(239, 239, 239, 0.3);
+        border: none;
+        height: 30px;
+        padding: 7px;
+        margin-top: 80px;
+        border-radius: 10px;
+        color: #FEF36E;
+        letter-spacing: 0.2em;
+        font-family: "ABeeZee", sans-serif;
+        font-size: 90%; }
+        #login .loginWrapper .infoWrapper button:focus {
+          outline: none; }
+        #login .loginWrapper .infoWrapper button:hover {
+          background-color: #FEF36E;
+          color: #111; }
+  #login img {
+    width: 300px;
+    z-index: 99; }
   #login a {
     color: #efefef; }
     #login a:hover {
-      color: #FEF36E; }
-  #login button {
-    background-color: #111;
-    color: #efefef; }
-    #login button:hover {
       color: #FEF36E; }
 
 .mapContainer {
   width: 100vw;
   height: 60vh;
-  border: 1px solid red;
   display: flex;
   justify-content: center; }
 
-.map {
-  position: relative;
-  width: 80vh !important;
-  height: 60vh !important; }
-
-.Situations {
+#Situations {
   background-color: #111;
   height: 100vh;
-  width: 100%; }
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #efefef;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.45rem;
+  letter-spacing: 0.2em; }
+  #Situations .wrapper {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+  #Situations .levelOne,
+  #Situations .levelTwo,
+  #Situations .levelThree {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+  #Situations .levelOne a {
+    color: #efefef;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    width: 310px;
+    margin-top: 10px;
+    padding: 10px 7px;
+    background-color: rgba(239, 239, 239, 0.3);
+    border-radius: 10px; }
+    #Situations .levelOne a:hover {
+      color: #111;
+      background-color: #FEF36E; }
+  #Situations .levelOne .custom {
+    color: #FEF36E; }
+    #Situations .levelOne .custom:hover {
+      color: #111;
+      background-color: #FEF36E; }
+  #Situations .levelTwo {
+    margin-top: 25px; }
+    #Situations .levelTwo a {
+      color: #111;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      width: 310px;
+      margin-top: 10px;
+      padding: 10px 7px;
+      background-color: #FEF36E;
+      border-radius: 10px; }
+      #Situations .levelTwo a:hover {
+        color: #d13030;
+        background-color: rgba(239, 239, 239, 0.3); }
+  #Situations .levelThree {
+    margin-top: 25px;
+    font-size: 1.9rem; }
+    #Situations .levelThree a {
+      color: #efefef;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      width: 310px;
+      margin-top: 10px;
+      padding: 10px 7px;
+      background-color: #d13030;
+      border-radius: 10px; }
+      #Situations .levelThree a:hover {
+        color: #111;
+        background-color: #d13030; }
+  #Situations button {
+    background-color: rgba(239, 239, 239, 0.3);
+    border: none;
+    height: 30px;
+    padding: 7px;
+    margin-top: 80px;
+    border-radius: 10px;
+    color: #FEF36E;
+    letter-spacing: 0.2em;
+    font-family: "ABeeZee", sans-serif;
+    font-size: 90%; }
+    #Situations button:focus {
+      outline: none; }
+    #Situations button:hover {
+      background-color: #FEF36E;
+      color: #111; }

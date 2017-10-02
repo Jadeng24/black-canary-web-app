@@ -63,7 +63,20 @@ export class MapContainer extends Component {
             this.setState({
                 friends: friends
             })
-        }, 1000);
+        }, 2*60*1000);
+    }
+    moveAbby(){
+        setInterval(() => {
+            let friends = this.state.friends.slice(0);
+            console.log(friends);
+            let abby = Object.assign({},this.state.friends[2]);
+            abby.lat += 0.1;
+            abby.lng -= 0.001;
+            friends.splice(2, 1, abby);
+            this.setState({
+                friends: friends
+            })
+        }, 2*60*1000);
     }
 
     componentWillMount(){
@@ -82,17 +95,18 @@ export class MapContainer extends Component {
 
     componentDidMount() {
         this.moveJanise();
+        this.moveAbby();
     }
 
     render() {
 
-        const style ={width: '70vw',
+        const style ={width: '80vw',
                 height: '60vh',
                 margin: '0 auto'};
         
         return(
             <div className="mapContainer">
-                <Map className="map" style={style} google={this.props.google} zoom={8} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={this.state.styles}>
+                <Map className="map" style={style} google={this.props.google} zoom={8} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={style}>
                     <Marker icon={this.state.user.icon} name={this.state.user.name} position={{lat: this.state.user.lat, lng: this.state.user.lng}} /> 
                     {this.state.friends.map(e => {
                         return <Marker key={e.name} icon={e.icon} name={e.name} position={{lat: e.lat, lng: e.lng}} />
