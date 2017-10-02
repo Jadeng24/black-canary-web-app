@@ -12,9 +12,9 @@ export default class Profile extends Component{
         super()
 
         this.state={
-            name: 'name',
+            name: 'bob',
             newName: '',
-            safeHaven: 'SH',
+            safeHaven: 'Dev mtn',
             newSafeHaven: '',
             toggleNameInput: false,
             changeSafeHaven: false,

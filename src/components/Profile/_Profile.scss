@@ -15,7 +15,7 @@
 
         .name{
             color: $white;
-            font-size: 30px;
+            font-size: 1.6em;
             position: relative;
             margin-top: 20px;
             font-family: $sans;
@@ -26,6 +26,7 @@
             width: 7%;
             margin-left: 4%;
             margin-top: 20px;
+            cursor: pointer;
 
             @media(min-width: 160px){
                 width: 1.5em;
@@ -55,6 +56,7 @@
             background-color: $black;
             border: none;
             letter-spacing: .2em;
+            cursor: pointer;
         }
     }
 
@@ -98,6 +100,7 @@
             background-color: $black;
             border: none;
             letter-spacing: .2em;
+            cursor: pointer;
         }
     }
 
@@ -111,6 +114,7 @@
             color: $yellow;
             background-color: $black;
             border: none;
+            cursor: pointer;
         }
     }
 
@@ -121,9 +125,10 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        margin-top:60px;
+        margin-top: 60px;
 
         .btn{
+            font-size: 1.2em;
             color: $white;
             letter-spacing: 1;
             font-size: 18;
@@ -132,9 +137,12 @@
             border: none;
             letter-spacing: 0.2em;
             font-family: $sans;
+            cursor: pointer;
         }
 
         .deleteBtn{
+            cursor: pointer;
+            font-size: 1em;
             color: $red;
             letter-spacing: 1;
             font-size: 18;
@@ -161,6 +169,7 @@
             
             .head{
                 letter-spacing: 0.2em;
+                width: 97%;
                 font-family: $sans;
                 text-align: center;
                 margin-top: 30px;

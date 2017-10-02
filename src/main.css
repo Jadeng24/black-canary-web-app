@@ -114,20 +114,20 @@ table {
     align-items: center; }
     .Contacts .modal .heaad {
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: center;
+      align-items: center;
       height: 60px; }
       .Contacts .modal .heaad .info {
         color: #FEF36E;
         font-size: 1.4em;
         align-self: center;
-        font-family: "ABeeZee", sans-serif;
-        margin-left: 30px; }
-      .Contacts .modal .heaad .x {
-        width: .8em;
-        height: .8em;
-        margin: 20px;
-        position: relative; }
+        font-family: "ABeeZee", sans-serif; }
+    .Contacts .modal .x {
+      width: .8em;
+      height: .8em;
+      margin: 20px;
+      position: relative;
+      cursor: pointer; }
     .Contacts .modal .box {
       width: 80%;
       height: 80%;
@@ -135,27 +135,37 @@ table {
       z-index: 1234; }
     .Contacts .modal .information {
       width: 100%;
-      height: 50%;
+      height: 30%;
       position: relative;
       display: flex;
       justify-content: space-around;
       flex-direction: column;
       margin-left: 20px;
       color: white;
-      font-family: "ABeeZee", sans-serif; }
+      font-family: "ABeeZee", sans-serif;
+      letter-spacing: .09em; }
     .Contacts .modal .groups {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       flex-direction: column;
+      position: relative;
       width: 100%;
-      height: 50%;
-      margin-top: -30px;
-      margin-left: 10px; }
+      height: 60%; }
+      .Contacts .modal .groups .added {
+        color: #FEF36E;
+        font-family: "ABeeZee", sans-serif;
+        letter-spacing: .2em;
+        font-size: .7em; }
       .Contacts .modal .groups .groupsbox {
         width: 90%;
         height: 60%;
-        background-color: white; }
+        margin-top: 10px;
+        background-color: #111;
+        border-radius: 10px;
+        border-color: #FEF36E;
+        border: 2px;
+        color: white; }
 
 #Home {
   background-color: #111;
@@ -228,7 +238,7 @@ table {
     align-items: flex-end; }
     .Profile .nameContainer .name {
       color: #efefef;
-      font-size: 30px;
+      font-size: 1.6em;
       position: relative;
       margin-top: 20px;
       font-family: "ABeeZee", sans-serif;
@@ -236,7 +246,8 @@ table {
     .Profile .nameContainer .editIcon {
       width: 7%;
       margin-left: 4%;
-      margin-top: 20px; }
+      margin-top: 20px;
+      cursor: pointer; }
       @media (min-width: 160px) {
         .Profile .nameContainer .editIcon {
           width: 1.5em; } }
@@ -257,7 +268,8 @@ table {
       padding-left: 10px;
       background-color: #111;
       border: none;
-      letter-spacing: .2em; }
+      letter-spacing: .2em;
+      cursor: pointer; }
   .Profile .imgContainer {
     width: 100%;
     display: flex;
@@ -289,7 +301,8 @@ table {
       font-family: "ABeeZee", sans-serif;
       background-color: #111;
       border: none;
-      letter-spacing: .2em; }
+      letter-spacing: .2em;
+      cursor: pointer; }
   .Profile .safeHavenInput {
     height: 20%;
     display: flex;
@@ -298,7 +311,8 @@ table {
     .Profile .safeHavenInput .changebtn {
       color: #FEF36E;
       background-color: #111;
-      border: none; }
+      border: none;
+      cursor: pointer; }
   .Profile .navigationBtns {
     width: 100%;
     height: 20%;
@@ -308,6 +322,7 @@ table {
     align-items: center;
     margin-top: 60px; }
     .Profile .navigationBtns .btn {
+      font-size: 1.2em;
       color: #efefef;
       letter-spacing: 1;
       font-size: 18;
@@ -315,8 +330,11 @@ table {
       background-color: #111;
       border: none;
       letter-spacing: 0.2em;
-      font-family: "ABeeZee", sans-serif; }
+      font-family: "ABeeZee", sans-serif;
+      cursor: pointer; }
     .Profile .navigationBtns .deleteBtn {
+      cursor: pointer;
+      font-size: 1em;
       color: #d13030;
       letter-spacing: 1;
       font-size: 18;
@@ -337,6 +355,7 @@ table {
       letter-spacing: .2em; }
     .Profile .deleteModal .head {
       letter-spacing: 0.2em;
+      width: 97%;
       font-family: "ABeeZee", sans-serif;
       text-align: center;
       margin-top: 30px; }
