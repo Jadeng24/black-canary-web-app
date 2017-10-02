@@ -4,6 +4,7 @@
 */
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -55,7 +56,8 @@ table {
 
 #Home {
   background-color: #111;
-  height: 100vh; }
+  height: 100vh;
+  width: 100vw; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -70,13 +72,44 @@ table {
       font-family: "ABeeZee", sans-serif; }
       #Home .navContainer a:hover {
         color: #FEF36E; }
-  #Home #map {
-    position: absolute;
-    bottom: 30px; }
+
+#login {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+  background-color: #111;
+  z-index: 20;
+  color: #efefef;
+  font-family: "ABeeZee", sans-serif; }
+  #login div {
+    width: 100vw;
+    display: flex; }
+  #login a {
+    color: #efefef; }
+    #login a:hover {
+      color: #FEF36E; }
+  #login button {
+    background-color: #111;
+    color: #efefef; }
+    #login button:hover {
+      color: #FEF36E; }
 
 .mapContainer {
-  width: 80vw;
-  height: 60vh; }
+  width: 100vw;
+  height: 60vh;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center; }
+
+.map {
+  position: relative;
+  width: 80vh !important;
+  height: 60vh !important; }
 
 .Situations {
   background-color: #111;

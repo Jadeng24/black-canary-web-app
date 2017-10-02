@@ -1,0 +1,41 @@
+@import './../../sass/variables';
+
+#login {
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    border: 1px solid red;
+    background-color: $black;
+    z-index: 20;
+    color: $white;
+    font: {
+        family: $sans;
+        // size: 120px;
+    }
+
+    div {
+        width: 100vw;
+        display: flex;
+    }
+
+    a {
+        color: $white;
+        &:hover {
+            color: $yellow;
+        }
+    }
+
+    button {
+        background-color: $black;
+        color: $white;
+        &:hover {
+            color: $yellow;
+        } 
+    }
+}

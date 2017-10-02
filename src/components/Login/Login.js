@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import '../../main.css';
+import TweenMax from 'gsap';
+import $ from 'jquery';
 
 class Login extends Component {
+
+
+  userLoggedIn(){
+      TweenMax.to($('#login'), 1, {'opacity': 0, ease: TweenMax.Power1.easeIn});
+      TweenMax.to($('#login'), 0, {'display': 'none', delay: 1, ease: TweenMax.Power1.easeIn});
+      
+  }
+
   render() {
     return (
-      <div className="App">
+      <div id="login">
           Bye, React Native.
-          <a href="/auth"><button>Login</button></a>
-          <Link to='/home'><p>go to home</p></Link>
+          <div>
+            <a href="/auth"><button>Login</button></a>
+            <Link to='/' onClick={this.userLoggedIn()}><p>go to home</p></Link>
+          </div>
       </div>
     );
   }
