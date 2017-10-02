@@ -169,7 +169,7 @@ io.on('connection', socket => {
     })    
 
     socket.on('update user info', data => {
-        //app.put the user info by user id to (users table) in db
+        //put the user info by user id to (users table) in db
         app.get('db').update_username([data.username, data.userId])
             .then(user=> {
                 socket.emit('update user', {user})
