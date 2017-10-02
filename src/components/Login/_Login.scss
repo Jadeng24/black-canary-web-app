@@ -10,7 +10,7 @@
     width: 100vw;
     height: 100vh;
 
-    border: 1px solid red;
+    // border: 1px solid red;
     background-color: $black;
     z-index: 20;
     color: $white;
@@ -19,9 +19,77 @@
         // size: 120px;
     }
 
-    div {
+    .loginWrapper {
         width: 100vw;
+        justify-content: center;
         display: flex;
+        flex-wrap: wrap;
+
+        .imgWrapper {
+            width: 100vw;
+            position: relative;
+
+            #spotlight1 {
+                background-color: $white-translucent;
+                height: 320px;
+                width: 320px;
+                border-radius: 50%;
+                position: absolute;
+                top: none;
+                left: none;
+            }
+
+            #spotlight2 {
+                background-color: $yellow-translucent;
+                height: 320px;
+                width: 320px;
+                border-radius: 50%;
+                position: absolute;
+                top: none;
+                left: none;
+            }
+        }
+
+        .imgWrapper,
+        .infoWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .infoWrapper {
+            width: 250px;
+            flex-wrap: wrap;
+            // border: 1px solid red;
+
+            button {
+                width: 250px;
+                background-color: $white-translucent;
+                border: none;
+                height: 30px;
+                padding: 7px;
+                margin-top: 80px;
+                border-radius: 10px;
+                color: $yellow;
+                letter-spacing: 0.2em;
+                font: {
+                    family: $sans;
+                    size: 90%;
+                }
+                &:focus {
+                    outline: none;
+                }
+                &:hover {
+                    background-color: $yellow;
+                    color: $black
+                }
+            }
+        }
+    }
+
+    img {
+        width: 300px;
+        z-index: 99;
     }
 
     a {
@@ -29,13 +97,5 @@
         &:hover {
             color: $yellow;
         }
-    }
-
-    button {
-        background-color: $black;
-        color: $white;
-        &:hover {
-            color: $yellow;
-        } 
     }
 }
