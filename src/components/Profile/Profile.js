@@ -86,7 +86,7 @@ export default class Profile extends Component{
                         !this.state.toggleNameInput
                         ?
                         <div className='nameContainer'>
-                            <div className="name">{this.state.name}</div>
+                            <div className="name">NAME: {this.state.name}</div>
                             <img className="editIcon" onClick={this.toggleName} src={editIcon} alt="edit"/>
                         </div>
                         
@@ -131,7 +131,7 @@ export default class Profile extends Component{
                         <button onClick={()=> {this.deleteModal('popup')}} className="deleteBtn">DELETE YOUR ACCOUNT</button>
                         :
                         <div className="deleteModal">
-                            <button onClick={()=> {this.deleteModal('nvm')}}> close</button>
+                            <button className="close" onClick={()=> {this.deleteModal('nvm')}}> close</button>
                             <p className="head">ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT?</p>
                             <div className="deleteBtns">
                                 <Link className="yes" to="/login"><button className="yes">YES, I WANT TO FEEL UNSAFE</button></Link>

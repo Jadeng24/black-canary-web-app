@@ -26,6 +26,10 @@
             width: 7%;
             margin-left: 4%;
             margin-top: 20px;
+
+            @media(min-width: 160px){
+                width: 1.5em;
+            } 
         }
     }
 
@@ -39,7 +43,7 @@
         position: relative;
 
         .nameInput{
-            width: 50%;
+            width: 20%;
             margin-left: 30px;
             // position: absolute;
         }
@@ -48,6 +52,9 @@
             color: $yellow;
             position: relative;
             padding-left: 10px;
+            background-color: $black;
+            border: none;
+            letter-spacing: .2em;
         }
     }
 
@@ -58,11 +65,18 @@
         position: relative;
 
         .imgPlaceholder{
-            width: 50%;
-            height: 200px;
+            width: 7em;
+            height: 7em;
             background-color: $white;
-            margin-top: 15%;
+            margin-top: 10%;
             position: relative;
+
+            @media(min-width: 800px){
+                background-color: pink;
+                width: 9em;
+                height: 9em;
+                margin-top: 5%;
+            } 
         }
     }
 
@@ -81,6 +95,9 @@
         .changebtn{
             color: $yellow;
             font-family: $sans;
+            background-color: $black;
+            border: none;
+            letter-spacing: .2em;
         }
     }
 
@@ -92,6 +109,8 @@
 
         .changebtn{
             color: $yellow;
+            background-color: $black;
+            border: none;
         }
     }
 
@@ -133,6 +152,12 @@
             position: absolute;
             margin-top: -220px;
             animation: slideInLeft 1s;
+
+            .close{
+                border: none;
+                font-family: $sans;
+                letter-spacing: .2em;
+            }
             
             .head{
                 letter-spacing: 0.2em;
