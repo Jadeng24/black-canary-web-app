@@ -53,12 +53,12 @@ passport.use(new Auth0Strategy({
         .then( user => {
             if(user[0]) {
                 console.log('user found',user)
-                return done(null, user[0].id)
+                return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
                 db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
                 .then(user => {
-                    return done(null, user[0].id);
+                    return done(null, user[0]);
                 })
             }
         })
@@ -137,14 +137,16 @@ io.on('connection', socket => {
     })
     
     socket.on('send location', data => {
-        // app.post data to active_locations table in db
+        // post data to active_locations table in db
+        app.get('db').add_active_location([data.userId, data.coordinates, data.recipients]);
     })    
 
     socket.on('update user info', data => {
         //app.put the user info by user id to (users table) in db
-            //.then(user=> {
+        app.get('db').update_username([data.username, data.userId])
+            .then(user=> {
                 socket.emit('update user', {user})
-            // })
+            })
     })
 
     socket.on('delete user', userId => {

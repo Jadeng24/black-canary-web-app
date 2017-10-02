@@ -1,22 +1,24 @@
 //these functions are invoked in their components' componentsDidMount() life cycle method
-//or server.js
+
 
 module.exports = {
-    heartbeat: function(){ //in home component 
+    heartbeat: function(getFriendsList, getUserInfo, getGroups, getActiveLocations){ //in home component 
         //DONE //write socket.emit('heartbeat') from server
         //DONE //write action in reducer.js to save to state
         socket.on('heartbeat', data=> {
-            //save friends: data.friends,
-            //save userInfo: data.user,
-            //save groups: data.groups,
-            //save activeLocations: data.activeLocations
+            //pass in action reducers to heartbeat function in component
+            getFriendsList(data.friends);
+            getUserInfo(data.user);
+            getGroups(data.groups);
+            getActiveLocations(data.activeLocations);
         })
     },
-    updateUser: function(){ //in profile component
+    updateUser: function(getUserInfo){ //in profile component
         //DONE //write socket.emit('update user') from server
         //DONE //write action in reducer.js to save to state
-        socket.on('update user', data=>{
-            //save userInfo: data.user
+        socket.on('update user', user=>{
+            //pass in getUserInfo action reducer in component
+            getUserInfo(user)
         })
     },
     activeLocations: function(){ //on home page/landing page with map
