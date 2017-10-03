@@ -116,46 +116,38 @@ passport.use(new Auth0Strategy({
   });
 
 
-//=================== UNFINISHED ENDPOINTS ==========================//
-
-
-//get groups -- select user info, friends info
-//get friends --select user info, friends info
-//get active locations
-//send/receive messages
-
   
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
 
 // heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     let userInfo, groups, friends, activeLocations;
-    //     //app.get all info from db to send in heartbeat
-    //     app.get('db').get_user_info([currentUser.id])
-    //         .then(user=> {
-    //             userInfo: user;
-    //         });
+    setInterval(heartbeat, 1000);
+    function heartbeat(){
+        let userInfo, groups, friends, activeLocations;
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                userInfo: user;
+            });
             
-    //     // app.get('db').get_groups([currentUser.id])
-    //     //     .then(data=> {
-    //     //         groups: data
-    //     //     });
+        app.get('db').get_groups([currentUser.id])
+            .then(data=> {
+                groups: data
+            });
 
-    //     // app.get('db').get_friends([currentUser.id])
-    //     //     .then(data=> {
-    //     //     friends: data
-    //     //     });
+        app.get('db').get_friends([currentUser.id])
+            .then(data=> {
+            friends: data
+            });
 
-    //     // app.get('db').get_active_locations([currentUser.id])
-    //     //     .then(data => {
-    //     //         activeLocations: data
-    //     //     });
+        app.get('db').get_active_locations([currentUser.id])
+            .then(data => {
+                activeLocations: data
+            });
 
-    //     socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
-    // }
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
+    }
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
@@ -167,7 +159,7 @@ io.on('connection', socket => {
     
     socket.on('send location', data => {
         // post data to active_locations table in db
-        app.get('db').add_active_location([data.userId, data.coordinates, data.recipients]);
+        app.get('db').add_active_location([data.userId, data.coordinates, data.situation, data.recipients]);
     })    
 
     socket.on('update user info', data => {
