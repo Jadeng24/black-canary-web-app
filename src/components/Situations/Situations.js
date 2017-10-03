@@ -20,7 +20,7 @@ export default class Situations extends Component{
                     </div>
                     <div className="levelTwo">
                         <Link to="/levelTwo/uncomfortable_situation">Uncomfortable</Link>
-                        <Link to="/levelTwo/ine_a_bad_area">In a Bad Area</Link>
+                        <Link to="/levelTwo/in_a_bad_area">In a Bad Area</Link>
                     </div>
                     <div className="levelThree">
                         <Link to="/levelThree/emergency">emergency</Link>
