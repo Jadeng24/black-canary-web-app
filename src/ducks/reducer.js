@@ -13,7 +13,7 @@ const initialState = {
     },
     friends: [], //array of friend objects 
     groups: [], //array of group objects {name, id, userId, friendIds}
-    activeLocations: []
+    activeLocations: [] //array of active locations with messages and fromUser
 };
 
 
