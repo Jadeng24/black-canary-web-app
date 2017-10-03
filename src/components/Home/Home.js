@@ -15,7 +15,7 @@ export default class Home extends Component{
 
     componentDidMount(){
         socket.on('connect', ()=> {
-            console.log(socket.id)
+            console.log('home socket id:',socket.id)
             socket.emit('save socket_id', {socketId: socket.id})
         })
     }

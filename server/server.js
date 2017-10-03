@@ -37,8 +37,6 @@ massive({
     ssl: true
   }).then( db => {
     app.set('db', db);
-
-
   })
 
 
@@ -76,12 +74,12 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `http://localhost:3070/#/profile/`,
+      successRedirect: `http://localhost:3070/#/`,
       failureRedirect: `http://localhost:3070/#/`
   }));
 
   passport.serializeUser((user, done)=> {
-      // console.log('serialize', user)
+      console.log('serialize', user)
       currentUser = user;
       done(null, user)
   });
@@ -152,7 +150,7 @@ io.on('connection', socket => {
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
-        currentUser ?
+        currentUser.id ?
             app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
             null;
