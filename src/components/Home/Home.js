@@ -5,24 +5,32 @@ import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
 import $ from 'jquery';
-
+import {connect} from 'react-redux';
+import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
+import {heartbeat} from './../../controllers/socketCTRL';
 import map from '../../images/placeholder_map.gif'
 
 const socket = io('http://localhost:3069');
 
 
-export default class Home extends Component{
+class Home extends Component{
 
     componentDidMount(){
+        let {getUserInfo, getFriendsList, getGroups, getActiveLocations} = this.props;
+
         socket.on('connect', ()=> {
-            console.log(socket.id)
+            console.log('home socket id:',socket.id)
             socket.emit('save socket_id', {socketId: socket.id})
         })
+
+        heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
     }
 
 
 
     render(){
+        let {user, friends, groups, getActiveLocations} = this.props;
+
         return(
             <div id="Home">
                 <Login />
@@ -36,3 +44,16 @@ export default class Home extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+let outputActions = {
+    getUserInfo,
+    getFriendsList,
+    getGroups,
+    getActiveLocations
+}
+
+export default connect(mapStateToProps, outputActions)(Home);

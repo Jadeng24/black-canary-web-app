@@ -28,7 +28,8 @@ insert into friends (user_id, friend_id, friend_status) values (1, 2, true);
 insert into friends (user_id, friend_id, friend_status) values (2, 1, false);
 insert into friends (user_id, friend_id, friend_status) values (2, 3, true);
 insert into friends (user_id, friend_id, friend_status) values (3, 2, false);
-
+insert into friends (user_id, friend_id, friend_status) values (4, 3, true);
+insert into friends (user_id, friend_id, friend_status) values (4, 2, false);
 
 -- GROUPS TABLE --
 CREATE TABLE IF NOT EXISTS groups (
@@ -44,7 +45,10 @@ insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of he
 insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of hermionia', 3);
 insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 1);
 insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 2);
-
+insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 4);
+insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 2);
+insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 1);
+insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 3);
 
 -- ACTIVE LOCATIONS TABLE --
 CREATE TABLE IF NOT EXISTS active_locations (

@@ -37,8 +37,6 @@ massive({
     ssl: true
   }).then( db => {
     app.set('db', db);
-
-
   })
 
 
@@ -76,12 +74,12 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `http://localhost:3070/#/profile/`,
+      successRedirect: `http://localhost:3070/#/`,
       failureRedirect: `http://localhost:3070/#/`
   }));
 
   passport.serializeUser((user, done)=> {
-      // console.log('serialize', user)
+      console.log('serialize', user)
       currentUser = user;
       done(null, user)
   });
@@ -118,60 +116,48 @@ passport.use(new Auth0Strategy({
   });
 
 
-//=================== UNFINISHED ENDPOINTS ==========================//
-
-
-//get groups -- select user info, friends info
-//get friends --select user info, friends info
-//get active locations
-//send/receive messages
-
-
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
+    let userInfo, groups, friends, activeLocations;
 
 // heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     let userInfo, groups, friends, activeLocations;
-    //     //app.get all info from db to send in heartbeat
-    //     app.get('db').get_user_info([currentUser.id])
-    //         .then(user=> {
-    //             userInfo: user;
-    //         });
+if(currentUser.id) {
+    setInterval(heartbeat, 10000);
+    function heartbeat(){
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                // console.log('get user info', user)
+                userInfo = user[0];
+            });
+            
+        app.get('db').get_groups([currentUser.id])
+            .then(data=> {
+                // console.log('get groups', data)
+                groups = data
+            });
 
-    //
-    //     // app.get('db').get_groups_by_user_id([currentUser.id])
-    //     //     .then(data=> {
-    //     //         groups: data
-    //     //     });
+        app.get('db').get_friends([currentUser.id])
+            .then(data=> {
+                // console.log('get friends', data)
+            friends = data
+            });
 
-    //
+        app.get('db').get_active_locations([currentUser.id])
+            .then(data => {
+                // console.log('get active locations', data)
+                activeLocations = data
+            });
 
-    //     // app.get('db').get_friends_by_user_id([currentUser.id])
-    //     //     .then(data=> {
-    //     //     friends: data
-    //     //     });
-
-    //
-    //     // app.get('db').get_active_locations([currentUser.id])
-    //     //     .then(data => {
-    //     //         activeLocations: data
-    //     //     });
-
-    //
-    //     socket.emit('hearbeat', data)
-
-
-    //     socket.emit('hearbeat', {userInfo, groups, friends, activeLocations})
-
-    // }
-
+            // console.log('userInfo:', userInfo, 'groups:', groups, 'friends:', friends, 'activeLocations:', activeLocations)
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
+    }
+}
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
-        currentUser ?
+        currentUser.id ?
             app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
             null;
