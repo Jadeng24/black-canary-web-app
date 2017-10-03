@@ -36,7 +36,7 @@ massive({
     password: process.env.DB_PASSWORD,
     ssl: true
   }).then( db => {
-    app.set('db', db); 
+    app.set('db', db)
   })
 
 
@@ -47,7 +47,7 @@ passport.use(new Auth0Strategy({
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
 },  function(accessToken, refreshToken, extraParams, profile, done) {
-        const db = app.get('db');
+        const db = app.get('db')
 
         db.find_user([profile.identities[0].user_id])
         .then( user => {
@@ -58,7 +58,7 @@ passport.use(new Auth0Strategy({
             //if they're logging in with google, profilePic should be profile.picture
                 db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
                 .then(user => {
-                    return done(null, user[0]);
+                    return done(null, user[0])
                 })
             }
         })
@@ -89,7 +89,7 @@ passport.use(new Auth0Strategy({
       app.get('db').find_user([obj.auth_id])
       .then( user=> {
       // console.log('deserialize', user)
-         done(null, user[0]);
+         done(null, user[0])
       })
       
   });
@@ -99,12 +99,11 @@ passport.use(new Auth0Strategy({
       let response, status=200
       if (!req.user) {
       //    res.status(404).send('User not found');
-      status=404
-      response='User not found'
+        status=404
+        response='User not found'
       } else {
-  
       //    res.status(200).send(req.user);
-      response = req.user
+        response = req.user
       }
       res.status(status).send(response)
     })
@@ -155,7 +154,7 @@ io.on('connection', socket => {
     //     //         activeLocations: data
     //     //     });
 
-    //     socket.emit('hearbeat', data)
+    //     socket.emit('hearbeat', {userInfo, groups, friends, activeLocations})
     // }
 
     socket.on('save socket_id', data => {

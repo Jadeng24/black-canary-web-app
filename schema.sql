@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS users (
     socket_id VARCHAR (100)
 );
 
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('hermione1549', 'Lucy', 'Pevensie', 'hermione1549@gmail.com', null, '105562344058923082049', null, null);
 
 -- FRIENDS TABLE --
 CREATE TABLE IF NOT EXISTS friends (
@@ -20,6 +22,13 @@ CREATE TABLE IF NOT EXISTS friends (
     friend_status BOOLEAN --true is accepted, false is pending, app.delete remove pending friend request
 );
 
+insert into friends (user_id, friend_id, friend_status) values (1, 3, true);
+insert into friends (user_id, friend_id, friend_status) values (3, 1, true);
+insert into friends (user_id, friend_id, friend_status) values (1, 2, true);
+insert into friends (user_id, friend_id, friend_status) values (2, 1, false);
+insert into friends (user_id, friend_id, friend_status) values (2, 3, true);
+insert into friends (user_id, friend_id, friend_status) values (3, 2, false);
+
 
 -- GROUPS TABLE --
 CREATE TABLE IF NOT EXISTS groups (
@@ -28,6 +37,10 @@ CREATE TABLE IF NOT EXISTS groups (
     group_name VARCHAR(40) NOT NULL,
     friend_ids INTEGER [] --array of friends user_ids
 );
+
+insert into groups (user_id, group_name, friend_ids) values (1, 'the janises', array [2, 3]);
+insert into groups (user_id, group_name, friend_ids) values (2, 'chronicles of hermionia', array [1, 3]);
+insert into groups (user_id, group_name, friend_ids) values (3, 'rocky neck bunch', array [1, 2]);
 
 
 -- ACTIVE LOCATIONS TABLE --
