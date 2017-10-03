@@ -139,12 +139,12 @@ io.on('connection', socket => {
     //             userInfo: user;
     //         });
             
-    //     // app.get('db').get_groups_by_user_id([currentUser.id])
+    //     // app.get('db').get_groups([currentUser.id])
     //     //     .then(data=> {
     //     //         groups: data
     //     //     });
 
-    //     // app.get('db').get_friends_by_user_id([currentUser.id])
+    //     // app.get('db').get_friends([currentUser.id])
     //     //     .then(data=> {
     //     //     friends: data
     //     //     });
@@ -154,7 +154,7 @@ io.on('connection', socket => {
     //     //         activeLocations: data
     //     //     });
 
-    //     socket.emit('hearbeat', {userInfo, groups, friends, activeLocations})
+    //     socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
     // }
 
     socket.on('save socket_id', data => {
