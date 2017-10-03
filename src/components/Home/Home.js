@@ -13,19 +13,19 @@ const socket = io('http://localhost:3069');
 
 export default class Home extends Component{
 
-    // componentDidMount(){
-    //     socket.on('connect', ()=> {
-    //         console.log(socket.id)
-    //         socket.emit('save socket_id', {socketId: socket.id})
-    //     })
-    // }
+    componentDidMount(){
+        socket.on('connect', ()=> {
+            console.log(socket.id)
+            socket.emit('save socket_id', {socketId: socket.id})
+        })
+    }
 
 
 
     render(){
         return(
             <div id="Home">
-                <Login /> 
+                <Login />
                 <div className='navContainer'>
                     <Link to='/situations'> <p className="head">SITUATIONS</p> </Link>
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
