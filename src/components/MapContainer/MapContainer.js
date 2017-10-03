@@ -12,37 +12,37 @@ import friends from './../../images/blackCanaryFriends_30px.png';
 
 
 export class MapContainer extends Component {
-    
+
     constructor() {
         super();
-        
+
         this.state = {
-            user: {name: 'Current User', 
-                    lat: 47.657362, 
+            user: {name: 'Current User',
+                    lat: 47.657362,
                     lng: -121.824340,
                     icon: userIcon},
             friends: [
                 {
-                    name: 'Andi', 
-                    lat: 48.657362, 
+                    name: 'Andi',
+                    lat: 48.657362,
                     lng: -121.824340,
                     icon: friends
                 },
                 {
-                    name: 'Janise', 
-                    lat: 37.437793, 
+                    name: 'Janise',
+                    lat: 37.437793,
                     lng: -122.133636,
                     icon: friends
                 },
                 {
-                    name: 'Abby', 
-                    lat: 40.33503, 
+                    name: 'Abby',
+                    lat: 40.33503,
                     lng: -111.708984,
                     icon: friends
                 },
                 {
-                    name: 'Alan', 
-                    lat: 80.43033, 
+                    name: 'Alan',
+                    lat: 80.43033,
                     lng: -93.867187,
                     icon: friends
                 }
@@ -50,7 +50,7 @@ export class MapContainer extends Component {
             ],
 
         }
-        
+
     }
 
     moveJanise(){
@@ -80,7 +80,7 @@ export class MapContainer extends Component {
     }
 
     componentWillMount(){
-        navigator.geolocation.getCurrentPosition(position => 
+        navigator.geolocation.getCurrentPosition(position =>
             this.setState({
                 user: {
                     name: 'User',
@@ -88,8 +88,8 @@ export class MapContainer extends Component {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 }
-            }) 
-            
+            })
+
         )
     }
 
@@ -100,14 +100,14 @@ export class MapContainer extends Component {
 
     render() {
 
-        const style ={width: '80vw',
+        const style ={width: '100vw',
                 height: '60vh',
-                margin: '0 auto'};
-        
+                margin: '0'};
+
         return(
             <div className="mapContainer">
                 <Map className="map" style={style} google={this.props.google} zoom={8} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={style}>
-                    <Marker icon={this.state.user.icon} name={this.state.user.name} position={{lat: this.state.user.lat, lng: this.state.user.lng}} /> 
+                    <Marker icon={this.state.user.icon} name={this.state.user.name} position={{lat: this.state.user.lat, lng: this.state.user.lng}} />
                     {this.state.friends.map(e => {
                         return <Marker key={e.name} icon={e.icon} name={e.name} position={{lat: e.lat, lng: e.lng}} />
                     })
