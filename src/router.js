@@ -4,12 +4,19 @@ import {Switch, Route} from 'react-router-dom'
 import Home from './components/Home/Home'
 // import Login from './components/Login/Login'
 import Profile from './components/Profile/Profile'
-import Contacts from './components/Contacts/Contacts'
+
+import Situations from './components/Situations/Situations'
+import LevelOne from './components/LevelOne/LevelOne'
+import LevelTwo from './components/LevelTwo/LevelTwo'
+import LevelThree from './components/LevelThree/LevelThree'
 
 export default (
     <Switch>
-        <Route component={Home} path='/' exact/>
+        <Route component={Home} exact path='/'/>
         <Route component={Profile} path='/profile'/>
-        <Route component={Contacts} path='/contacts'/>
+        <Route component={Situations} path='/situations'/>
+        <Route component={LevelOne} path='/levelOne/:id'/>
+        <Route component={LevelTwo} path='/levelTwo/:id'/>
+        <Route component={LevelThree} path='/levelThree/:id'/>
     </Switch>
 )

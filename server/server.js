@@ -14,6 +14,8 @@ const express = require('express')
     , io = sockets(server)
     , port = process.env.PORT;
 
+    let currentUser = {};
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(session({
@@ -51,12 +53,12 @@ passport.use(new Auth0Strategy({
         .then( user => {
             if(user[0]) {
                 console.log('user found',user)
-                return done(null, {id: user[0].id})
+                return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
                 db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
                 .then(user => {
-                    return done(null, {id: user[0].id});
+                    return done(null, user[0]);
                 })
             }
         })
@@ -78,12 +80,13 @@ passport.use(new Auth0Strategy({
   
   passport.serializeUser((user, done)=> {
       // console.log('serialize', user)
+      currentUser = user;
       done(null, user)
   });
 
   passport.deserializeUser((obj, done)=> {
       // console.log('line 80', obj)
-      app.get('db').find_session_user([obj.id])
+      app.get('db').find_user([obj.auth_id])
       .then( user=> {
       // console.log('deserialize', user)
          done(null, user[0]);
@@ -114,33 +117,75 @@ passport.use(new Auth0Strategy({
   });
 
 
+//=================== UNFINISHED ENDPOINTS ==========================//
+
+
+//get groups -- select user info, friends info
+//get friends --select user info, friends info
+//get active locations
+//send/receive messages
 
   
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
 
-//heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     //app.get all info from db to send in heartbeat
-    //     //app.get('db').getUserInfo();     
-    //     socket.emit('hearbeat', data)
-    // }
+// heartbeat updates the connected user every second
+    setInterval(heartbeat, 1000);
+    function heartbeat(){
+        let userInfo, groups, friends, activeLocations;
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                userInfo: user;
+            });
+            
+        // app.get('db').get_groups_by_user_id([currentUser.id])
+        //     .then(data=> {
+        //         groups: data
+        //     });
+
+        // app.get('db').get_friends_by_user_id([currentUser.id])
+        //     .then(data=> {
+        //     friends: data
+        //     });
+
+        // app.get('db').get_active_locations([currentUser.id])
+        //     .then(data => {
+        //         activeLocations: data
+        //     });
+
+        socket.emit('hearbeat', data)
+    }
+
+    socket.on('save socket_id', data => {
+        console.log('data', data,'current user:', currentUser)
+        app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+    })
     
     socket.on('send location', data => {
-        // app.post data to active_locations table in db
+        // post data to active_locations table in db
+        app.get('db').add_active_location([data.userId, data.coordinates, data.recipients]);
     })    
 
     socket.on('update user info', data => {
-        //app.put the user info by user id to (users table) in db
-            //.then(user=> {
+        //put the user info by user id to (users table) in db
+        app.get('db').update_username([data.username, data.userId])
+            .then(user=> {
                 socket.emit('update user', {user})
-            // })
+            })
     })
 
     socket.on('delete user', userId => {
-        //app.delete user by userId
+        app.get('db').delete_user([userId])
+    })
+
+    socket.on('update group', group=> {
+        app.get('db').update_group([group.friendIds, group.name, group.id]);
+    })
+
+    socket.on('delete group', groupId=> {
+        app.get('db').delete_group([groupId])
     })
 
     socket.on('disconnect', ()=> {

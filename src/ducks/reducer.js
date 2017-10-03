@@ -11,8 +11,8 @@ const initialState = {
         location: '',
         safeHaven: ''
     },
-    friends: [], //array of friend objects
-    groups: [], //array of group objects
+    friends: [], //array of friend objects 
+    groups: [], //array of group objects {name, id, userId, friendIds}
     activeLocations: []
 };
 

@@ -1,0 +1,171 @@
+@import './../../sass/variables';
+
+
+#Level1 {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  color: $white;
+  font: {
+      family: $sans;
+      size: 1.2rem;
+  }
+  letter-spacing: 0.2em;
+
+  .wrapper {
+      width: 320px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  header {
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+
+    margin: 30px 0;
+
+  }
+
+  .customHeaderInput {
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+    width: 320px;
+    background-color: $black;
+    color: $white;
+    border: none;
+    letter-spacing: 0.2em;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .situationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+  }
+
+  .messageWrapper {
+    h3 {
+      margin-bottom: 10px;
+    }
+    textarea {
+      padding: 5px;
+      font-size: 1rem;
+      text: {
+        align: center;
+        transform: uppercase;
+      }
+      width: 300px;
+      height: 120px;
+      background-color: $white-translucent;
+      color: $white;
+      border: none;
+      letter-spacing: 0.2em;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .recipWrapper {
+    margin-top: 20px;
+    h3 {
+      margin-bottom: 10px;
+    }
+    div {
+
+    }
+    button{
+      background-color: $white-translucent;
+      border: none;
+      height: 30px;
+      padding: 7px;
+      margin: 5px 2px;
+      border-radius: 10px;
+      color: $white;
+      letter-spacing: 0.2em;
+      font: {
+          family: $sans;
+          size: 1rem;
+      }
+      &:focus {
+          outline: none;
+      }
+      &:hover {
+          background-color: $yellow;
+          color: $black
+      }
+    }
+  }
+
+  .timeWrapper {
+    margin-top: 20px;
+    width: 320px;
+    h3 {
+      margin-bottom: 10px;
+    }
+    select {
+      // margin-top: 10px;
+      width: 120px;
+      height: 30px;
+      color: $white;
+      background-color: $white-translucent;
+
+      font: {
+        family: $sans;
+        size: 1rem;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .buttnWrapper {
+    margin: 20px 0;
+    button {
+      background-color: $yellow;
+      border: none;
+      height: 50px;
+      width: 280px;
+      padding: 7px;
+      border-radius: 10px;
+      color: $black;
+      letter-spacing: 0.2em;
+      font: {
+          family: $sans;
+          size: 1.5rem;
+      }
+      &:focus {
+          outline: none;
+      }
+      &:hover {
+          background-color: $red;
+          color: $white
+      }
+    }
+    width: 320px;
+
+  }
+}
