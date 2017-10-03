@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import x from '../../images/x.png'
 import io from 'socket.io-client';
 import editIcon from '../../images/whiteEditIcon.svg'
 
@@ -114,29 +115,29 @@ export default class Profile extends Component{
                     ?
                     <div className="safehavenContainer">
                         <p className="safeHaven"> SAFEHAVEN: {this.state.safeHaven}</p>
-                        <button onClick={()=>{this.changeSafeHavenBtn('add')}} className="changebtn" >CHANGE</button>
+                        <img onClick={()=>{this.changeSafeHavenBtn('add')}} className="editIcon" src={editIcon} alt="edit"/>
                     </div>
                     :
                     <div className="safeHavenInput">
-                        <input type="text" name="newSafeHaven" onChange={e=>this.handleChange(e)} value={this.state.newSafeHaven}/>
-                        <button onClick={()=> {this.changeSafeHavenBtn('change')}} className='changebtn'>add</button>
+                        <input className="safeHavenInput" type="text" name="newSafeHaven" onChange={e=>this.handleChange(e)} value={this.state.newSafeHaven}/>
+                        <button onClick={()=> {this.changeSafeHavenBtn('change')}} className='changebtn'>ADD</button>
                     </div>
                 }
 
 
                 <div className="navigationBtns">
-                    <Link to="/contacts"> <button className="btn">GO TO CONTACTS</button> </Link>
-                    <Link to="/Home"> <button className="btn">GO TO GROUPS</button> </Link>
+                    <Link to="/contacts">CONTACTS</Link>
+                    <Link to="/Home">GROUPS</Link>
                     {
                         !this.state.delete
                         ?
                         <button onClick={()=> {this.deleteModal('popup')}} className="deleteBtn">DELETE YOUR ACCOUNT</button>
                         :
                         <div className="deleteModal">
-                            <button className="close" onClick={()=> {this.deleteModal('nvm')}}> close</button>
+                            <img src={x} alt='close' className="close" onClick={()=> {this.deleteModal('nvm')}}/>
                             <p className="head">ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT?</p>
                             <div className="deleteBtns">
-                                <Link className="yes" to="/login"><button className="yes">YES, I WANT TO FEEL UNSAFE</button></Link>
+                                <Link className="yes" to="/">YES, I WANT TO FEEL UNSAFE</Link>
                                 <button onClick={()=> {this.deleteModal('nvm')}} className="no">NO, I WANT TO CONTINUE FEELING SAFE</button>
                             </div>
                         </div>

@@ -36,11 +36,13 @@ massive({
     password: process.env.DB_PASSWORD,
     ssl: true
   }).then( db => {
-    app.set('db', db)
+    app.set('db', db);
+
+
   })
 
 
-  
+
 passport.use(new Auth0Strategy({
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
@@ -74,10 +76,10 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `/#/`,
-      failureRedirect: `/#/` 
+      successRedirect: `http://localhost:3070/#/profile/`,
+      failureRedirect: `http://localhost:3070/#/`
   }));
-  
+
   passport.serializeUser((user, done)=> {
       // console.log('serialize', user)
       currentUser = user;
@@ -91,7 +93,7 @@ passport.use(new Auth0Strategy({
       // console.log('deserialize', user)
          done(null, user[0])
       })
-      
+
   });
 
   app.get('/auth/me', (req, res, next) => {
@@ -107,8 +109,8 @@ passport.use(new Auth0Strategy({
       }
       res.status(status).send(response)
     })
-    
-  
+
+
   //log out
   app.get('/auth/logout', (req, res)=> {
       req.logOut();
@@ -116,7 +118,6 @@ passport.use(new Auth0Strategy({
   });
 
 
-  
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
@@ -151,16 +152,17 @@ io.on('connection', socket => {
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
-        currentUser ? 
+        currentUser ?
             app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
             null;
     })
-    
+
     socket.on('send location', data => {
         // post data to active_locations table in db
+
         app.get('db').add_active_location([data.userId, data.coordinates, data.situation, data.recipients]);
-    })    
+    })
 
     socket.on('update user info', data => {
         //put the user info by user id to (users table) in db
@@ -190,5 +192,5 @@ io.on('connection', socket => {
 
 
 
-//server listening for sockets  
+//server listening for sockets
 server.listen(port, ()=> console.log(`Listening on port ${port}`));
