@@ -2,18 +2,13 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 // import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
-
-
-// import map from '../../images/placeholder_map.gif'
-import Login from '../Login/Login'
-
-
+import Login from '../Login/Login';
 import TweenMax from 'gsap';
 import $ from 'jquery';
 
 import map from '../../images/placeholder_map.gif'
 
-// const socket = io('http://localhost:3069');
+const socket = io('http://localhost:3069');
 
 
 export default class Home extends Component{
@@ -36,7 +31,6 @@ export default class Home extends Component{
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
                     <a href='http://localhost:3069/auth/logout'> <p className="head">LOGOUT</p> </a>
                 </div>
-
                 <MapContainer style={{width: '100vw'}} />
             </div>
         )

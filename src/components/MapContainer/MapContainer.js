@@ -9,8 +9,10 @@ import friends from './../../images/blackCanaryFriends_30px.png';
 //CHANGE ONCE HOSTED
 // const socket = io('http://localhost:3069')
 export class MapContainer extends Component {
+
     constructor() {
         super();
+
         this.state = {
             user: {name: 'Current User',
                     lat: 47.657362,
@@ -43,6 +45,7 @@ export class MapContainer extends Component {
                 }
             ],
         }
+
     }
     moveJanise(){
         setInterval(() => {
@@ -79,6 +82,7 @@ export class MapContainer extends Component {
                     lng: position.coords.longitude
                 }
             })
+
         )
     }
     componentDidMount() {
@@ -86,6 +90,7 @@ export class MapContainer extends Component {
         this.moveAbby();
     }
     render() {
+
         const style ={width: '100vw',
                 height: '60vh',
                 margin: '0'};
