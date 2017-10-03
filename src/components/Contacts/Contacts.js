@@ -142,7 +142,7 @@ const FriendModal = (props) =>(
             </div>
             <div className="information">
                 <p>USERNAME: {props.friend.username}</p>
-                <p>NAME: {props.friend.firstName}</p>
+                <p>NAME: {props.friend.firstName} {props.friend.lastName}</p>
                 <p>EMAIL: {props.friend.email}</p>
             </div>
 

@@ -97,8 +97,9 @@ table {
         font-size: 1.3em; }
       .Contacts .listOfFriends .nameContainer .seeInfo {
         color: #FEF36E;
-        background-color: #111;
-        margin-top: 1em; }
+        background-color: #3a3a3a;
+        margin-top: 1em;
+        border: none; }
     .Contacts .listOfFriends .line {
       position: relative;
       margin-top: 120px;
@@ -129,8 +130,8 @@ table {
       position: relative;
       cursor: pointer; }
     .Contacts .modal .box {
-      width: 80%;
-      height: 80%;
+      width: 88%;
+      height: 90%;
       background-color: #3a3a3a;
       z-index: 1234; }
     .Contacts .modal .information {
@@ -156,11 +157,11 @@ table {
         color: #FEF36E;
         font-family: "ABeeZee", sans-serif;
         letter-spacing: .2em;
-        font-size: .7em; }
+        font-size: .7em;
+        margin-bottom: 10px; }
       .Contacts .modal .groups .groupsbox {
         width: 90%;
         height: 60%;
-        margin-top: 10px;
         background-color: #111;
         border-radius: 10px;
         border-color: #FEF36E;

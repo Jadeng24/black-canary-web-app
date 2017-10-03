@@ -36,7 +36,8 @@ export default class Profile extends Component{
     addedNewName(){
         this.setState({
             toggleNameInput: false,
-            name: this.state.newName
+            name: this.state.newName,
+            newName: ''
         })
     }
 
@@ -55,7 +56,8 @@ export default class Profile extends Component{
         }else if(input === 'change'){
             this.setState({
                 changeSafeHaven: false,
-                safeHaven: this.state.newSafeHaven
+                safeHaven: this.state.newSafeHaven,
+                newSafeHaven: ''
             })
         }
     }
