@@ -116,7 +116,8 @@ passport.use(new Auth0Strategy({
   });
 
 
-//================ SOCKETS ==============//
+//========================= SOCKETS ===================================//
+
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
     let userInfo, groups, friends, activeLocations;
@@ -178,6 +179,7 @@ if(currentUser.id) {
     })
 
     socket.on('delete user', userId => {
+        console.log(userId)
         app.get('db').delete_user([userId])
     })
 
@@ -188,6 +190,14 @@ if(currentUser.id) {
     socket.on('delete group', groupId=> {
         app.get('db').delete_group([groupId])
     })
+
+    // test queries
+    // socket.on('see groups', ()=> {
+    //     app.get('db').test()
+    //     .then(data=> {
+    //         console.log('groups data line 197', data)
+    //     })
+    // })
 
     socket.on('disconnect', ()=> {
         console.log('A user has disconnected, socket ID: ', socket.id);

@@ -8,7 +8,9 @@ CREATE TABLE IF NOT EXISTS users (
     profilePic VARCHAR (200),
     auth_id VARCHAR(100) NOT NULL,
     safe_haven VARCHAR (200),
-    socket_id VARCHAR (100)
+    socket_id VARCHAR (100),
+    emergency_message VARCHAR(180),
+    emergency_group_created BOOLEAN
 );
 
 INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
@@ -50,24 +52,35 @@ insert into friends (user_id, friend_id, friend_status) values (7, 2, false);
 -- GROUPS TABLE --
 CREATE TABLE IF NOT EXISTS groups (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users,
-    group_name VARCHAR(40) NOT NULL,
-    friend_id INTEGER 
+    user_id INTEGER REFERENCES users NOT NULL,
+    group_name VARCHAR(40) NOT NULL
 );
 
-insert into groups (user_id, group_name, friend_id) values (1, 'the janises', 2);
-insert into groups (user_id, group_name, friend_id) values (1, 'the janises', 3);
-insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of hermionia', 1);
-insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of hermionia', 3);
-insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 1);
-insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 2);
-insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 4);
-insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 2);
-insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 1);
-insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 3);
-insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 3);
-insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 1);
-insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 4);
+insert into groups (user_id, group_name) values (1, 'the janises');
+insert into groups (user_id, group_name) values (2, 'chronicles of hermionia');
+insert into groups (user_id, group_name) values (3, 'rocky neck bunch');
+insert into groups (user_id, group_name) values (4, 'meat gap group');
+insert into groups (user_id, group_name) values (8, 'aliens are real');
+
+
+-- GROUP MEMBERS TABLE --
+CREATE TABLE IF NOT EXISTS group_members (
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES groups NOT NULL,
+    member_id INTEGER REFERENCES users NOT NULL
+);
+
+INSERT INTO group_members (group_id, member_id) VALUES (1, 3);
+INSERT INTO group_members (group_id, member_id) VALUES (1, 7);
+INSERT INTO group_members (group_id, member_id) VALUES (2, 4);
+INSERT INTO group_members (group_id, member_id) VALUES (2, 5);
+INSERT INTO group_members (group_id, member_id) VALUES (3, 3);
+INSERT INTO group_members (group_id, member_id) VALUES (3, 2);
+INSERT INTO group_members (group_id, member_id) VALUES (3, 2);
+INSERT INTO group_members (group_id, member_id) VALUES (4, 8);
+INSERT INTO group_members (group_id, member_id) VALUES (4, 6);
+INSERT INTO group_members (group_id, member_id) VALUES (5, 1);
+
 
 -- ACTIVE LOCATIONS TABLE --
 CREATE TABLE IF NOT EXISTS active_locations (

@@ -42,7 +42,7 @@ const socket = io('http://localhost:3069');
     }
 
     export function deleteUser(userId){ //on profile page, delete user and send the user id to server
-        socket.emit('delete user', {userId})
+        socket.emit('delete user', userId)
     }
 
     export function addFriendToGroup(group){ //on contact/group page
@@ -53,3 +53,7 @@ const socket = io('http://localhost:3069');
     export function deleteGroup(groupId){
         socket.emit('delete group', groupId)
     }
+
+    // export function updateGroup(userId, groupName) {
+    //     socket.emit('update group', {userId, groupName})
+    // }
