@@ -1,5 +1,8 @@
 .Contacts{
+    text-transform: uppercase;
     display: flex;
+    letter-spacing: 0.2em;
+    font-family: $sans;
     background-color: $black;
     width: 100%;
 
@@ -56,7 +59,9 @@
                 color: $yellow;
                 background-color: $grey;
                 margin-top: 1em;
-                border: none
+                border: none;
+                height: 30px;
+                font-size: 1em;
             }
         }
         .line{
@@ -66,88 +71,5 @@
         }
     }
 
-    .modal{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 1231231231;
-        background-color: $black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .heaad{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60px;
-
-            .info{
-                color: $yellow;
-                font-size: 1.4em;
-                align-self: center;
-                font-family: $sans;
-
-                @media(min-width: 800px){
-                }
-            }
-        }
-            .x{
-                width: .8em;
-                height: .8em;
-                margin: 20px;
-                position: relative;
-                cursor: pointer;
-            }
-        
-        .box{
-            width: 88%;
-            height: 90%;
-            background-color: $grey;
-            z-index: 1234;
-        }
-
-        .information{
-            width: 100%;
-            height: 30%;
-            position: relative;
-            display: flex;
-            justify-content: space-around;
-            flex-direction: column;
-            margin-left: 20px;
-            color: white;
-            font-family: $sans;
-            letter-spacing: .09em;
-        }
-
-        .groups{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            position: relative;
-            width: 100%;
-            height: 60%;
-
-
-            .added{
-                color: $yellow;
-                font-family: $sans;
-                letter-spacing: .2em;
-                font-size: .7em;
-                margin-bottom: 10px;
-            }
-
-            .groupsbox{
-                width: 90%;
-                height: 60%;
-                // margin-top: 10px;
-                background-color: $black;
-                border-radius: 10px;
-                border-color: $yellow;
-                border: 2px; 
-                color: white;
-            }
-        }
-    }
+    
 }
