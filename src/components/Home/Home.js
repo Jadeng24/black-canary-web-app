@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
