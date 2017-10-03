@@ -36,11 +36,9 @@ massive({
     password: process.env.DB_PASSWORD,
     ssl: true
   }).then( db => {
-<<<<<<< HEAD
     app.set('db', db);
-=======
-    app.set('db', db)
->>>>>>> master
+
+
   })
 
 
@@ -78,8 +76,8 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `/#/`,
-      failureRedirect: `/#/`
+      successRedirect: `http://localhost:3070/#/profile/`,
+      failureRedirect: `http://localhost:3070/#/`
   }));
 
   passport.serializeUser((user, done)=> {
@@ -142,40 +140,32 @@ io.on('connection', socket => {
     //         .then(user=> {
     //             userInfo: user;
     //         });
-<<<<<<< HEAD
-    //
-=======
 
->>>>>>> master
+    //
     //     // app.get('db').get_groups_by_user_id([currentUser.id])
     //     //     .then(data=> {
     //     //         groups: data
     //     //     });
-<<<<<<< HEAD
-    //
-=======
 
->>>>>>> master
+    //
+
     //     // app.get('db').get_friends_by_user_id([currentUser.id])
     //     //     .then(data=> {
     //     //     friends: data
     //     //     });
-<<<<<<< HEAD
-    //
-=======
 
->>>>>>> master
+    //
     //     // app.get('db').get_active_locations([currentUser.id])
     //     //     .then(data => {
     //     //         activeLocations: data
     //     //     });
-<<<<<<< HEAD
+
     //
     //     socket.emit('hearbeat', data)
-=======
+
 
     //     socket.emit('hearbeat', {userInfo, groups, friends, activeLocations})
->>>>>>> master
+
     // }
 
     socket.on('save socket_id', data => {
