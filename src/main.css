@@ -446,201 +446,211 @@ table {
         background-color: #d13030;
         color: #efefef; }
 
-.Profile {
-  text-transform: uppercase;
-  font-family: "ABeeZee", sans-serif;
-  background: #111;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column; }
-  .Profile .nameContainer {
+.ProfileContainer {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  .ProfileContainer .Profile {
+    text-transform: uppercase;
+    font-family: "ABeeZee", sans-serif;
+    background: #111;
     width: 100%;
-    display: flex;
-    height: 10%;
-    justify-content: center;
-    align-items: flex-end; }
-    .Profile .nameContainer .name {
-      color: #efefef;
-      font-size: 1.6em;
-      position: relative;
-      margin-top: 20px;
-      font-family: "ABeeZee", sans-serif;
-      letter-spacing: .2em; }
-    .Profile .nameContainer .editIcon {
-      width: 7%;
-      margin-left: 4%;
-      margin-top: 20px;
-      cursor: pointer; }
-      @media (min-width: 160px) {
-        .Profile .nameContainer .editIcon {
-          width: 1.5em; } }
-  .Profile .nameInputContainer {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: flex-end;
-    position: relative; }
-    .Profile .nameInputContainer .nameInput {
-      font-size: 1.5rem;
-      line-height: 1.2em;
-      text-align: center;
-      text-transform: uppercase;
-      width: 70%;
-      background-color: #3a3a3a;
-      color: #efefef;
-      border: none;
-      letter-spacing: 0.2em; }
-      .Profile .nameInputContainer .nameInput:focus {
-        outline: none; }
-    .Profile .nameInputContainer .addNewNameBtn {
-      color: #FEF36E;
-      font-size: 22px;
-      position: relative;
-      padding-left: 10px;
-      background-color: #111;
-      border: none;
-      letter-spacing: .2em;
-      cursor: pointer; }
-  .Profile .imgContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative; }
-    .Profile .imgContainer .imgPlaceholder {
-      width: 7em;
-      height: 7em;
-      background-color: #efefef;
-      margin-top: 10%;
-      position: relative; }
-      @media (min-width: 800px) {
-        .Profile .imgContainer .imgPlaceholder {
-          background-color: pink;
-          width: 9em;
-          height: 9em;
-          margin-top: 5%; } }
-  .Profile .safehavenContainer {
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .Profile .safehavenContainer .safeHaven {
-      color: #efefef;
-      font-family: "ABeeZee", sans-serif;
-      letter-spacing: .2em; }
-    .Profile .safehavenContainer .editIcon {
-      width: 7%;
-      margin-left: 10px; }
-  .Profile .safeHavenInput {
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .Profile .safeHavenInput .changebtn {
-      color: #FEF36E;
-      background-color: #111;
-      border: none;
-      cursor: pointer;
-      font-size: 22px; }
-    .Profile .safeHavenInput .safeHavenInput {
-      font-size: 1rem;
-      line-height: 1.2em;
-      text-align: center;
-      text-transform: uppercase;
-      width: 70%;
-      background-color: #3a3a3a;
-      color: #efefef;
-      border: none;
-      letter-spacing: 0.2em; }
-      .Profile .safeHavenInput .safeHavenInput:focus {
-        outline: none; }
-  .Profile .navigationBtns {
-    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 60px; }
-    .Profile .navigationBtns a {
-      font-size: 1rem;
-      color: #111;
-      text-decoration: none;
-      text-transform: uppercase;
-      text-align: center;
-      width: 310px;
-      margin-top: 10px;
-      padding: 10px 7px;
-      background-color: #FEF36E;
-      border-radius: 10px; }
-      .Profile .navigationBtns a:hover {
-        color: #d13030;
-        background-color: rgba(239, 239, 239, 0.3); }
-    .Profile .navigationBtns .deleteBtn {
-      color: #efefef;
-      font-size: 1rem;
-      height: 40px !important;
-      text-decoration: none;
-      text-transform: uppercase;
-      text-align: center;
-      width: 310px;
-      margin-top: 10px;
-      padding: 10px 7px;
-      background-color: #d13030;
-      border-radius: 10px;
-      border: none; }
-      .Profile .navigationBtns .deleteBtn:hover {
-        color: #111;
-        background-color: #d13030; }
-  .Profile .deleteModal {
-    width: 80%;
-    background-color: #efefef;
-    border-width: 2px;
-    border-color: #111;
-    border-radius: 10px;
-    border-style: solid;
-    height: 70%;
     position: absolute;
-    margin-top: -150px;
-    animation: slideInLeft 1s; }
-    .Profile .deleteModal .close {
-      width: 13px;
-      margin: 10px; }
-    .Profile .deleteModal .head {
-      letter-spacing: 0.2em;
-      width: 97%;
-      font-family: "ABeeZee", sans-serif;
-      text-align: center;
-      margin-top: 30px; }
-    .Profile .deleteModal .deleteBtns {
+    top: 0;
+    left: 0; }
+    .ProfileContainer .Profile .nameContainer {
+      width: 100%;
+      display: flex;
+      height: 13%;
+      justify-content: center;
+      align-items: flex-end; }
+      .ProfileContainer .Profile .nameContainer .name {
+        color: #efefef;
+        font-size: 1.6em;
+        position: relative;
+        margin-top: 20px;
+        font-family: "ABeeZee", sans-serif;
+        letter-spacing: .2em; }
+      .ProfileContainer .Profile .nameContainer .editIcon {
+        width: 7%;
+        margin-left: 10px;
+        margin-top: 20px;
+        cursor: pointer; }
+        @media (min-width: 160px) {
+          .ProfileContainer .Profile .nameContainer .editIcon {
+            width: 1.5em; } }
+    .ProfileContainer .Profile .nameInputContainer {
+      width: 100%;
+      height: 13%;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: flex-end;
+      position: relative; }
+      .ProfileContainer .Profile .nameInputContainer .nameInput {
+        font-size: 1.5rem;
+        line-height: 1.2em;
+        text-align: center;
+        text-transform: uppercase;
+        width: 70%;
+        background-color: #3a3a3a;
+        color: #efefef;
+        border: none;
+        letter-spacing: 0.2em; }
+        .ProfileContainer .Profile .nameInputContainer .nameInput:focus {
+          outline: none; }
+      .ProfileContainer .Profile .nameInputContainer .addNewNameBtn {
+        color: #FEF36E;
+        font-size: 22px;
+        position: relative;
+        padding-left: 10px;
+        background-color: #111;
+        border: none;
+        letter-spacing: .2em;
+        cursor: pointer; }
+    .ProfileContainer .Profile .imgContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative; }
+      .ProfileContainer .Profile .imgContainer .imgPlaceholder {
+        width: 9em;
+        height: 9em;
+        background-color: #efefef;
+        margin-top: 10%;
+        position: relative; }
+        @media (min-width: 800px) {
+          .ProfileContainer .Profile .imgContainer .imgPlaceholder {
+            background-color: #efefef;
+            width: 9em;
+            height: 9em;
+            margin-top: 5%; } }
+    .ProfileContainer .Profile .safehavenContainer {
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .ProfileContainer .Profile .safehavenContainer .safeHaven {
+        color: #efefef;
+        font-family: "ABeeZee", sans-serif;
+        letter-spacing: .2em; }
+      .ProfileContainer .Profile .safehavenContainer .editIcon {
+        width: 7%;
+        margin-left: 10px; }
+        @media (min-width: 160px) {
+          .ProfileContainer .Profile .safehavenContainer .editIcon {
+            width: 1.5em; } }
+    .ProfileContainer .Profile .safeHavenInput {
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .ProfileContainer .Profile .safeHavenInput .changebtn {
+        color: #FEF36E;
+        background-color: #111;
+        border: none;
+        cursor: pointer;
+        font-size: 22px; }
+      .ProfileContainer .Profile .safeHavenInput .safeHavenInput {
+        font-size: 1rem;
+        line-height: 1.2em;
+        text-align: center;
+        text-transform: uppercase;
+        width: 70%;
+        background-color: #3a3a3a;
+        color: #efefef;
+        border: none;
+        letter-spacing: 0.2em; }
+        .ProfileContainer .Profile .safeHavenInput .safeHavenInput:focus {
+          outline: none; }
+    .ProfileContainer .Profile .navigationBtns {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: space-around;
-      margin-top: 40px; }
-      .Profile .deleteModal .deleteBtns .no {
-        width: 100%;
-        height: 80px;
-        background-color: #d13030;
-        font-size: 12px;
-        border: none;
-        letter-spacing: 0.2em;
-        font-family: "ABeeZee", sans-serif;
-        color: #efefef;
-        margin-top: 20px; }
-      .Profile .deleteModal .deleteBtns .yes {
-        width: 100%;
-        border-radius: none;
-        height: 70px;
+      align-items: center;
+      margin-top: 60px; }
+      .ProfileContainer .Profile .navigationBtns a {
+        font-size: 1rem;
+        color: #111;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        width: 310px;
+        margin-top: 10px;
+        padding: 10px 7px;
         background-color: #FEF36E;
-        font-size: 12px;
-        border: none;
+        border-radius: 10px; }
+        .ProfileContainer .Profile .navigationBtns a:hover {
+          color: #d13030;
+          background-color: rgba(239, 239, 239, 0.3); }
+      .ProfileContainer .Profile .navigationBtns .deleteBtn {
+        color: #efefef;
+        font-size: 1rem;
+        height: 40px !important;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        width: 310px;
+        margin-top: 10px;
+        padding: 10px 7px;
+        background-color: #d13030;
+        border-radius: 10px;
+        border: none; }
+        .ProfileContainer .Profile .navigationBtns .deleteBtn:hover {
+          color: #111;
+          background-color: #d13030; }
+    .ProfileContainer .Profile .deleteModal {
+      width: 80%;
+      background-color: #efefef;
+      border-width: 2px;
+      border-color: #111;
+      border-radius: 10px;
+      border-style: solid;
+      height: 70%;
+      position: absolute;
+      margin-top: -150px;
+      animation: slideInLeft 1s; }
+      .ProfileContainer .Profile .deleteModal .close {
+        width: 13px;
+        margin: 10px; }
+      .ProfileContainer .Profile .deleteModal .head {
         letter-spacing: 0.2em;
+        width: 97%;
         font-family: "ABeeZee", sans-serif;
+        text-align: center;
+        margin-top: 30px; }
+      .ProfileContainer .Profile .deleteModal .deleteBtns {
         display: flex;
-        justify-content: center;
-        align-items: center; }
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 40px; }
+        .ProfileContainer .Profile .deleteModal .deleteBtns .no {
+          width: 100%;
+          height: 80px;
+          background-color: #d13030;
+          font-size: 12px;
+          border: none;
+          letter-spacing: 0.2em;
+          font-family: "ABeeZee", sans-serif;
+          color: #efefef;
+          margin-top: 20px; }
+        .ProfileContainer .Profile .deleteModal .deleteBtns .yes {
+          width: 100%;
+          border-radius: none;
+          height: 70px;
+          background-color: #FEF36E;
+          font-size: 12px;
+          border: none;
+          letter-spacing: 0.2em;
+          font-family: "ABeeZee", sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
 
 @keyframes slideInLeft {
   0% {
@@ -740,6 +750,93 @@ table {
       background-color: #FEF36E;
       color: #111; }
 
+.Menu {
+  text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  background-color: #111;
+  opacity: .86;
+  z-index: 987654345676543456765434567654345676543456765434567;
+  animation: slideIn 1s; }
+  .Menu .navigateContainer {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; }
+    .Menu .navigateContainer .exit {
+      width: 100%; }
+      .Menu .navigateContainer .exit .x {
+        width: 25px;
+        height: 25px; }
+    .Menu .navigateContainer .home {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .home:hover {
+      background-color: #FEF36E;
+      color: #111; }
+    .Menu .navigateContainer .profileAndSituationsContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
+        background-color: #FEF36E;
+        color: #111; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
+        background-color: #FEF36E;
+        color: #111; }
+    .Menu .navigateContainer .about {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .about:hover {
+      background-color: #FEF36E;
+      color: #111; }
+
+@keyframes slideIn {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+
 .FriendModal {
   letter-spacing: 1;
   text-transform: uppercase;
@@ -827,6 +924,16 @@ table {
         .FriendModal .groups .groupsbox button:hover {
           background-color: #FEF36E;
           color: #111; }
+
+.App {
+  width: 100%;
+  height: 100vh; }
+  .App .menu {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 15px;
+    z-index: 1234412123123123123123123123; }
 
 body {
   background-color: #111; }

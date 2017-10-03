@@ -13,7 +13,7 @@ export default class Profile extends Component{
         super()
 
         this.state={
-            name: 'bob',
+            name: 'DevMtn',
             newName: '',
             safeHaven: 'Dev mtn',
             newSafeHaven: '',
@@ -81,8 +81,9 @@ export default class Profile extends Component{
 
     render(){
         return(
-            <div className="Profile">
+            <div className="ProfileContainer">
 
+                <div className="Profile">
                 
                  <div className='nameContainer'>
                     {
@@ -95,7 +96,7 @@ export default class Profile extends Component{
                         
                         :
                         <div className="nameInputContainer">
-                            <input className="nameInput" name="newName" type="text" onChange={(e)=> {this.handleChange(e, 'name')}} value={this.state.newName}/>
+                            <input className="nameInput" maxlength="5" name="newName" type="text" onChange={(e)=> {this.handleChange(e, 'name')}} value={this.state.newName}/>
                             <button onClick={this.addedNewName} className="addNewNameBtn">ADD</button>
                         </div>
                     }
@@ -142,6 +143,7 @@ export default class Profile extends Component{
                             </div>
                         </div>
                     }
+                </div>
                 </div>
             </div>
         )
