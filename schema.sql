@@ -35,12 +35,15 @@ CREATE TABLE IF NOT EXISTS groups (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
     group_name VARCHAR(40) NOT NULL,
-    friend_ids INTEGER [] --array of friends user_ids
+    friend_id INTEGER 
 );
 
-insert into groups (user_id, group_name, friend_ids) values (1, 'the janises', array [2, 3]);
-insert into groups (user_id, group_name, friend_ids) values (2, 'chronicles of hermionia', array [1, 3]);
-insert into groups (user_id, group_name, friend_ids) values (3, 'rocky neck bunch', array [1, 2]);
+insert into groups (user_id, group_name, friend_id) values (1, 'the janises', 2);
+insert into groups (user_id, group_name, friend_id) values (1, 'the janises', 3);
+insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of hermionia', 1);
+insert into groups (user_id, group_name, friend_id) values (2, 'chronicles of hermionia', 3);
+insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 1);
+insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch', 2);
 
 
 -- ACTIVE LOCATIONS TABLE --
@@ -48,5 +51,5 @@ CREATE TABLE IF NOT EXISTS active_locations (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
     coordinates VARCHAR(200), -- {latitude, longitude}
-    recipient_ids INTEGER [] --friends user ids
+    recipient_id INTEGER --friends user id
 );

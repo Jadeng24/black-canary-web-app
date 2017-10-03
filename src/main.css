@@ -505,6 +505,8 @@ table {
         color: #efefef; }
 
 .Profile {
+  text-transform: uppercase;
+  font-family: "ABeeZee", sans-serif;
   background: #111;
   width: 100%;
   height: 100vh;
@@ -540,10 +542,20 @@ table {
     align-items: flex-end;
     position: relative; }
     .Profile .nameInputContainer .nameInput {
-      width: 20%;
-      margin-left: 30px; }
+      font-size: 1.5rem;
+      line-height: 1.2em;
+      text-align: center;
+      text-transform: uppercase;
+      width: 70%;
+      background-color: #3a3a3a;
+      color: #efefef;
+      border: none;
+      letter-spacing: 0.2em; }
+      .Profile .nameInputContainer .nameInput:focus {
+        outline: none; }
     .Profile .nameInputContainer .addNewNameBtn {
       color: #FEF36E;
+      font-size: 22px;
       position: relative;
       padding-left: 10px;
       background-color: #111;
@@ -576,13 +588,9 @@ table {
       color: #efefef;
       font-family: "ABeeZee", sans-serif;
       letter-spacing: .2em; }
-    .Profile .safehavenContainer .changebtn {
-      color: #FEF36E;
-      font-family: "ABeeZee", sans-serif;
-      background-color: #111;
-      border: none;
-      letter-spacing: .2em;
-      cursor: pointer; }
+    .Profile .safehavenContainer .editIcon {
+      width: 7%;
+      margin-left: 10px; }
   .Profile .safeHavenInput {
     height: 20%;
     display: flex;
@@ -592,47 +600,71 @@ table {
       color: #FEF36E;
       background-color: #111;
       border: none;
-      cursor: pointer; }
+      cursor: pointer;
+      font-size: 22px; }
+    .Profile .safeHavenInput .safeHavenInput {
+      font-size: 1rem;
+      line-height: 1.2em;
+      text-align: center;
+      text-transform: uppercase;
+      width: 70%;
+      background-color: #3a3a3a;
+      color: #efefef;
+      border: none;
+      letter-spacing: 0.2em; }
+      .Profile .safeHavenInput .safeHavenInput:focus {
+        outline: none; }
   .Profile .navigationBtns {
     width: 100%;
-    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin-top: 60px; }
-    .Profile .navigationBtns .btn {
-      font-size: 1.2em;
-      color: #efefef;
-      letter-spacing: 1;
-      font-size: 18;
-      text-decoration-line: none;
-      background-color: #111;
-      border: none;
-      letter-spacing: 0.2em;
-      font-family: "ABeeZee", sans-serif;
-      cursor: pointer; }
+    .Profile .navigationBtns a {
+      font-size: 1rem;
+      color: #111;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      width: 310px;
+      margin-top: 10px;
+      padding: 10px 7px;
+      background-color: #FEF36E;
+      border-radius: 10px; }
+      .Profile .navigationBtns a:hover {
+        color: #d13030;
+        background-color: rgba(239, 239, 239, 0.3); }
     .Profile .navigationBtns .deleteBtn {
-      cursor: pointer;
-      font-size: 1em;
-      color: #d13030;
-      letter-spacing: 1;
-      font-size: 18;
-      background-color: #111;
-      border: none;
-      letter-spacing: 0.2em;
-      font-family: "ABeeZee", sans-serif; }
+      color: #efefef;
+      font-size: 1rem;
+      height: 40px !important;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      width: 310px;
+      margin-top: 10px;
+      padding: 10px 7px;
+      background-color: #d13030;
+      border-radius: 10px;
+      border: none; }
+      .Profile .navigationBtns .deleteBtn:hover {
+        color: #111;
+        background-color: #d13030; }
   .Profile .deleteModal {
     width: 80%;
     background-color: #efefef;
+    border-width: 2px;
+    border-color: #111;
+    border-radius: 10px;
+    border-style: solid;
     height: 70%;
     position: absolute;
-    margin-top: -220px;
+    margin-top: -150px;
     animation: slideInLeft 1s; }
     .Profile .deleteModal .close {
-      border: none;
-      font-family: "ABeeZee", sans-serif;
-      letter-spacing: .2em; }
+      width: 13px;
+      margin: 10px; }
     .Profile .deleteModal .head {
       letter-spacing: 0.2em;
       width: 97%;
@@ -644,24 +676,29 @@ table {
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      height: 80%; }
+      margin-top: 40px; }
       .Profile .deleteModal .deleteBtns .no {
         width: 100%;
-        height: 100px;
+        height: 80px;
         background-color: #d13030;
         font-size: 12px;
         border: none;
         letter-spacing: 0.2em;
         font-family: "ABeeZee", sans-serif;
-        color: #efefef; }
+        color: #efefef;
+        margin-top: 20px; }
       .Profile .deleteModal .deleteBtns .yes {
         width: 100%;
-        height: 100px;
+        border-radius: none;
+        height: 70px;
         background-color: #FEF36E;
         font-size: 12px;
         border: none;
         letter-spacing: 0.2em;
-        font-family: "ABeeZee", sans-serif; }
+        font-family: "ABeeZee", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
 
 @keyframes slideInLeft {
   0% {

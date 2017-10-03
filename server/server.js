@@ -168,6 +168,7 @@ io.on('connection', socket => {
 
     // }
 
+
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
         currentUser ?
@@ -178,7 +179,8 @@ io.on('connection', socket => {
 
     socket.on('send location', data => {
         // post data to active_locations table in db
-        app.get('db').add_active_location([data.userId, data.coordinates, data.recipients]);
+
+        app.get('db').add_active_location([data.userId, data.coordinates, data.situation, data.recipients]);
     })
 
     socket.on('update user info', data => {
