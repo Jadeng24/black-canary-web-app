@@ -119,34 +119,41 @@ passport.use(new Auth0Strategy({
 //================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
+    let userInfo, groups, friends, activeLocations;
 
 // heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     let userInfo, groups, friends, activeLocations;
-    //     //app.get all info from db to send in heartbeat
-    //     app.get('db').get_user_info([currentUser.id])
-    //         .then(user=> {
-    //             userInfo: user;
-    //         });
+if(currentUser.id) {
+    setInterval(heartbeat, 10000);
+    function heartbeat(){
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                // console.log('get user info', user)
+                userInfo = user[0];
+            });
             
-    //     app.get('db').get_groups([currentUser.id])
-    //         .then(data=> {
-    //             groups: data
-    //         });
+        app.get('db').get_groups([currentUser.id])
+            .then(data=> {
+                // console.log('get groups', data)
+                groups = data
+            });
 
-    //     app.get('db').get_friends([currentUser.id])
-    //         .then(data=> {
-    //         friends: data
-    //         });
+        app.get('db').get_friends([currentUser.id])
+            .then(data=> {
+                // console.log('get friends', data)
+            friends = data
+            });
 
-    //     app.get('db').get_active_locations([currentUser.id])
-    //         .then(data => {
-    //             activeLocations: data
-    //         });
+        app.get('db').get_active_locations([currentUser.id])
+            .then(data => {
+                // console.log('get active locations', data)
+                activeLocations = data
+            });
 
-    //     socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
-    // }
+            // console.log('userInfo:', userInfo, 'groups:', groups, 'friends:', friends, 'activeLocations:', activeLocations)
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
+    }
+}
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)

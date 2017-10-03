@@ -72,19 +72,19 @@ export default function reducer(state = initialState, action){
 
     switch (action.type) {
         case GET_USER_INFO:
-        // console.log(action.payload)
+        // console.log('reducer get user info', action.payload)
             return Object.assign({}, state, {user: action.payload})
             break;
         case GET_FRIENDS_LIST:
-        // console.log(action.payload)
+        // console.log('reducer get friends',action.payload)
             return Object.assign({}, state, {friends: action.payload})
             break;
         case GET_GROUPS:
-        // console.log(action.payload)
+        // console.log('reducer get groups', action.payload)
             return Object.assign({}, state, {groups: action.payload})
             break;
         case GET_ACTIVE_LOCATIONS:
-        // console.log(action.payload)
+        // console.log('reducer get active locations', action.payload)
             return Object.assign({}, state, {activeLocations: action.payload})
             break;
         default:
