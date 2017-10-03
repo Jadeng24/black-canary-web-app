@@ -1,0 +1,77 @@
+@import './../../sass/variables';
+
+
+#Level3 {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  color: $white;
+  font: {
+      family: $sans;
+      size: 1.2rem;
+  }
+  letter-spacing: 0.2em;
+
+  .wrapper {
+      width: 320px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  header {
+    font-size: 3rem;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+
+    margin: 30px 0;
+
+  }
+
+  .situationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+  }
+
+  .buttnWrapper {
+    margin: 20px 0;
+
+    button {
+      background-color: $red;
+      border: none;
+      height: 150px;
+      width: 300px;
+      padding: 7px;
+      border-radius: 10px;
+      color: $white;
+      letter-spacing: 0.2em;
+      font: {
+          family: $sans;
+          size: 2.7rem;
+      }
+      &:focus {
+          outline: none;
+      }
+      &:hover {
+          background-color: $red;
+          color: $black
+      }
+    }
+    width: 320px;
+
+  }
+}

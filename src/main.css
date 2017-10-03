@@ -5,6 +5,9 @@
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -148,6 +151,245 @@ table {
   display: flex;
   justify-content: center; }
 
+#Level1 {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #efefef;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em; }
+  #Level1 .wrapper {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+  #Level1 header {
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 30px 0; }
+  #Level1 .customHeaderInput {
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    width: 320px;
+    background-color: #111;
+    color: #efefef;
+    border: none;
+    letter-spacing: 0.2em; }
+    #Level1 .customHeaderInput:focus {
+      outline: none; }
+  #Level1 .situationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase; }
+  #Level1 .messageWrapper h3 {
+    margin-bottom: 10px; }
+  #Level1 .messageWrapper textarea {
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 300px;
+    height: 120px;
+    background-color: rgba(239, 239, 239, 0.3);
+    color: #efefef;
+    border: none;
+    letter-spacing: 0.2em; }
+    #Level1 .messageWrapper textarea:focus {
+      outline: none; }
+  #Level1 .recipWrapper {
+    margin-top: 20px; }
+    #Level1 .recipWrapper h3 {
+      margin-bottom: 10px; }
+    #Level1 .recipWrapper button {
+      background-color: rgba(239, 239, 239, 0.3);
+      border: none;
+      height: 30px;
+      padding: 7px;
+      margin: 5px 2px;
+      border-radius: 10px;
+      color: #efefef;
+      letter-spacing: 0.2em;
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1rem; }
+      #Level1 .recipWrapper button:focus {
+        outline: none; }
+      #Level1 .recipWrapper button:hover {
+        background-color: #FEF36E;
+        color: #111; }
+  #Level1 .timeWrapper {
+    margin-top: 20px;
+    width: 320px; }
+    #Level1 .timeWrapper h3 {
+      margin-bottom: 10px; }
+    #Level1 .timeWrapper select {
+      width: 120px;
+      height: 30px;
+      color: #efefef;
+      background-color: rgba(239, 239, 239, 0.3);
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1rem; }
+      #Level1 .timeWrapper select:focus {
+        outline: none; }
+  #Level1 .buttnWrapper {
+    margin: 20px 0;
+    width: 320px; }
+    #Level1 .buttnWrapper button {
+      background-color: #FEF36E;
+      border: none;
+      height: 50px;
+      width: 280px;
+      padding: 7px;
+      border-radius: 10px;
+      color: #111;
+      letter-spacing: 0.2em;
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1.5rem; }
+      #Level1 .buttnWrapper button:focus {
+        outline: none; }
+      #Level1 .buttnWrapper button:hover {
+        background-color: #d13030;
+        color: #efefef; }
+
+#Level3 {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #efefef;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em; }
+  #Level3 .wrapper {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+  #Level3 header {
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 30px 0; }
+  #Level3 .situationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase; }
+  #Level3 .buttnWrapper {
+    margin: 20px 0;
+    width: 320px; }
+    #Level3 .buttnWrapper button {
+      background-color: #d13030;
+      border: none;
+      height: 150px;
+      width: 300px;
+      padding: 7px;
+      border-radius: 10px;
+      color: #efefef;
+      letter-spacing: 0.2em;
+      font-family: "ABeeZee", sans-serif;
+      font-size: 2.7rem; }
+      #Level3 .buttnWrapper button:focus {
+        outline: none; }
+      #Level3 .buttnWrapper button:hover {
+        background-color: #d13030;
+        color: #111; }
+
+#Level2 {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #efefef;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em; }
+  #Level2 .wrapper {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+  #Level2 header {
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    margin: 30px 0; }
+  #Level2 .situationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase; }
+  #Level2 .messageWrapper h3 {
+    margin-bottom: 10px; }
+  #Level2 .messageWrapper textarea {
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 300px;
+    height: 120px;
+    background-color: rgba(239, 239, 239, 0.3);
+    color: #efefef;
+    border: none;
+    letter-spacing: 0.2em; }
+    #Level2 .messageWrapper textarea:focus {
+      outline: none; }
+  #Level2 .timeWrapper {
+    margin-top: 20px;
+    width: 320px; }
+    #Level2 .timeWrapper h3 {
+      margin-bottom: 10px; }
+    #Level2 .timeWrapper select {
+      width: 120px;
+      height: 30px;
+      color: #efefef;
+      background-color: rgba(239, 239, 239, 0.3);
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1rem; }
+      #Level2 .timeWrapper select:focus {
+        outline: none; }
+  #Level2 .buttnWrapper {
+    margin: 20px 0;
+    width: 320px; }
+    #Level2 .buttnWrapper button {
+      background-color: #FEF36E;
+      border: none;
+      height: 50px;
+      width: 280px;
+      padding: 7px;
+      border-radius: 10px;
+      color: #111;
+      letter-spacing: 0.2em;
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1.5rem; }
+      #Level2 .buttnWrapper button:focus {
+        outline: none; }
+      #Level2 .buttnWrapper button:hover {
+        background-color: #d13030;
+        color: #efefef; }
+
 #Situations {
   background-color: #111;
   height: 100vh;
@@ -239,3 +481,6 @@ table {
     #Situations button:hover {
       background-color: #FEF36E;
       color: #111; }
+
+body {
+  background-color: #111; }
