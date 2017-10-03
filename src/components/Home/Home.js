@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
@@ -13,12 +13,12 @@ const socket = io('http://localhost:3069');
 
 export default class Home extends Component{
 
-    componentDidMount(){
-        socket.on('connect', ()=> {
-            console.log(socket.id)
-            socket.emit('save socket_id', {socketId: socket.id})
-        })
-    }
+    // componentDidMount(){
+    //     socket.on('connect', ()=> {
+    //         console.log(socket.id)
+    //         socket.emit('save socket_id', {socketId: socket.id})
+    //     })
+    // }
 
 
 

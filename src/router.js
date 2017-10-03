@@ -9,6 +9,11 @@ import LevelOne from './components/LevelOne/LevelOne'
 import LevelTwo from './components/LevelTwo/LevelTwo'
 import LevelThree from './components/LevelThree/LevelThree'
 
+import Situations from './components/Situations/Situations'
+import LevelOne from './components/LevelOne/LevelOne'
+import LevelTwo from './components/LevelTwo/LevelTwo'
+import LevelThree from './components/LevelThree/LevelThree'
+
 export default (
     <Switch>
         <Route component={Home} exact path='/'/>

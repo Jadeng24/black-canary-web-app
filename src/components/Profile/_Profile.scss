@@ -1,0 +1,212 @@
+.Profile{
+    background: $black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    // justify-content: space-between;
+    flex-direction: column;
+
+    .nameContainer{
+        width:100%;
+        display: flex;
+        height: 10%;
+        justify-content: center;
+        align-items: flex-end;
+
+        .name{
+            color: $white;
+            font-size: 1.6em;
+            position: relative;
+            margin-top: 20px;
+            font-family: $sans;
+            letter-spacing: .2em;
+        }
+
+        .editIcon{
+            width: 7%;
+            margin-left: 4%;
+            margin-top: 20px;
+            cursor: pointer;
+
+            @media(min-width: 160px){
+                width: 1.5em;
+            } 
+        }
+    }
+
+    .nameInputContainer{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: flex-end;
+        position: relative;
+
+        .nameInput{
+            width: 20%;
+            margin-left: 30px;
+            // position: absolute;
+        }
+
+        .addNewNameBtn{
+            color: $yellow;
+            position: relative;
+            padding-left: 10px;
+            background-color: $black;
+            border: none;
+            letter-spacing: .2em;
+            cursor: pointer;
+        }
+    }
+
+    .imgContainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        .imgPlaceholder{
+            width: 7em;
+            height: 7em;
+            background-color: $white;
+            margin-top: 10%;
+            position: relative;
+
+            @media(min-width: 800px){
+                background-color: pink;
+                width: 9em;
+                height: 9em;
+                margin-top: 5%;
+            } 
+        }
+    }
+
+    .safehavenContainer{
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .safeHaven{
+            color: $white;
+            font-family: $sans;
+            letter-spacing: .2em;
+        }
+
+        .changebtn{
+            color: $yellow;
+            font-family: $sans;
+            background-color: $black;
+            border: none;
+            letter-spacing: .2em;
+            cursor: pointer;
+        }
+    }
+
+    .safeHavenInput{
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .changebtn{
+            color: $yellow;
+            background-color: $black;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .navigationBtns{
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 60px;
+
+        .btn{
+            font-size: 1.2em;
+            color: $white;
+            letter-spacing: 1;
+            font-size: 18;
+            text-decoration-line: none;
+            background-color: $black;
+            border: none;
+            letter-spacing: 0.2em;
+            font-family: $sans;
+            cursor: pointer;
+        }
+
+        .deleteBtn{
+            cursor: pointer;
+            font-size: 1em;
+            color: $red;
+            letter-spacing: 1;
+            font-size: 18;
+            background-color: $black;
+            border: none;
+            letter-spacing: 0.2em;
+            font-family: $sans;
+        }
+
+    }
+        .deleteModal{
+            width: 80%;
+            background-color: $white;
+            height: 70%;
+            position: absolute;
+            margin-top: -220px;
+            animation: slideInLeft 1s;
+
+            .close{
+                border: none;
+                font-family: $sans;
+                letter-spacing: .2em;
+            }
+            
+            .head{
+                letter-spacing: 0.2em;
+                width: 97%;
+                font-family: $sans;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .deleteBtns{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                height: 80%;
+
+                .no{
+                    width: 100%;
+                    height: 100px;
+                    background-color: $red;
+                    font-size: 12px;
+                    border: none;
+                    letter-spacing: 0.2em;
+                    font-family: $sans;
+                    color: $white;
+                }
+
+                .yes{
+                    width: 100%;
+                    height: 100px;
+                    background-color: $yellow;
+                    font-size: 12px;
+                    border: none;
+                    letter-spacing: 0.2em;
+                    font-family: $sans;
+                }
+            }
+        }
+
+        @keyframes slideInLeft { 
+            0% {opacity: 0;} 
+            100% {opacity: 1;} 
+        } 
+}

@@ -6,11 +6,8 @@ import io from 'socket.io-client'
 import config from './config'
 import userIcon from './../../images/blackCanaryUser_35px.png';
 import friends from './../../images/blackCanaryFriends_30px.png';
-
 //CHANGE ONCE HOSTED
 // const socket = io('http://localhost:3069')
-
-
 export class MapContainer extends Component {
 
     constructor() {
@@ -46,13 +43,10 @@ export class MapContainer extends Component {
                     lng: -93.867187,
                     icon: friends
                 }
-
             ],
-
         }
 
     }
-
     moveJanise(){
         setInterval(() => {
             let friends = this.state.friends.slice(0);
@@ -78,7 +72,6 @@ export class MapContainer extends Component {
             })
         }, 2*60*1000);
     }
-
     componentWillMount(){
         navigator.geolocation.getCurrentPosition(position =>
             this.setState({
@@ -92,18 +85,15 @@ export class MapContainer extends Component {
 
         )
     }
-
     componentDidMount() {
         this.moveJanise();
         this.moveAbby();
     }
-
     render() {
 
         const style ={width: '100vw',
                 height: '60vh',
                 margin: '0'};
-
         return(
             <div className="mapContainer">
                 <Map className="map" style={style} google={this.props.google} zoom={8} center={ {lat: this.state.user.lat, lng: this.state.user.lng}} styles={style}>
@@ -117,7 +107,6 @@ export class MapContainer extends Component {
         );
     }
 }
-
 export default GoogleApiWrapper({
     apiKey: config.googs
 })(MapContainer)
