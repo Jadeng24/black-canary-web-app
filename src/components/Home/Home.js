@@ -8,6 +8,7 @@ import $ from 'jquery';
 import {connect} from 'react-redux';
 import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
 import {heartbeat} from './../../controllers/socketCTRL';
+import bell from './../../images/bell.svg'
 import map from '../../images/placeholder_map.gif'
 
 const socket = io('http://localhost:3069');
@@ -33,11 +34,14 @@ class Home extends Component{
 
         return(
             <div id="Home">
+                <Link to='/alerts' className="bell">
+                    <img className="bellIcon" src={bell} alt="alert"/>
+                </Link>
+
                 <Login />
                 <div className='navContainer'>
                     <Link to='/situations'> <p className="head">SITUATIONS</p> </Link>
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
-                    <a href='http://localhost:3069/auth/logout'> <p className="head">LOGOUT</p> </a>
                 </div>
                 <MapContainer style={{width: '100vw'}} />
             </div>
