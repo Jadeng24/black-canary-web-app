@@ -20,6 +20,8 @@
 @import './components/Menu/Menu';
 @import './components/FriendModal/_FriendModal.scss';
 @import './sass/_App.scss';
+@import './components/Alert/_Alert.scss';
+@import './components/Alert/_AlertBubble.scss';
 
 body {
   background-color: $black;

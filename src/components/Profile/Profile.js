@@ -127,8 +127,9 @@ export default class Profile extends Component{
 
 
                 <div className="navigationBtns">
-                    <Link to="/contacts">CONTACTS</Link>
-                    <Link to="/Home">GROUPS</Link>
+                    <Link className="contacts" to="/contacts">CONTACTS</Link>
+                    <Link className="contacts" to="/Home">GROUPS</Link>
+                    <a href='http://localhost:3069/auth/logout'> <p className="logOut">LOGOUT</p> </a>
                     {
                         !this.state.delete
                         ?
