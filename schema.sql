@@ -13,6 +13,18 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
 VALUES ('hermione1549', 'Lucy', 'Pevensie', 'hermione1549@gmail.com', null, '105562344058923082049', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('rocky.neck', 'Rocky', 'Neck', 'rocky.neck@mondayshift.com', null, '59d3f63ac04b650413249b88', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('maggieessence', 'Maggie', 'Essence', 'meatgap@meat.gap', null, '105562344058923082049', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('noBats', 'Abby', 'Thelin', 'abby@noBats.tuna', null, '1055623442sdf058923082049', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('alien', 'Alan', 'Miller', 'alan@theystillthinkimhuman.mothership', null, 'af105562344058923082049', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('princesshack', 'Princess', 'Hackamore', 'salsamaker@cook.food', null, 'vae104058923082049', null, null);
+INSERT INTO users (username, firstName, lastName, email, profilePic, auth_id, safe_haven, socket_id)
+VALUES ('buddyc', 'Buddy', 'Charlwood', 'bwood@thunderdownunder.net', null, 'zjsd958923082049', null, null);
 
 -- FRIENDS TABLE --
 CREATE TABLE IF NOT EXISTS friends (
@@ -30,6 +42,10 @@ insert into friends (user_id, friend_id, friend_status) values (2, 3, true);
 insert into friends (user_id, friend_id, friend_status) values (3, 2, false);
 insert into friends (user_id, friend_id, friend_status) values (4, 3, true);
 insert into friends (user_id, friend_id, friend_status) values (4, 2, false);
+insert into friends (user_id, friend_id, friend_status) values (8, 3, true);
+insert into friends (user_id, friend_id, friend_status) values (6, 2, false);
+insert into friends (user_id, friend_id, friend_status) values (7, 1, true);
+insert into friends (user_id, friend_id, friend_status) values (7, 2, false);
 
 -- GROUPS TABLE --
 CREATE TABLE IF NOT EXISTS groups (
@@ -49,6 +65,9 @@ insert into groups (user_id, group_name, friend_id) values (3, 'rocky neck bunch
 insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 2);
 insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 1);
 insert into groups (user_id, group_name, friend_id) values (4, 'meat gap group', 3);
+insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 3);
+insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 1);
+insert into groups (user_id, group_name, friend_id) values (8, 'aliens are real', 4);
 
 -- ACTIVE LOCATIONS TABLE --
 CREATE TABLE IF NOT EXISTS active_locations (

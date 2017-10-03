@@ -52,7 +52,7 @@ passport.use(new Auth0Strategy({
         db.find_user([profile.identities[0].user_id])
         .then( user => {
             if(user[0]) {
-                console.log('user found',user)
+                // console.log('user found',user)
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
@@ -79,7 +79,7 @@ passport.use(new Auth0Strategy({
   }));
 
   passport.serializeUser((user, done)=> {
-      console.log('serialize', user)
+    //   console.log('serialize', user)
       currentUser = user;
       done(null, user)
   });
@@ -112,7 +112,7 @@ passport.use(new Auth0Strategy({
   //log out
   app.get('/auth/logout', (req, res)=> {
       req.logOut();
-      res.redirect(302, '/#/')
+      res.redirect(302, 'http://localhost:3070/#/')
   });
 
 
