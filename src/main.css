@@ -151,11 +151,6 @@ table {
     border: none;
     height: 30px;
     font-size: 1em; }
-  .Groups .modal {
-    width: 80%;
-    height: 80%;
-    background-color: pink;
-    position: absolute; }
 
 #Home {
   background-color: #111;
@@ -1269,6 +1264,30 @@ table {
       align-items: center; }
       .alertBubble .container .messageContainer .message {
         text-align: center; }
+
+.GroupsModal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "ABeeZee", sans-serif;
+  letter-spacing: 1;
+  text-transform: uppercase; }
+  .GroupsModal .groupsBox {
+    width: 80%;
+    height: 80%;
+    background-color: #efefef; }
+    .GroupsModal .groupsBox .close {
+      width: 15px;
+      height: 15px;
+      margin: 10px; }
+    .GroupsModal .groupsBox .header {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      color: #111; }
 
 body {
   background-color: #111; }
