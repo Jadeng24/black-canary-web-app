@@ -87,5 +87,12 @@ CREATE TABLE IF NOT EXISTS active_locations (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
     coordinates VARCHAR(200), -- {latitude, longitude}
-    recipient_id INTEGER --friends user id
+    situation VARCHAR(50),
+    message VARCHAR(180)
+);
+
+CREATE TABLE IF NOT EXISTS active_location_recipients (
+    id SERIAL PRIMARY KEY,
+    active_location_id INTEGER REFERENCES active_locations NOT NULL,
+    recipient_id INTEGER REFERENCES users NOT NULL
 );

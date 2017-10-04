@@ -2,4 +2,4 @@ select groups.user_id as group_owner_id, groups.group_name as group_name, groups
 from group_members
 join users on users.id = group_members.member_id
 join groups on groups.id = group_members.group_id
-where user_id = 1;
+where user_id = $1;

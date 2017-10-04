@@ -7,7 +7,7 @@ import TweenMax from 'gsap';
 import $ from 'jquery';
 import {connect} from 'react-redux';
 import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
-import {heartbeat} from './../../controllers/socketCTRL';
+import {heartbeat, renameGroup} from './../../controllers/socketCTRL';
 import bell from './../../images/bell.svg'
 import map from '../../images/placeholder_map.gif'
 
@@ -26,8 +26,8 @@ class Home extends Component{
 
         heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
 
-        //test socket
-        // socket.emit('see groups')
+        // test socket
+        // socket.emit('rename group', {group_name: 'i will rename this group', id: 11} )
     }
 
 
