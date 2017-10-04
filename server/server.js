@@ -126,7 +126,6 @@ io.on('connection', socket => {
 if(currentUser.id) {
     setInterval(heartbeat, 500);
     function heartbeat(){
-        //app.get all info from db to send in heartbeat
         app.get('db').get_user_info([currentUser.id])
             .then(user=> {
                 // console.log('get user info', user)
@@ -258,33 +257,7 @@ if(currentUser.id) {
         app.get('db').remove_friend_from_group([data.groupId, data.friendId])
     })
 
-    // test queries
-    // socket.on('see groups', ()=> {
-    //     app.get('db').test()
-    //     .then(data => {
-    //         let groupsObj = {};
-    //         for(let i = 0; i < data.length; i++) {
-    //             if(groupsObj.hasOwnProperty(data[i].group_id)){
-    //                 groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
-    //                 userID: data[i].member_user_id});
-    //             } else {
-    //                 groupsObj[data[i].group_id] = {
-    //                     groupID: data[i].group_id,
-    //                     groupName: data[i].group_name,
-    //                     members: [{username: data[i].member_username,
-    //                         userID: data[i].member_user_id}]
-    //                 }
-    //             }
-    //         }
-    //         let groups = [];
-    //         for (group in groupsObj) {
-    //             groups.push(groupsObj[group]);
-    //         }
-    //         //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
-    //         console.log('groups data line 197', groups)
-    //         socket.emit('', groups)
-    //     })
-    // })
+
 
     socket.on('disconnect', ()=> {
         console.log('A user has disconnected, socket ID: ', socket.id);
