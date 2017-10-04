@@ -62,7 +62,7 @@ class Home extends Component{
                     <Link to='/situations'> <p className="head">SITUATIONS</p> </Link>
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
                 </div>
-                <MapContainer style={{width: '100vw'}} />
+                <MapContainer styleMapContainer={{height: '60vh', width: '100vw'}} style={{width: '100vw'}} isHome={true}/>
             </div>
         )
     }

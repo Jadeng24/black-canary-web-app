@@ -35,7 +35,7 @@ export default class Alert extends Component{
                 <div className="header">
                     <p>alerts</p>
                 </div>
-                <AlertBubble state={this.state.alerts}/>
+                <AlertBubble alerts={this.state.alerts}/>
             </div>
         )
     }
