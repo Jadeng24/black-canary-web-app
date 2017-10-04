@@ -28,6 +28,7 @@ class Profile extends Component{
     }
 
     componentDidMount(){
+        
         // console.log('mount profile', this.props.user)
         updateUser(getUserInfo)
         heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
@@ -90,7 +91,7 @@ class Profile extends Component{
 
     render(){
         let {user} = this.props;
-        console.log('profile page user:', user)
+        // console.log('profile page user:', user)
 
         return(
             <div className="ProfileContainer">

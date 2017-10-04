@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
-                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
+                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile.picture, profile.identities[0].user_id])
                 .then(user => {
                     return done(null, user[0])
                 })
@@ -177,11 +177,11 @@ if(currentUser.id) {
 }
 
     socket.on('save socket_id', data => {
-        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
         currentUser.id ?
-            app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+        app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
-            null;
+        null;
+        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
     })
 
     socket.on('send location', data => {
