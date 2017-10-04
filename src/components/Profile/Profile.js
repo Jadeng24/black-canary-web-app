@@ -4,7 +4,7 @@ import x from '../../images/x.png'
 import io from 'socket.io-client';
 import editIcon from '../../images/whiteEditIcon.svg'
 import {connect} from 'react-redux';
-import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
+import {getUserInfo} from './../../ducks/reducer';
 import {editUser, updateUser, editSafeHaven, heartbeat, deleteUser} from './../../controllers/socketCTRL';
 
 const socket = io('http://localhost:3069');
@@ -25,13 +25,14 @@ class Profile extends Component{
         this.handleChange = this.handleChange.bind(this)
         this.changeSafeHavenBtn = this.changeSafeHavenBtn.bind(this)
         this.deleteModal = this.deleteModal.bind(this)
+        this.confirmDelete = this.confirmDelete.bind(this)
     }
 
     componentDidMount(){
         
         // console.log('mount profile', this.props.user)
         updateUser(getUserInfo)
-        heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
+        // heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
     }
 
     toggleName(){
@@ -83,6 +84,11 @@ class Profile extends Component{
                 delete: false
             })
         }
+    }
+
+    confirmDelete(){
+        deleteUser(this.props.user.id)
+        this.props.getUserInfo({user:{username: '', firstName: '', lastName: '', email: '', profilepic: '', auth_id: '', socket_id: '', id: '', location: '', safe_haven: ''}})
     }
 
     componentDidMount(){
@@ -155,7 +161,7 @@ class Profile extends Component{
                             <p className="head">ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT?</p>
                             <div className="deleteBtns">
                                 <button onClick={()=> {this.deleteModal('nvm')}} className="no">NO, I WANT TO CONTINUE FEELING SAFE</button>
-                                <Link className="yes" to="/"><button onClick={()=> deleteUser(this.props.user.id)}>YES, I WANT TO FEEL UNSAFE</button></Link>
+                                <Link className="yes" to="/"><button onClick={()=> this.confirmDelete()}>YES, I WANT TO FEEL UNSAFE</button></Link>
                             </div>
                         </div>
                     }
@@ -174,10 +180,7 @@ function mapStateToProps(state){
 
 let outputActions = {
     editUser,
-    getUserInfo,
-    getFriendsList,
-    getGroups,
-    getActiveLocations
+    getUserInfo
 }
 
 export default connect(mapStateToProps, outputActions)(Profile);
