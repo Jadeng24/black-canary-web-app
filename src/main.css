@@ -926,7 +926,7 @@ table {
       left: none; }
     #About header img {
       width: 300px;
-      z-index: 99; }
+      z-index: 70; }
     #About header h3 {
       width: 100vw;
       text-align: center; }
