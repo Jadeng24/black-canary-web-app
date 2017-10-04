@@ -134,10 +134,30 @@ if(currentUser.id) {
             });
             
         app.get('db').get_groups([currentUser.id])
-            .then(data=> {
-                // console.log('get groups', data)
-                groups = data
-            });
+            .then(data => {
+                let groupsObj = {};
+                for(let i = 0; i < data.length; i++) {
+                    if(groupsObj.hasOwnProperty(data[i].group_id)){
+                        groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
+                        userID: data[i].member_user_id});
+                    } else {
+                        groupsObj[data[i].group_id] = {
+                            groupID: data[i].group_id,
+                            groupName: data[i].group_name,
+                            members: [{username: data[i].member_username,
+                                userID: data[i].member_user_id}]
+                        }
+                    }
+                }
+                let groupsArr = [];
+                for (group in groupsObj) {
+                    groupsArr.push(groupsObj[group]);
+                }
+                //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
+                // console.log('groups data line 197', groupsArr)
+                groups = groupsArr;
+
+            })
 
         app.get('db').get_friends([currentUser.id])
             .then(data=> {
@@ -167,12 +187,17 @@ if(currentUser.id) {
     socket.on('send location', data => {
         // post data to active_locations table in db
 
-        app.get('db').add_active_location([data.userId, data.coordinates, data.situation, data.recipients]);
+        app.get('db').add_active_location([data.user.userId, data.user.coordinates, data.user.situation, data.message])
+            .then(location=> {
+                console.log(location)
+                //loop through recipients array and add location for each recipient
+                app.get('db').add_location_recipient([location.id, data.recipients])
+            })
     })
 
-    socket.on('update user info', data => {
+    socket.on('update user info', user => {
         //put the user info by user id to (users table) in db
-        app.get('db').update_username([data.username, data.userId])
+        app.get('db').update_username([user.username, user.userId])
             .then(user=> {
                 socket.emit('update user', {user})
             })
@@ -183,19 +208,73 @@ if(currentUser.id) {
         app.get('db').delete_user([userId])
     })
 
-    socket.on('update group', group=> {
-        app.get('db').update_group([group.friendIds, group.name, group.id]);
+    socket.on('add group', data=> {
+        // console.log('data:', data)
+        app.get('db').add_group([data.userId, data.group.group_name])
+        .then(group=> {
+            // console.log('group',group)
+            app.get('db').add_friend_to_group([group[0].id, data.group.friendId])
+        })
+    })
+
+    socket.on('rename group', group=> {
+        console.log('rename group:',group)
+        app.get('db').rename_group([group.group_name, group.id]);
     })
 
     socket.on('delete group', groupId=> {
         app.get('db').delete_group([groupId])
     })
 
+    // socket.on('edit emergency group', group=> {
+    //     app.get('db').edit_emergency_group([group.user_id, group.group_name])
+    // })
+
+    socket.on('friend request', data=> {
+        app.get('db').request_friend([data.userId, data.friendId])
+    })
+
+    socket.on('confirm friend request', requestId=> {
+        app.get('db').confirm_friend([requestId])
+    })
+
+    socket.on('decline friend request', requestId=> {
+        app.get('db').decline_friend([requestId])
+    })
+
+    socket.on('add friend to group', data=> {
+        app.get('db').add_friend_to_group([data.groupId, data.memberId])
+    })
+
+    socket.on('remove friend from group', data=> {
+        app.get('db').remove_friend_from_group([data.groupId, data.friendId])
+    })
+
     // test queries
     // socket.on('see groups', ()=> {
     //     app.get('db').test()
-    //     .then(data=> {
-    //         console.log('groups data line 197', data)
+    //     .then(data => {
+    //         let groupsObj = {};
+    //         for(let i = 0; i < data.length; i++) {
+    //             if(groupsObj.hasOwnProperty(data[i].group_id)){
+    //                 groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
+    //                 userID: data[i].member_user_id});
+    //             } else {
+    //                 groupsObj[data[i].group_id] = {
+    //                     groupID: data[i].group_id,
+    //                     groupName: data[i].group_name,
+    //                     members: [{username: data[i].member_username,
+    //                         userID: data[i].member_user_id}]
+    //                 }
+    //             }
+    //         }
+    //         let groups = [];
+    //         for (group in groupsObj) {
+    //             groups.push(groupsObj[group]);
+    //         }
+    //         //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
+    //         console.log('groups data line 197', groups)
+    //         socket.emit('', groups)
     //     })
     // })
 
