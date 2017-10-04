@@ -12,6 +12,7 @@ import Contacts from './components/Contacts/Contacts'
 import About from './components/About/About'
 import Menu from './components/Menu/Menu'
 import Alerts from './components/Alert/Alert'
+import Groups from './components/Groups/Groups.js'
 
 
 
@@ -27,5 +28,6 @@ export default (
         <Route component={Contacts} path='/contacts'/>
         <Route component={Menu} path='/menu'/>
         <Route component={Alerts} path='/alerts'/>
+        <Route component={Groups} path='/groups'/>
     </Switch>
 )
