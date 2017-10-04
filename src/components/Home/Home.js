@@ -5,34 +5,62 @@ import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
 import $ from 'jquery';
-
+import {connect} from 'react-redux';
+import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
+import {heartbeat, renameGroup} from './../../controllers/socketCTRL';
+import bell from './../../images/bell.svg'
 import map from '../../images/placeholder_map.gif'
 
 const socket = io('http://localhost:3069');
 
 
-export default class Home extends Component{
+class Home extends Component{
 
     componentDidMount(){
+        let {getUserInfo, getFriendsList, getGroups, getActiveLocations} = this.props;
+
         socket.on('connect', ()=> {
-            console.log(socket.id)
+            console.log('home socket id:',socket.id)
             socket.emit('save socket_id', {socketId: socket.id})
         })
+
+        heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
+
+        // test socket
+        // socket.emit('rename group', {group_name: 'i will rename this group', id: 11} )
     }
 
 
 
     render(){
+        let {user, friends, groups, getActiveLocations} = this.props;
+
         return(
             <div id="Home">
+                <Link to='/alerts' className="bell">
+                    <img className="bellIcon" src={bell} alt="alert"/>
+                </Link>
+
                 <Login />
                 <div className='navContainer'>
                     <Link to='/situations'> <p className="head">SITUATIONS</p> </Link>
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
-                    <a href='http://localhost:3069/auth/logout'> <p className="head">LOGOUT</p> </a>
                 </div>
                 <MapContainer style={{width: '100vw'}} />
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+let outputActions = {
+    getUserInfo,
+    getFriendsList,
+    getGroups,
+    getActiveLocations
+}
+
+export default connect(mapStateToProps, outputActions)(Home);

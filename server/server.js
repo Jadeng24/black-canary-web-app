@@ -37,8 +37,6 @@ massive({
     ssl: true
   }).then( db => {
     app.set('db', db);
-
-
   })
 
 
@@ -54,7 +52,7 @@ passport.use(new Auth0Strategy({
         db.find_user([profile.identities[0].user_id])
         .then( user => {
             if(user[0]) {
-                console.log('user found',user)
+                // console.log('user found',user)
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
@@ -76,12 +74,12 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `http://localhost:3070/#/profile/`,
+      successRedirect: `http://localhost:3070/#/`,
       failureRedirect: `http://localhost:3070/#/`
   }));
 
   passport.serializeUser((user, done)=> {
-      // console.log('serialize', user)
+    //   console.log('serialize', user)
       currentUser = user;
       done(null, user)
   });
@@ -114,64 +112,73 @@ passport.use(new Auth0Strategy({
   //log out
   app.get('/auth/logout', (req, res)=> {
       req.logOut();
-      res.redirect(302, '/#/')
+      res.redirect(302, 'http://localhost:3070/#/')
   });
 
 
-//=================== UNFINISHED ENDPOINTS ==========================//
+//========================= SOCKETS ===================================//
 
-
-//get groups -- select user info, friends info
-//get friends --select user info, friends info
-//get active locations
-//send/receive messages
-
-
-//================ SOCKETS ==============//
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
+    let userInfo, groups, friends, activeLocations;
 
 // heartbeat updates the connected user every second
-    // setInterval(heartbeat, 1000);
-    // function heartbeat(){
-    //     let userInfo, groups, friends, activeLocations;
-    //     //app.get all info from db to send in heartbeat
-    //     app.get('db').get_user_info([currentUser.id])
-    //         .then(user=> {
-    //             userInfo: user;
-    //         });
+if(currentUser.id) {
+    setInterval(heartbeat, 10000);
+    function heartbeat(){
+        //app.get all info from db to send in heartbeat
+        app.get('db').get_user_info([currentUser.id])
+            .then(user=> {
+                // console.log('get user info', user)
+                userInfo = user[0];
+            });
+            
+        app.get('db').get_groups([currentUser.id])
+            .then(data => {
+                let groupsObj = {};
+                for(let i = 0; i < data.length; i++) {
+                    if(groupsObj.hasOwnProperty(data[i].group_id)){
+                        groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
+                        userID: data[i].member_user_id});
+                    } else {
+                        groupsObj[data[i].group_id] = {
+                            groupID: data[i].group_id,
+                            groupName: data[i].group_name,
+                            members: [{username: data[i].member_username,
+                                userID: data[i].member_user_id}]
+                        }
+                    }
+                }
+                let groupsArr = [];
+                for (group in groupsObj) {
+                    groupsArr.push(groupsObj[group]);
+                }
+                //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
+                // console.log('groups data line 197', groupsArr)
+                groups = groupsArr;
 
-    //
-    //     // app.get('db').get_groups_by_user_id([currentUser.id])
-    //     //     .then(data=> {
-    //     //         groups: data
-    //     //     });
+            })
 
-    //
+        app.get('db').get_friends([currentUser.id])
+            .then(data=> {
+                // console.log('get friends', data)
+            friends = data
+            });
 
-    //     // app.get('db').get_friends_by_user_id([currentUser.id])
-    //     //     .then(data=> {
-    //     //     friends: data
-    //     //     });
+        app.get('db').get_active_locations([currentUser.id])
+            .then(data => {
+                // console.log('get active locations', data)
+                activeLocations = data
+            });
 
-    //
-    //     // app.get('db').get_active_locations([currentUser.id])
-    //     //     .then(data => {
-    //     //         activeLocations: data
-    //     //     });
-
-    //
-    //     socket.emit('hearbeat', data)
-
-
-    //     socket.emit('hearbeat', {userInfo, groups, friends, activeLocations})
-
-    // }
-
+            // console.log('userInfo:', userInfo, 'groups:', groups, 'friends:', friends, 'activeLocations:', activeLocations)
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
+    }
+}
 
     socket.on('save socket_id', data => {
         console.log('socket.on save socket_id. data', data,'current user:', currentUser)
-        currentUser ?
+        currentUser.id ?
             app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
             null;
@@ -180,28 +187,96 @@ io.on('connection', socket => {
     socket.on('send location', data => {
         // post data to active_locations table in db
 
-        app.get('db').add_active_location([data.userId, data.coordinates, data.situation, data.recipients]);
+        app.get('db').add_active_location([data.user.userId, data.user.coordinates, data.user.situation, data.message])
+            .then(location=> {
+                console.log(location)
+                //loop through recipients array and add location for each recipient
+                app.get('db').add_location_recipient([location.id, data.recipients])
+            })
     })
 
-    socket.on('update user info', data => {
+    socket.on('update user info', user => {
         //put the user info by user id to (users table) in db
-        app.get('db').update_username([data.username, data.userId])
+        app.get('db').update_username([user.username, user.userId])
             .then(user=> {
                 socket.emit('update user', {user})
             })
     })
 
     socket.on('delete user', userId => {
+        console.log(userId)
         app.get('db').delete_user([userId])
     })
 
-    socket.on('update group', group=> {
-        app.get('db').update_group([group.friendIds, group.name, group.id]);
+    socket.on('add group', data=> {
+        // console.log('data:', data)
+        app.get('db').add_group([data.userId, data.group.group_name])
+        .then(group=> {
+            // console.log('group',group)
+            app.get('db').add_friend_to_group([group[0].id, data.group.friendId])
+        })
+    })
+
+    socket.on('rename group', group=> {
+        console.log('rename group:',group)
+        app.get('db').rename_group([group.group_name, group.id]);
     })
 
     socket.on('delete group', groupId=> {
         app.get('db').delete_group([groupId])
     })
+
+    // socket.on('edit emergency group', group=> {
+    //     app.get('db').edit_emergency_group([group.user_id, group.group_name])
+    // })
+
+    socket.on('friend request', data=> {
+        app.get('db').request_friend([data.userId, data.friendId])
+    })
+
+    socket.on('confirm friend request', requestId=> {
+        app.get('db').confirm_friend([requestId])
+    })
+
+    socket.on('decline friend request', requestId=> {
+        app.get('db').decline_friend([requestId])
+    })
+
+    socket.on('add friend to group', data=> {
+        app.get('db').add_friend_to_group([data.groupId, data.memberId])
+    })
+
+    socket.on('remove friend from group', data=> {
+        app.get('db').remove_friend_from_group([data.groupId, data.friendId])
+    })
+
+    // test queries
+    // socket.on('see groups', ()=> {
+    //     app.get('db').test()
+    //     .then(data => {
+    //         let groupsObj = {};
+    //         for(let i = 0; i < data.length; i++) {
+    //             if(groupsObj.hasOwnProperty(data[i].group_id)){
+    //                 groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
+    //                 userID: data[i].member_user_id});
+    //             } else {
+    //                 groupsObj[data[i].group_id] = {
+    //                     groupID: data[i].group_id,
+    //                     groupName: data[i].group_name,
+    //                     members: [{username: data[i].member_username,
+    //                         userID: data[i].member_user_id}]
+    //                 }
+    //             }
+    //         }
+    //         let groups = [];
+    //         for (group in groupsObj) {
+    //             groups.push(groupsObj[group]);
+    //         }
+    //         //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
+    //         console.log('groups data line 197', groups)
+    //         socket.emit('', groups)
+    //     })
+    // })
 
     socket.on('disconnect', ()=> {
         console.log('A user has disconnected, socket ID: ', socket.id);
