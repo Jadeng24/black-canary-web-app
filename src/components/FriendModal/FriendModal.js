@@ -16,11 +16,6 @@ export default class FriendModal extends Component{
         }
     }
 
-    // componentWillMount() {
-    //     this.setState({
-    //         friend: this.props.friend
-    //     })
-    // }
 
     toggleGroupAdd(event, groupObj) {
         let index = -1;
