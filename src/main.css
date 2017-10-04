@@ -993,6 +993,7 @@ table {
     #About #tech .withinSection,
     #About #creators .withinSection {
       width: 320px;
+      overflow: hidden;
       color: #111; }
     #About #about p, #About #about .ulWrapper,
     #About #levels p,
