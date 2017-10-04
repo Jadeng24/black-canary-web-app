@@ -3,10 +3,12 @@ import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png'
 import x from '../../images/x.png'
 import FriendModal from './../FriendModal/FriendModal';
+import {connect} from 'react-redux';
+import {getFriendsList, getGroups} from './../../ducks/reducer';
 const socket = io('http://localhost:3069');
 
 
-export default class Contacts extends Component{
+class Contacts extends Component{
     constructor(){
         super()
         this.state={
@@ -102,13 +104,13 @@ export default class Contacts extends Component{
         )
     })
 
-    const allFriends = this.state.friendName.map((friends, i)=>{
+    const allFriends = this.props.friends.map((friend, i)=>{
         return(
                 <div key={i} className="listOfFriends">
-                    <div className='imgContainer'><img src={this.state.friendName.img} alt="profile pic"/></div>
+                    <div className='imgContainer'><img src={friend.friend_pic} alt="profile pic"/></div>
                     <div className='nameContainer'>
-                        <p className="name">{friends.firstName}</p>
-                        <button className="seeInfo" onClick={_=>this.showModalMethod(friends)}>SEE INFO</button>
+                        <p className="name">{friend.friend_firstname}</p>
+                        <button className="seeInfo" onClick={_=>this.showModalMethod(friend)}>SEE INFO</button>
                     </div>
                 </div>
         )
@@ -144,3 +146,14 @@ export default class Contacts extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+let outputActions = {
+    getFriendsList,
+    getGroups
+}
+
+export default connect(mapStateToProps, outputActions)(Contacts);
