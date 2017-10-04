@@ -5,14 +5,24 @@ export default class Alert extends Component{
 
         constructor(){
         super()
-        
         this.state={
             
             alerts:[
-                {situation: 'uncomfortable', from: 'Andi', message: 'plz hlp, Lloyd scary'},
-                {situation: 'on a date', from: 'Alan', message:'she wants sample cups of me pee'},
-                {situation: 'running', from: 'Janise', message: 'guys Im running'},
-                {situation: 'emergency', from: 'mom'}
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'Janice', message: 'help, man following me'},     
+                {from: 'Janice', message: 'help, man following me'},
+                {from: 'mom', message: 'help, man following me'}
             ]
         }
     }
