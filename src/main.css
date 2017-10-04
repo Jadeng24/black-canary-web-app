@@ -208,7 +208,8 @@ table {
         color: #FEF36E;
         letter-spacing: 0.2em;
         font-family: "ABeeZee", sans-serif;
-        font-size: 90%; }
+        font-size: 90%;
+        z-index: 55; }
         #login .loginWrapper .infoWrapper button:focus {
           outline: none; }
         #login .loginWrapper .infoWrapper button:hover {
@@ -810,7 +811,8 @@ table {
   position: absolute;
   background-color: rgba(17, 17, 17, 0.93);
   z-index: 99;
-  animation: slideIn 1s; }
+  right: 100vw;
+  opacity: 0; }
   .Menu a {
     text-decoration: none; }
   .Menu .navigateContainer {
@@ -826,19 +828,22 @@ table {
       position: absolute;
       width: 25px;
       height: 25px;
-      top: 210px;
+      top: 80px;
       cursor: pointer; }
       .Menu .navigateContainer .exit .x {
         width: 25px;
         height: 25px;
+        transform: scale(0.2);
+        opacity: 0;
         cursor: pointer; }
     .Menu .navigateContainer .menuContainer {
-      width: 320px;
-      height: 400px;
+      width: 120px;
+      height: 120px;
       position: relative;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      transform: rotate(90deg); }
     .Menu .navigateContainer .buttn {
       width: 120px;
       height: 120px;
@@ -853,26 +858,23 @@ table {
         background-color: #3a3a3a;
         color: #FEF36E; }
     .Menu .navigateContainer .home {
-      top: 27px; }
+      opacity: 0;
+      transform: scale(0.2); }
     .Menu .navigateContainer .profile {
-      left: 0;
-      top: 127px; }
+      opacity: 0;
+      transform: scale(0.2); }
     .Menu .navigateContainer .situations {
-      right: 0;
-      top: 127px; }
+      opacity: 0;
+      transform: scale(0.2); }
     .Menu .navigateContainer .about {
-      bottom: 13px;
-      right: 29px; }
+      opacity: 0;
+      transform: scale(0.2); }
     .Menu .navigateContainer .logout {
-      bottom: 13px;
-      left: 29px; }
+      opacity: 0;
+      transform: scale(0.2); }
       .Menu .navigateContainer .logout:hover {
         color: #efefef;
         background-color: #d13030; }
-    .Menu .navigateContainer .profileAndSituationsContainer {
-      width: 100%;
-      display: flex;
-      justify-content: space-around; }
 
 @keyframes slideIn {
   0% {
@@ -1175,6 +1177,15 @@ table {
     margin: 15px;
     z-index: 7;
     cursor: pointer; }
+  .App .hamburger {
+    position: absolute;
+    background-color: #efefef;
+    width: 30px;
+    height: 4px; }
+  .App .line2 {
+    top: calc(13px); }
+  .App .line3 {
+    bottom: 0; }
 
 .Alert {
   width: 100%;

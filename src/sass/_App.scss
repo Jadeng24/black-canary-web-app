@@ -11,4 +11,22 @@
         cursor: pointer;
 
     }
+    .hamburger {
+      position: absolute;
+      background-color: $white;
+      width: 30px;
+      height: 4px;
+    }
+
+    .line1 {
+
+    }
+
+    .line2 {
+      top: calc(13px);
+    }
+
+    .line3 {
+      bottom: 0;
+    }
 }
