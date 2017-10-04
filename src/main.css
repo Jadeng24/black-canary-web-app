@@ -958,22 +958,42 @@ table {
 .Alert {
   width: 100%;
   height: 100%;
-  background-color: #efefef;
+  background-color: #111;
   text-transform: uppercase;
   font-family: "ABeeZee", sans-serif;
   letter-spacing: .2em; }
   .Alert .header {
     width: 100%;
-    height: 20%;
-    background-color: orange;
+    height: 13%;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    color: #efefef;
+    font-size: 1.7em; }
 
 .alertBubble {
   width: 100%;
-  height: 15%;
-  background-color: purple; }
+  height: auto;
+  text-transform: uppercase;
+  letter-spacing: .3em; }
+  .alertBubble .container {
+    width: 100%;
+    height: 120px;
+    background-color: red;
+    margin-top: 15px;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    justify-content: space-around; }
+    .alertBubble .container .from {
+      margin-left: 20px;
+      color: #efefef; }
+    .alertBubble .container .messageContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .alertBubble .container .messageContainer .message {
+        text-align: center; }
 
 body {
   background-color: #111; }
