@@ -233,9 +233,20 @@ if(currentUser.id) {
         app.get('db').delete_group([groupId])
     })
 
-    // socket.on('edit emergency group', group=> {
-    //     app.get('db').edit_emergency_group([group.user_id, group.group_name])
-    // })
+    socket.on('create emergency group', data=> {
+        app.get('db').create_emergency_group([data.userId, data.group.message])
+            .then(data=> {
+                console.log('data from emergency group creation', data)
+                app.get('db').add_emergency_contacts([data.emergency_id, data.group.recipient])
+            })
+    })
+
+    socket.on('edit emergency group', contacts=> {
+        contacts.map(contact=> {
+            app.get('db').edit_emergency_group([currentUser.id, contact])
+             
+        })
+    })
 
     socket.on('friend request', data=> {
         app.get('db').request_friend([data.userId, data.friendId])

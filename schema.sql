@@ -32,8 +32,7 @@ VALUES ('buddyc', 'Buddy', 'Charlwood', 'bwood@thunderdownunder.net', null, 'zjs
 CREATE TABLE IF NOT EXISTS emergency (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
-    message VARCHAR(180),
-    coordinates VARCHAR(200)
+    message VARCHAR(180)
 )
 
 
