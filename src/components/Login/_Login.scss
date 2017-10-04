@@ -12,7 +12,7 @@
 
     // border: 1px solid red;
     background-color: $black;
-    z-index: 20;
+    z-index: 50;
     color: $white;
     font: {
         family: $sans;
@@ -27,7 +27,19 @@
 
         .imgWrapper {
             width: 100vw;
+            // position: relative;
+            display: flex;
+            justify-content: center;
+            height: 320px;
+        }
+
+        .innerWrapper {
+            width: 320px;
             position: relative;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             #spotlight1 {
                 background-color: $white-translucent;
@@ -35,8 +47,8 @@
                 width: 320px;
                 border-radius: 50%;
                 position: absolute;
-                top: none;
-                left: none;
+                top: 0;
+                left: 0;
             }
 
             #spotlight2 {
@@ -45,8 +57,8 @@
                 width: 320px;
                 border-radius: 50%;
                 position: absolute;
-                top: none;
-                left: none;
+                top: 0;
+                left: 0;
             }
         }
 

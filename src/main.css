@@ -124,7 +124,9 @@ table {
     width: 100%; }
     #Home .bell .bellIcon {
       margin: 20px;
-      position: relative; }
+      position: relative;
+      cursor: pointer;
+      z-index: 7; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -149,7 +151,7 @@ table {
   width: 100vw;
   height: 100vh;
   background-color: #111;
-  z-index: 20;
+  z-index: 50;
   color: #efefef;
   font-family: "ABeeZee", sans-serif; }
   #login .loginWrapper {
@@ -159,23 +161,32 @@ table {
     flex-wrap: wrap; }
     #login .loginWrapper .imgWrapper {
       width: 100vw;
-      position: relative; }
-      #login .loginWrapper .imgWrapper #spotlight1 {
+      display: flex;
+      justify-content: center;
+      height: 320px; }
+    #login .loginWrapper .innerWrapper {
+      width: 320px;
+      position: relative;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #login .loginWrapper .innerWrapper #spotlight1 {
         background-color: rgba(239, 239, 239, 0.3);
         height: 320px;
         width: 320px;
         border-radius: 50%;
         position: absolute;
-        top: none;
-        left: none; }
-      #login .loginWrapper .imgWrapper #spotlight2 {
+        top: 0;
+        left: 0; }
+      #login .loginWrapper .innerWrapper #spotlight2 {
         background-color: rgba(254, 243, 110, 0.3);
         height: 320px;
         width: 320px;
         border-radius: 50%;
         position: absolute;
-        top: none;
-        left: none; }
+        top: 0;
+        left: 0; }
     #login .loginWrapper .imgWrapper,
     #login .loginWrapper .infoWrapper {
       display: flex;
@@ -1148,9 +1159,10 @@ table {
   .App .menu {
     width: 30px;
     height: 30px;
-    position: absolute;
+    position: fixed;
     margin: 15px;
-    z-index: 1234412123123123123123123123; }
+    z-index: 7;
+    cursor: pointer; }
 
 .Alert {
   width: 100%;

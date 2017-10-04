@@ -5,9 +5,10 @@
     .menu{
         width: 30px;
         height: 30px;
-        position: absolute;
+        position: fixed;
         margin: 15px;
-    z-index: 1234412123123123123123123123;
+        z-index: 7;
+        cursor: pointer;
 
     }
 }
