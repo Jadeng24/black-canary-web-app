@@ -18,10 +18,10 @@ class Login extends Component {
     TweenMax.to($('#login'), 0, {'height': window.innerHeight, 'width': window.innerWidth, delay: -1})
     TweenMax.to($('#spotlight1'), 0, {'top': '-100vh', 'left': '100vw', delay: -1})
     TweenMax.to($('#spotlight2'), 0, {'top': '100vh', 'left': '-50vw', delay: -1})
-    TweenMax.to($('#spotlight1'), 1.5, {'top': '50vh', 'left': '10vw', delay: 1, ease: TweenMax.Power4.easeOut})
-    TweenMax.to($('#spotlight2'), 1.5, {'top': '-40vh', 'left': '40vw', delay: 1, ease: TweenMax.Power4.easeOut})
-    TweenMax.to($('#spotlight1'), 1.5, {'top': 0, 'left': 0, delay: 2, ease: TweenMax.Power4.easeInOut})
-    TweenMax.to($('#spotlight2'), 1.5, {'top': 0, 'left': 0, delay: 2, ease: TweenMax.Power4.easeInOut})
+    TweenMax.to($('#spotlight1'), 1, {'top': '50vh', 'left': '10vw', delay: 1, ease: TweenMax.Power4.easeOut})
+    TweenMax.to($('#spotlight2'), 1, {'top': '-40vh', 'left': '40vw', delay: 1, ease: TweenMax.Power4.easeOut})
+    TweenMax.to($('#spotlight1'), 1, {'top': 0, 'left': 0, delay: 2, ease: TweenMax.Power4.easeInOut})
+    TweenMax.to($('#spotlight2'), 1, {'top': 0, 'left': 0, delay: 2, ease: TweenMax.Power4.easeInOut})
   }
 
   userLoggedIn(){

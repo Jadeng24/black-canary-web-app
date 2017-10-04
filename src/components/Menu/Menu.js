@@ -7,9 +7,9 @@ import $ from 'jquery'
 //LINK TO REDUX --> be able to change if userLoggedIn flag
 export default class Menu extends Component{
 
-
+    
     render(){
-      console.log(this.props)
+      // console.log(this.props)
 
         return(
             <div className="Menu">
