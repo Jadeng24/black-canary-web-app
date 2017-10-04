@@ -27,7 +27,6 @@ class Login extends Component {
   userLoggedIn(){
       TweenMax.to($('#login'), 1, {'opacity': 0, ease: TweenMax.Power1.easeIn});
       TweenMax.to($('#login'), 0, {'display': 'none', delay: 1, ease: TweenMax.Power1.easeIn});
-
   }
 
   render() {
