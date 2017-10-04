@@ -124,7 +124,7 @@ io.on('connection', socket => {
 
 // heartbeat updates the connected user every second
 if(currentUser.id) {
-    setInterval(heartbeat, 10000);
+    setInterval(heartbeat, 500);
     function heartbeat(){
         //app.get all info from db to send in heartbeat
         app.get('db').get_user_info([currentUser.id])
@@ -132,7 +132,7 @@ if(currentUser.id) {
                 // console.log('get user info', user)
                 userInfo = user[0];
             });
-            
+
         app.get('db').get_groups([currentUser.id])
             .then(data => {
                 let groupsObj = {};

@@ -8,10 +8,12 @@
         justify-content: center;
         align-items: flex-start;
         position: absolute;
-        background-color: $black;
-        opacity: .86;
+        background-color: $black-translucent;
         z-index: 99;
         animation: slideIn 1s;
+        a {
+          text-decoration: none;
+        }
 
         .navigateContainer{
             width: 80%;
@@ -24,92 +26,91 @@
 
             .exit{
                 width: 100%;
+                position: absolute;
                 // height: 100%;
+                width: 25px;
+                height: 25px;
+                top: 210px;
+                cursor: pointer;
+
 
                 .x{
                     width: 25px;
                     height: 25px;
+                    cursor: pointer;
                 }
             }
-                
+
+            .menuContainer{
+              width: 320px;
+              height: 400px;
+              // border: 1px solid red;
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .buttn {
+              width: 120px;
+              height: 120px;
+              border-radius: 120px;
+              background-color: $yellow;
+              color: $black;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              &:hover {
+                background-color: $grey;
+                color: $yellow;
+              }
+              position: absolute;
+            }
+
             .home{
-                width: 120px;
-                height: 120px;
-                border-radius: 120px;
-                background-color: $yellow;
-                color: $black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+              top: 27px;
             }
-            
-            .home:hover{
-                    background-color: $yellow;
-                    color: $black;
+
+            .profile{
+              left: 0;
+              top: 127px;
             }
-            
+
+            .situations{
+              right: 0;
+              top: 127px;
 
 
+            }
+            .about{
+              bottom: 13px;
+              right: 29px;
+            }
+            .logout{
+              bottom: 13px;
+              left: 29px;
+              &:hover {
+                color: $white;
+                background-color: $red;
+              }
+            }
             .profileAndSituationsContainer{
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
 
-                .profile{
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 120px;
-                    background-color: $yellow;
-                    color: $black;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .profile:hover{
-                    background-color: $yellow;
-                    color: $black;
+
             }
 
-                .situations{
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 120px;
-                    background-color: $yellow;
-                    color: $black;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .situations:hover{
-                    background-color: $yellow;
-                    color: $black;
-            }
-            }
-
-            .about{
-                width: 120px;
-                height: 120px;
-                border-radius: 120px;
-                background-color: $yellow;
-                color: $black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .about:hover{
-                background-color: $yellow;
-                color: $black;
-            }
         }
 
         @keyframes slideIn{
-            0% { 
-                transform: translate3d(-100%, 0, 0); 
-                visibility: visible; 
-            } 
-            100% { 
-                transform: translate3d(0, 0, 0); 
-            } 
+            0% {
+                transform: translate3d(-100%, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
         }
     }

@@ -146,6 +146,8 @@ table {
   display: flex;
   flex-wrap: wrap;
   position: fixed;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -792,10 +794,11 @@ table {
   justify-content: center;
   align-items: flex-start;
   position: absolute;
-  background-color: #111;
-  opacity: .86;
+  background-color: rgba(17, 17, 17, 0.93);
   z-index: 99;
   animation: slideIn 1s; }
+  .Menu a {
+    text-decoration: none; }
   .Menu .navigateContainer {
     width: 80%;
     height: 80%;
@@ -805,11 +808,24 @@ table {
     align-items: center;
     position: absolute; }
     .Menu .navigateContainer .exit {
-      width: 100%; }
+      width: 100%;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 210px;
+      cursor: pointer; }
       .Menu .navigateContainer .exit .x {
         width: 25px;
-        height: 25px; }
-    .Menu .navigateContainer .home {
+        height: 25px;
+        cursor: pointer; }
+    .Menu .navigateContainer .menuContainer {
+      width: 320px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .buttn {
       width: 120px;
       height: 120px;
       border-radius: 120px;
@@ -817,50 +833,32 @@ table {
       color: #111;
       display: flex;
       justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .home:hover {
-      background-color: #FEF36E;
-      color: #111; }
+      align-items: center;
+      position: absolute; }
+      .Menu .navigateContainer .buttn:hover {
+        background-color: #3a3a3a;
+        color: #FEF36E; }
+    .Menu .navigateContainer .home {
+      top: 27px; }
+    .Menu .navigateContainer .profile {
+      left: 0;
+      top: 127px; }
+    .Menu .navigateContainer .situations {
+      right: 0;
+      top: 127px; }
+    .Menu .navigateContainer .about {
+      bottom: 13px;
+      right: 29px; }
+    .Menu .navigateContainer .logout {
+      bottom: 13px;
+      left: 29px; }
+      .Menu .navigateContainer .logout:hover {
+        color: #efefef;
+        background-color: #d13030; }
     .Menu .navigateContainer .profileAndSituationsContainer {
       width: 100%;
       display: flex;
       justify-content: space-around; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
-        background-color: #FEF36E;
-        color: #111; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
-        background-color: #FEF36E;
-        color: #111; }
-    .Menu .navigateContainer .about {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .about:hover {
-      background-color: #FEF36E;
-      color: #111; }
 
 @keyframes slideIn {
   0% {

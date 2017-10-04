@@ -16,6 +16,12 @@ const socket = io('http://localhost:3069');
 
 class Home extends Component{
 
+    constructor(){
+      super();
+      this.state = {
+        userLoggedIn: false
+      }
+    }
     componentDidMount(){
         let {getUserInfo, getFriendsList, getGroups, getActiveLocations} = this.props;
 
@@ -26,9 +32,19 @@ class Home extends Component{
 
         heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
 
+
+        if(this.props.user.id) {
+          this.setState({
+            userLoggedIn: true
+          })
+        }
+        console.log(this.props.user.id);
+
         // test socket
         // socket.emit('rename group', {group_name: 'i will rename this group', id: 11} )
     }
+
+
 
 
 
@@ -41,7 +57,7 @@ class Home extends Component{
                     <Link to='/alerts'><img className="bellIcon" src={bell} alt="alert"/></Link>
                 </div>
 
-                <Login />
+                { (this.state.userLoggedIn) ? '' : <Login />}
                 <div className='navContainer'>
                     <Link to='/situations'> <p className="head">SITUATIONS</p> </Link>
                     <Link to='/profile'> <p className="head"> PROFILE</p> </Link>
