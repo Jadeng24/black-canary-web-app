@@ -16,7 +16,9 @@
         .close{
             width: 15px;
             height: 15px;
-            margin: 10px
+            margin: 15px;
+            z-index: 987654567890;
+            cursor: pointer;
         }
 
         .header{
@@ -25,6 +27,17 @@
             align-items: flex-start;
             position: relative;
             color: $black;
+            font-size: 1.7em;
         }
+
+            .title{
+                font-size: 1.3em;
+                margin-left: 20px;
+            }
+
+            .list{
+                margin-left: 40px;
+                margin-top: 20px;
+            }
     }
   }

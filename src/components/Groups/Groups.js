@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png';
 import GroupsModal from './GroupsModal'
-import x from '../../images/x.png';
 
 const socket = io('http://localhost:3069');
 
@@ -24,17 +23,18 @@ export default class Groups extends Component{
       this.exit = this.exit.bind(this)
     }
 
-    exit(){
-        this.setState({
-            groupModal: false
-        })
-    }
 
     showModalMethod(group){
       this.setState({
         groupModal: true,
         group
       })
+    }
+
+    exit(){
+        this.setState({
+            groupModal: false
+        })
     }
 
 render(){
