@@ -11,16 +11,16 @@ export default class FriendModal extends Component{
     constructor(){
         super()
         this.state={
-            friend: '',
+            // friend: '',
             groupsToAdd: []
         }
     }
 
-    componentWillMount() {
-        this.setState({
-            friend: this.props.friend
-        })
-    }
+    // componentWillMount() {
+    //     this.setState({
+    //         friend: this.props.friend
+    //     })
+    // }
 
     toggleGroupAdd(event, groupObj) {
         let index = -1;
@@ -43,28 +43,30 @@ export default class FriendModal extends Component{
         this.setState({
             groupsToAdd: r
         })
+        // console.log(this.state.groupsToAdd)
     }
 
     render(){
-
+        let {friend, exit} = this.props;
+        // console.log(this.state.groupsToAdd)
         return(
             <div className="FriendModal">
                 <div className="box">
-                        <img className="x" onClick={this.props.exit} src={x} alt="close"/>
+                        <img className="x" onClick={exit} src={x} alt="close"/>
                     <div className="heaad">
                         <p className="info">INFORMATION</p>
                     </div>
                     <div className="information">
-                        <p>USERNAME: {this.props.friend.username}</p>
-                        <p>NAME: {this.props.friend.firstName} {this.props.friend.lastName}</p>
-                        <p>EMAIL: {this.props.friend.email}</p>
+                        <p>USERNAME: {friend.friend_username}</p>
+                        <p>NAME: {friend.friend_firstname} {friend.friend_lastname}</p>
+                        <p>EMAIL: {friend.friend_email}</p>
                     </div>
 
                     <div className='groups'>
                         <p className="added">ADD CONTACT TO GROUP:</p>
                         <div className="groupsbox">
-                            {this.props.groups.map(e => {
-                                return <button className="groupNames" key={e.name} id={e.name} onClick={event => this.toggleGroupAdd(event, e)}>{e.name.toUpperCase()}</button>
+                            {this.props.groups.map((e, i) => {
+                                return <button className="groupNames" key={i} id={e.groupid} onClick={event => this.toggleGroupAdd(event, e)}>{e.groupName.toUpperCase()}</button>
                             })}
                         </div>
                     </div>
