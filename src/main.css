@@ -771,6 +771,93 @@ table {
       background-color: #FEF36E;
       color: #111; }
 
+.Menu {
+  text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  background-color: #111;
+  opacity: .86;
+  z-index: 99;
+  animation: slideIn 1s; }
+  .Menu .navigateContainer {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; }
+    .Menu .navigateContainer .exit {
+      width: 100%; }
+      .Menu .navigateContainer .exit .x {
+        width: 25px;
+        height: 25px; }
+    .Menu .navigateContainer .home {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .home:hover {
+      background-color: #FEF36E;
+      color: #111; }
+    .Menu .navigateContainer .profileAndSituationsContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
+        background-color: #FEF36E;
+        color: #111; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
+        background-color: #FEF36E;
+        color: #111; }
+    .Menu .navigateContainer .about {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .about:hover {
+      background-color: #FEF36E;
+      color: #111; }
+
+@keyframes slideIn {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+
 #About {
   width: 100vw;
   min-height: 100vh;
@@ -967,93 +1054,6 @@ table {
       width: 700px;
       padding: 40px 30px; } }
 
-.Menu {
-  text-transform: uppercase;
-  width: 100%;
-  height: 100%;
-  font-family: "ABeeZee", sans-serif;
-  font-size: 1.2em;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  position: absolute;
-  background-color: #111;
-  opacity: .86;
-  z-index: 99;
-  animation: slideIn 1s; }
-  .Menu .navigateContainer {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute; }
-    .Menu .navigateContainer .exit {
-      width: 100%; }
-      .Menu .navigateContainer .exit .x {
-        width: 25px;
-        height: 25px; }
-    .Menu .navigateContainer .home {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .home:hover {
-      background-color: #FEF36E;
-      color: #111; }
-    .Menu .navigateContainer .profileAndSituationsContainer {
-      width: 100%;
-      display: flex;
-      justify-content: space-around; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
-        background-color: #FEF36E;
-        color: #111; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
-        background-color: #FEF36E;
-        color: #111; }
-    .Menu .navigateContainer .about {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .about:hover {
-      background-color: #FEF36E;
-      color: #111; }
-
-@keyframes slideIn {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-
 .FriendModal {
   letter-spacing: 1;
   text-transform: uppercase;
@@ -1191,7 +1191,6 @@ table {
       align-items: center; }
       .alertBubble .container .messageContainer .message {
         text-align: center; }
-
 
 body {
   background-color: #111; }
