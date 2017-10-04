@@ -547,7 +547,8 @@ table {
         letter-spacing: .2em; }
       .ProfileContainer .Profile .safehavenContainer .editIcon {
         width: 7%;
-        margin-left: 10px; }
+        margin-left: 10px;
+        cursor: pointer; }
         @media (min-width: 160px) {
           .ProfileContainer .Profile .safehavenContainer .editIcon {
             width: 1.5em; } }
@@ -581,7 +582,8 @@ table {
       justify-content: space-around;
       align-items: center;
       margin-top: 60px;
-      text-decoration: none; }
+      text-decoration: none;
+      cursor: pointer; }
       .ProfileContainer .Profile .navigationBtns .logOut {
         font-size: 1rem;
         color: #efefef;
@@ -612,6 +614,7 @@ table {
         color: #efefef;
         font-size: 1rem;
         height: 40px !important;
+        cursor: pointer;
         text-decoration: none;
         text-transform: uppercase;
         text-align: center;
@@ -637,7 +640,8 @@ table {
       animation: slideInLeft 1s; }
       .ProfileContainer .Profile .deleteModal .close {
         width: 13px;
-        margin: 10px; }
+        margin: 10px;
+        cursor: pointer; }
       .ProfileContainer .Profile .deleteModal .head {
         letter-spacing: 0.2em;
         width: 97%;
@@ -649,7 +653,8 @@ table {
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        margin-top: 40px; }
+        margin-top: 40px;
+        cursor: pointer; }
         .ProfileContainer .Profile .deleteModal .deleteBtns .no {
           width: 100%;
           height: 80px;
@@ -770,6 +775,93 @@ table {
     #Situations button:hover {
       background-color: #FEF36E;
       color: #111; }
+
+.Menu {
+  text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  background-color: #111;
+  opacity: .86;
+  z-index: 99;
+  animation: slideIn 1s; }
+  .Menu .navigateContainer {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; }
+    .Menu .navigateContainer .exit {
+      width: 100%; }
+      .Menu .navigateContainer .exit .x {
+        width: 25px;
+        height: 25px; }
+    .Menu .navigateContainer .home {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .home:hover {
+      background-color: #FEF36E;
+      color: #111; }
+    .Menu .navigateContainer .profileAndSituationsContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
+        background-color: #FEF36E;
+        color: #111; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        background-color: #FEF36E;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
+        background-color: #FEF36E;
+        color: #111; }
+    .Menu .navigateContainer .about {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .Menu .navigateContainer .about:hover {
+      background-color: #FEF36E;
+      color: #111; }
+
+@keyframes slideIn {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  100% {
+    transform: translate3d(0, 0, 0); } }
 
 #About {
   width: 100vw;
@@ -967,93 +1059,6 @@ table {
       width: 700px;
       padding: 40px 30px; } }
 
-.Menu {
-  text-transform: uppercase;
-  width: 100%;
-  height: 100%;
-  font-family: "ABeeZee", sans-serif;
-  font-size: 1.2em;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  position: absolute;
-  background-color: #111;
-  opacity: .86;
-  z-index: 99;
-  animation: slideIn 1s; }
-  .Menu .navigateContainer {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute; }
-    .Menu .navigateContainer .exit {
-      width: 100%; }
-      .Menu .navigateContainer .exit .x {
-        width: 25px;
-        height: 25px; }
-    .Menu .navigateContainer .home {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .home:hover {
-      background-color: #FEF36E;
-      color: #111; }
-    .Menu .navigateContainer .profileAndSituationsContainer {
-      width: 100%;
-      display: flex;
-      justify-content: space-around; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
-        background-color: #FEF36E;
-        color: #111; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
-        background-color: #FEF36E;
-        color: #111; }
-    .Menu .navigateContainer .about {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .about:hover {
-      background-color: #FEF36E;
-      color: #111; }
-
-@keyframes slideIn {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-
 .FriendModal {
   letter-spacing: 1;
   text-transform: uppercase;
@@ -1191,7 +1196,6 @@ table {
       align-items: center; }
       .alertBubble .container .messageContainer .message {
         text-align: center; }
-
 
 body {
   background-color: #111; }
