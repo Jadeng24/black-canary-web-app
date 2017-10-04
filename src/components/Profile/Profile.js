@@ -3,19 +3,18 @@ import {Link} from 'react-router-dom'
 import x from '../../images/x.png'
 import io from 'socket.io-client';
 import editIcon from '../../images/whiteEditIcon.svg'
+import {connect} from 'react-redux';
+import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
+import {editUser, updateUser, editSafeHaven, heartbeat} from './../../controllers/socketCTRL';
 
-
-// eslint-disable-next-line
 const socket = io('http://localhost:3069');
 
-export default class Profile extends Component{
+class Profile extends Component{
     constructor(){
         super()
 
         this.state={
-            name: 'DevMtn',
-            newName: '',
-            safeHaven: 'Dev mtn',
+            newUsername: '',
             newSafeHaven: '',
             toggleNameInput: false,
             changeSafeHaven: false,
@@ -28,6 +27,12 @@ export default class Profile extends Component{
         this.deleteModal = this.deleteModal.bind(this)
     }
 
+    componentDidMount(){
+        // console.log('mount profile', this.props.user)
+        updateUser(getUserInfo)
+        heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
+    }
+
     toggleName(){
         this.setState({
             toggleNameInput: true
@@ -35,15 +40,19 @@ export default class Profile extends Component{
     }
 
     addedNewName(){
+        // this.props.editUsername(this.state.newName)
+        // editUser(this.props.user);
+        editUser({username: this.state.newName, userId: this.props.user.id});
+
         this.setState({
             toggleNameInput: false,
-            name: this.state.newName,
             newName: ''
         })
     }
 
     handleChange(input){
         let target = input.target
+        console.log(target.value)
         this.setState({
             [target.name]: target.value
         })
@@ -55,9 +64,9 @@ export default class Profile extends Component{
                 changeSafeHaven: true
             })
         }else if(input === 'change'){
+            editSafeHaven({safeHaven: this.state.newSafeHaven, userId: this.props.user.id})
             this.setState({
                 changeSafeHaven: false,
-                safeHaven: this.state.newSafeHaven,
                 newSafeHaven: ''
             })
         }
@@ -75,11 +84,14 @@ export default class Profile extends Component{
         }
     }
 
-    // componentDidMount(){
-    //     socket.emit('save socket_id', {socketID: socket.id})
-    // }
+    componentDidMount(){
+        socket.emit('save socket_id', {socketID: socket.id})
+    }
 
     render(){
+        let {user} = this.props;
+        console.log('profile page user:', user)
+
         return(
             <div className="ProfileContainer">
 
@@ -90,7 +102,7 @@ export default class Profile extends Component{
                         !this.state.toggleNameInput
                         ?
                         <div className='nameContainer'>
-                            <div className="name">NAME: {this.state.name}</div>
+                            <div className="name">NAME: {this.props.user.username}</div>
                             <img className="editIcon" onClick={this.toggleName} src={editIcon} alt="edit"/>
                         </div>
                         
@@ -115,7 +127,7 @@ export default class Profile extends Component{
                     !this.state.changeSafeHaven
                     ?
                     <div className="safehavenContainer">
-                        <p className="safeHaven"> SAFEHAVEN: {this.state.safeHaven}</p>
+                        <p className="safeHaven"> SAFEHAVEN: {this.props.user.safe_haven}</p>
                         <img onClick={()=>{this.changeSafeHavenBtn('add')}} className="editIcon" src={editIcon} alt="edit"/>
                     </div>
                     :
@@ -150,3 +162,19 @@ export default class Profile extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    // let {user} = state;
+    // return {user}
+    return state;
+}
+
+let outputActions = {
+    editUser,
+    getUserInfo,
+    getFriendsList,
+    getGroups,
+    getActiveLocations
+}
+
+export default connect(mapStateToProps, outputActions)(Profile);

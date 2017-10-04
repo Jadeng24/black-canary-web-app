@@ -38,7 +38,12 @@ const socket = io('http://localhost:3069');
     }
 
     export function editUser(user){ //on profile page, update username or safe haven and send the whole user object
+        console.log('socket controller user:', user)
         socket.emit('update user info', user)
+    }
+
+    export function editSafeHaven(user){
+        socket.emit('update safe haven', user)
     }
 
     export function deleteUser(userId){ //on profile page, delete user and send the user id to server

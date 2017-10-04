@@ -124,7 +124,9 @@ table {
     width: 100%; }
     #Home .bell .bellIcon {
       margin: 20px;
-      position: relative; }
+      position: relative;
+      cursor: pointer;
+      z-index: 7; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -144,12 +146,14 @@ table {
   display: flex;
   flex-wrap: wrap;
   position: fixed;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: #111;
-  z-index: 20;
+  z-index: 50;
   color: #efefef;
   font-family: "ABeeZee", sans-serif; }
   #login .loginWrapper {
@@ -159,23 +163,32 @@ table {
     flex-wrap: wrap; }
     #login .loginWrapper .imgWrapper {
       width: 100vw;
-      position: relative; }
-      #login .loginWrapper .imgWrapper #spotlight1 {
+      display: flex;
+      justify-content: center;
+      height: 320px; }
+    #login .loginWrapper .innerWrapper {
+      width: 320px;
+      position: relative;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #login .loginWrapper .innerWrapper #spotlight1 {
         background-color: rgba(239, 239, 239, 0.3);
         height: 320px;
         width: 320px;
         border-radius: 50%;
         position: absolute;
-        top: none;
-        left: none; }
-      #login .loginWrapper .imgWrapper #spotlight2 {
+        top: 0;
+        left: 0; }
+      #login .loginWrapper .innerWrapper #spotlight2 {
         background-color: rgba(254, 243, 110, 0.3);
         height: 320px;
         width: 320px;
         border-radius: 50%;
         position: absolute;
-        top: none;
-        left: none; }
+        top: 0;
+        left: 0; }
     #login .loginWrapper .imgWrapper,
     #login .loginWrapper .infoWrapper {
       display: flex;
@@ -195,7 +208,8 @@ table {
         color: #FEF36E;
         letter-spacing: 0.2em;
         font-family: "ABeeZee", sans-serif;
-        font-size: 90%; }
+        font-size: 90%;
+        z-index: 55; }
         #login .loginWrapper .infoWrapper button:focus {
           outline: none; }
         #login .loginWrapper .infoWrapper button:hover {
@@ -547,7 +561,8 @@ table {
         letter-spacing: .2em; }
       .ProfileContainer .Profile .safehavenContainer .editIcon {
         width: 7%;
-        margin-left: 10px; }
+        margin-left: 10px;
+        cursor: pointer; }
         @media (min-width: 160px) {
           .ProfileContainer .Profile .safehavenContainer .editIcon {
             width: 1.5em; } }
@@ -581,7 +596,8 @@ table {
       justify-content: space-around;
       align-items: center;
       margin-top: 60px;
-      text-decoration: none; }
+      text-decoration: none;
+      cursor: pointer; }
       .ProfileContainer .Profile .navigationBtns .logOut {
         font-size: 1rem;
         color: #efefef;
@@ -612,6 +628,7 @@ table {
         color: #efefef;
         font-size: 1rem;
         height: 40px !important;
+        cursor: pointer;
         text-decoration: none;
         text-transform: uppercase;
         text-align: center;
@@ -633,11 +650,12 @@ table {
       border-style: solid;
       height: 70%;
       position: absolute;
-      margin-top: -150px;
+      margin-top: -170px;
       animation: slideInLeft 1s; }
       .ProfileContainer .Profile .deleteModal .close {
         width: 13px;
-        margin: 10px; }
+        margin: 10px;
+        cursor: pointer; }
       .ProfileContainer .Profile .deleteModal .head {
         letter-spacing: 0.2em;
         width: 97%;
@@ -649,29 +667,39 @@ table {
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        margin-top: 40px; }
+        margin-top: 40px;
+        cursor: pointer; }
         .ProfileContainer .Profile .deleteModal .deleteBtns .no {
           width: 100%;
           height: 80px;
-          background-color: #d13030;
+          background-color: #FEF36E;
           font-size: 12px;
           border: none;
           letter-spacing: 0.2em;
           font-family: "ABeeZee", sans-serif;
-          color: #efefef;
+          color: #111;
           margin-top: 20px; }
+        .ProfileContainer .Profile .deleteModal .deleteBtns .no:hover {
+          background-color: #111;
+          color: #efefef; }
         .ProfileContainer .Profile .deleteModal .deleteBtns .yes {
           width: 100%;
           border-radius: none;
           height: 70px;
-          background-color: #FEF36E;
+          background-color: #d13030;
           font-size: 12px;
           border: none;
           letter-spacing: 0.2em;
           font-family: "ABeeZee", sans-serif;
           display: flex;
           justify-content: center;
-          align-items: center; }
+          align-items: center;
+          margin-top: 20px;
+          color: #efefef;
+          text-decoration: none; }
+        .ProfileContainer .Profile .deleteModal .deleteBtns .yes:hover {
+          background: #111;
+          color: #FEF36E; }
 
 @keyframes slideInLeft {
   0% {
@@ -781,10 +809,12 @@ table {
   justify-content: center;
   align-items: flex-start;
   position: absolute;
-  background-color: #111;
-  opacity: .86;
+  background-color: rgba(17, 17, 17, 0.93);
   z-index: 99;
-  animation: slideIn 1s; }
+  right: 100vw;
+  opacity: 0; }
+  .Menu a {
+    text-decoration: none; }
   .Menu .navigateContainer {
     width: 80%;
     height: 80%;
@@ -794,62 +824,57 @@ table {
     align-items: center;
     position: absolute; }
     .Menu .navigateContainer .exit {
-      width: 100%; }
+      width: 100%;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 80px;
+      cursor: pointer; }
       .Menu .navigateContainer .exit .x {
         width: 25px;
-        height: 25px; }
+        height: 25px;
+        transform: scale(0.2);
+        opacity: 0;
+        cursor: pointer; }
+    .Menu .navigateContainer .menuContainer {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(90deg); }
+    .Menu .navigateContainer .buttn {
+      width: 120px;
+      height: 120px;
+      border-radius: 120px;
+      background-color: #FEF36E;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute; }
+      .Menu .navigateContainer .buttn:hover {
+        background-color: #3a3a3a;
+        color: #FEF36E; }
     .Menu .navigateContainer .home {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .home:hover {
-      background-color: #FEF36E;
-      color: #111; }
-    .Menu .navigateContainer .profileAndSituationsContainer {
-      width: 100%;
-      display: flex;
-      justify-content: space-around; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .profile:hover {
-        background-color: #FEF36E;
-        color: #111; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations {
-        width: 120px;
-        height: 120px;
-        border-radius: 120px;
-        background-color: #FEF36E;
-        color: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-      .Menu .navigateContainer .profileAndSituationsContainer .situations:hover {
-        background-color: #FEF36E;
-        color: #111; }
+      opacity: 0;
+      transform: scale(0.2); }
+    .Menu .navigateContainer .profile {
+      opacity: 0;
+      transform: scale(0.2); }
+    .Menu .navigateContainer .situations {
+      opacity: 0;
+      transform: scale(0.2); }
     .Menu .navigateContainer .about {
-      width: 120px;
-      height: 120px;
-      border-radius: 120px;
-      background-color: #FEF36E;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-    .Menu .navigateContainer .about:hover {
-      background-color: #FEF36E;
-      color: #111; }
+      opacity: 0;
+      transform: scale(0.2); }
+    .Menu .navigateContainer .logout {
+      opacity: 0;
+      transform: scale(0.2); }
+      .Menu .navigateContainer .logout:hover {
+        color: #efefef;
+        background-color: #d13030; }
 
 @keyframes slideIn {
   0% {
@@ -1148,9 +1173,19 @@ table {
   .App .menu {
     width: 30px;
     height: 30px;
-    position: absolute;
+    position: fixed;
     margin: 15px;
-    z-index: 1234412123123123123123123123; }
+    z-index: 7;
+    cursor: pointer; }
+  .App .hamburger {
+    position: absolute;
+    background-color: #efefef;
+    width: 30px;
+    height: 4px; }
+  .App .line2 {
+    top: calc(13px); }
+  .App .line3 {
+    bottom: 0; }
 
 .Alert {
   width: 100%;

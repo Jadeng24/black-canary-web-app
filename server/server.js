@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
-                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
+                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile.picture, profile.identities[0].user_id])
                 .then(user => {
                     return done(null, user[0])
                 })
@@ -124,7 +124,7 @@ io.on('connection', socket => {
 
 // heartbeat updates the connected user every second
 if(currentUser.id) {
-    setInterval(heartbeat, 10000);
+    setInterval(heartbeat, 500);
     function heartbeat(){
         //app.get all info from db to send in heartbeat
         app.get('db').get_user_info([currentUser.id])
@@ -132,7 +132,7 @@ if(currentUser.id) {
                 // console.log('get user info', user)
                 userInfo = user[0];
             });
-            
+
         app.get('db').get_groups([currentUser.id])
             .then(data => {
                 let groupsObj = {};
@@ -197,9 +197,17 @@ if(currentUser.id) {
 
     socket.on('update user info', user => {
         //put the user info by user id to (users table) in db
+        console.log('server socket.on user,', user)
         app.get('db').update_username([user.username, user.userId])
             .then(user=> {
-                socket.emit('update user', {user})
+                socket.emit('update user', user)
+            })
+    })
+
+    socket.on('update safe haven', data=> {
+        app.get('db').update_safe_haven([data.userId, data.safeHaven])
+            .then(user=> {
+                socket.emit('update user', user)
             })
     })
 

@@ -1,6 +1,6 @@
 const initialState = {
     user: {
-        username: '',
+        username: 'abby',
         firstName: '',
         lastName: '',
         email: '',
@@ -9,11 +9,12 @@ const initialState = {
         socket_id: '',
         id: '',
         location: '',
-        safeHaven: ''
+        safe_haven: '123 street'
     },
     friends: [], //array of friend objects 
     groups: [], //array of group objects {name, id, userId, friendIds}
-    activeLocations: [] //array of active locations with messages and fromUser
+    activeLocations: [], //array of active locations with messages and fromUser
+    userLoggedIn: false
 };
 
 
@@ -87,6 +88,7 @@ export default function reducer(state = initialState, action){
         // console.log('reducer get active locations', action.payload)
             return Object.assign({}, state, {activeLocations: action.payload})
             break;
+
         default:
             break;
     }

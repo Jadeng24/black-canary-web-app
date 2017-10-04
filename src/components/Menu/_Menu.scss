@@ -8,10 +8,15 @@
         justify-content: center;
         align-items: flex-start;
         position: absolute;
-        background-color: $black;
-        opacity: .86;
+        background-color: $black-translucent;
         z-index: 99;
-        animation: slideIn 1s;
+
+        right: 100vw;
+        opacity: 0;
+        // animation: slideIn 1s;
+        a {
+          text-decoration: none;
+        }
 
         .navigateContainer{
             width: 80%;
@@ -24,92 +29,96 @@
 
             .exit{
                 width: 100%;
+                position: absolute;
                 // height: 100%;
+                width: 25px;
+                height: 25px;
+                top: 80px;
+                cursor: pointer;
+
 
                 .x{
                     width: 25px;
                     height: 25px;
+                    transform: scale(0.2);
+                    opacity: 0;
+                    cursor: pointer;
                 }
             }
-                
+
+            .menuContainer{
+              width: 120px;
+              height: 120px;
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              transform: rotate(90deg);
+            }
+
+            .buttn {
+              width: 120px;
+              height: 120px;
+              border-radius: 120px;
+              background-color: $yellow;
+              color: $black;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              &:hover {
+                background-color: $grey;
+                color: $yellow;
+              }
+              position: absolute;
+            }
+
             .home{
-                width: 120px;
-                height: 120px;
-                border-radius: 120px;
-                background-color: $yellow;
-                color: $black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .home:hover{
-                    background-color: $yellow;
-                    color: $black;
-            }
-            
-
-
-            .profileAndSituationsContainer{
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-
-                .profile{
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 120px;
-                    background-color: $yellow;
-                    color: $black;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .profile:hover{
-                    background-color: $yellow;
-                    color: $black;
+              // top: -100px;
+              opacity: 0;
+              transform: scale(0.2);
             }
 
-                .situations{
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 120px;
-                    background-color: $yellow;
-                    color: $black;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .situations:hover{
-                    background-color: $yellow;
-                    color: $black;
-            }
+            .profile{
+              // left: -100px;
+              // top: -5px;
+              opacity: 0;
+              transform: scale(0.2);
             }
 
+            .situations{
+              // right: -100px;
+              // top: -5px;
+              opacity: 0;
+              transform: scale(0.2);
+
+
+            }
             .about{
-                width: 120px;
-                height: 120px;
-                border-radius: 120px;
-                background-color: $yellow;
-                color: $black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+              // bottom: -130px;
+              // right: -70px;
+              opacity: 0;
+              transform: scale(0.2);
             }
-            .about:hover{
-                background-color: $yellow;
-                color: $black;
+            .logout{
+              // bottom: -130px;
+              // left: -70px;
+              opacity: 0;
+              transform: scale(0.2);
+              &:hover {
+                color: $white;
+                background-color: $red;
+              }
             }
+
         }
 
         @keyframes slideIn{
-            0% { 
-                transform: translate3d(-100%, 0, 0); 
-                visibility: visible; 
-            } 
-            100% { 
-                transform: translate3d(0, 0, 0); 
-            } 
+            0% {
+                transform: translate3d(-100%, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
         }
     }
