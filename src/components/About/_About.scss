@@ -1,0 +1,202 @@
+@import './../../sass/variables';
+
+#About {
+    width: 100vw;
+    min-height:100vh;
+    color: $white;
+    text: {
+        // transform: uppercase;
+    }
+    letter-spacing: 0.2em;
+    line-height: 1.3em;
+    font: {
+        family: $sans;
+        size: 1.3rem;
+    }
+    header {
+        margin: 20px 0;
+        .imgWrapper {
+            margin-bottom: 20px;
+            width:100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 320px;
+        }
+        #spotlight1 {
+            background-color: $white-translucent;
+            height: 320px;
+            width: 320px;
+            border-radius: 50%;
+            position: absolute;
+            top: none;
+            left: none;
+        }
+
+        #spotlight2 {
+            background-color: $yellow-translucent;
+            height: 320px;
+            width: 320px;
+            border-radius: 50%;
+            position: absolute;
+            top: none;
+            left: none;
+        }
+
+        img {
+            width: 300px;
+            z-index: 99;
+        }
+        width: 100vw;
+        font: {
+            family: $sans;
+            size: 1.7rem;
+        } 
+
+        h3 {
+            width: 100vw;
+            text: {
+                align: center;
+            }
+        }
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    #about,
+    #levels,
+    #tech, 
+    #creators {
+        width: 320px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: $white-translucent;
+        border-radius: 10px;
+        
+        margin: 20px 0px;
+        h1 {
+            font-size: 1.9rem;
+            margin: 10px 0;
+            cursor: pointer;
+            width: 320px;
+            text: {
+                align: center;
+                transform: uppercase;
+            }
+        }
+        .withinSection {
+            width: 320px;
+            // height: 300px;
+            overflow: scroll;
+            // height: 0;
+            color: $black;
+        }
+        p, .ulWrapper {
+            text-align: center;
+            width: 320px;
+            padding: 5px 10px;
+            // background-color: $white-translucent;
+            margin: 5px 0;
+            // border-radius: 10px;
+            em {
+                text-transform: uppercase;
+                color: $yellow;
+            }
+        }
+
+        li {
+            width: 100%;
+            color: $black;
+            // background-color: $yellow-translucent;
+            &:hover {
+                color: $yellow;
+            }
+            margin-bottom: 5px;
+        }
+
+        img {
+            width: 250px;
+            height: 537px;
+            border-radius: 40px;
+            margin-top: 20px;
+        }
+        // padding: 20px 5px;
+
+        .creatorImgWrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            // border: 1px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+             
+            img {
+                height: 200px;
+                width: 200px;
+                position: absolute;
+                margin-top: 0;
+                border: 2px solid $yellow;
+            }
+
+            .imgSerious {
+                &:hover {
+                    opacity: 0;
+                }
+            }
+        }
+        
+    }
+    footer {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 600px) {
+    #About {
+        #about,
+        #levels,
+        #tech, 
+        #creators  {
+            width: 550px;
+            .withinSection {
+                width: 550px;
+            }
+            h1 {
+                width: 550px;
+            }
+            p, .ulWrapper {
+                width: 550px;
+                padding: 40px 30px;
+            }
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    #About {
+        #about,
+        #levels,
+        #tech, 
+        #creators  {
+            width: 700px;
+            .withinSection {
+                width: 700px;
+            }
+            h1 {
+                width: 700px;
+            }
+            p, .ulWrapper {
+                width: 700px;
+                padding: 40px 30px;
+            }
+        }
+    }
+}
