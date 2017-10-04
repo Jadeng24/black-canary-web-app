@@ -1,11 +1,11 @@
 DELETE FROM active_locations 
-WHERE user_id = $1;
+WHERE active_locations.user_id = $1;
 
 DELETE FROM groups
-WHERE user_id = $1;
+WHERE groups.user_id = $1;
 
 DELETE FROM friends
-WHERE user_id = $1;
+WHERE friends.user_id = $1;
 
 DELETE FROM users 
-WHERE user_id = $1;
+WHERE users.id = $1;

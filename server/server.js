@@ -52,7 +52,7 @@ passport.use(new Auth0Strategy({
         db.find_user([profile.identities[0].user_id])
         .then( user => {
             if(user[0]) {
-                console.log('user found',user)
+                // console.log('user found',user)
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
@@ -79,7 +79,7 @@ passport.use(new Auth0Strategy({
   }));
 
   passport.serializeUser((user, done)=> {
-      console.log('serialize', user)
+    //   console.log('serialize', user)
       currentUser = user;
       done(null, user)
   });
@@ -112,11 +112,12 @@ passport.use(new Auth0Strategy({
   //log out
   app.get('/auth/logout', (req, res)=> {
       req.logOut();
-      res.redirect(302, '/#/')
+      res.redirect(302, 'http://localhost:3070/#/')
   });
 
 
-//================ SOCKETS ==============//
+//========================= SOCKETS ===================================//
+
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
     let userInfo, groups, friends, activeLocations;
@@ -178,6 +179,7 @@ if(currentUser.id) {
     })
 
     socket.on('delete user', userId => {
+        console.log(userId)
         app.get('db').delete_user([userId])
     })
 
@@ -188,6 +190,14 @@ if(currentUser.id) {
     socket.on('delete group', groupId=> {
         app.get('db').delete_group([groupId])
     })
+
+    // test queries
+    // socket.on('see groups', ()=> {
+    //     app.get('db').test()
+    //     .then(data=> {
+    //         console.log('groups data line 197', data)
+    //     })
+    // })
 
     socket.on('disconnect', ()=> {
         console.log('A user has disconnected, socket ID: ', socket.id);

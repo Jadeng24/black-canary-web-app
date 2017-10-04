@@ -25,6 +25,9 @@ class Home extends Component{
         })
 
         heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations);
+
+        //test socket
+        // socket.emit('see groups')
     }
 
 
