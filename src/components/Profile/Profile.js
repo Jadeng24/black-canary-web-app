@@ -96,7 +96,7 @@ class Profile extends Component{
             <div className="ProfileContainer">
 
                 <div className="Profile">
-                
+
                  <div className='nameContainer'>
                     {
                         !this.state.toggleNameInput
@@ -105,7 +105,7 @@ class Profile extends Component{
                             <div className="name">NAME: {this.props.user.username}</div>
                             <img className="editIcon" onClick={this.toggleName} src={editIcon} alt="edit"/>
                         </div>
-                        
+
                         :
                         <div className="nameInputContainer">
                             <input className="nameInput" maxlength="5" name="newName" type="text" onChange={(e)=> {this.handleChange(e, 'name')}} value={this.state.newName}/>
@@ -114,15 +114,15 @@ class Profile extends Component{
                     }
                 </div>
 
-    
+
                     <div className="imgContainer">
                         <div className="imgPlaceholder"></div>
                     </div>
-                
 
 
 
-                
+
+
                 {
                     !this.state.changeSafeHaven
                     ?
@@ -140,7 +140,7 @@ class Profile extends Component{
 
                 <div className="navigationBtns">
                     <Link className="contacts" to="/contacts">CONTACTS</Link>
-                    <Link className="contacts" to="/Home">GROUPS</Link>
+                    <Link className="contacts" to="/groups">GROUPS</Link>
                     <a href='http://localhost:3069/auth/logout'> <p className="logOut">LOGOUT</p> </a>
                     {
                         !this.state.delete

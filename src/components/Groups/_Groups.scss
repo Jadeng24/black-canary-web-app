@@ -1,0 +1,56 @@
+.Groups {
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  font-family: $sans;
+
+  .header{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: $white;
+    font-size: 1.6em;
+  }
+
+  .listOfGroups{
+    display: flex;
+    justify-content: space-around;
+    justify-content: flex-start;
+    margin-left: 30px;
+    // margin-top: 100px;
+    width: 100%;
+    align-items: flex-start;
+    position: relative;
+
+    .nameContainer{
+      display: flex;
+      flex-direction: column;
+      margin-top: 90px;
+
+      .groupName{
+        color: white;
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  .seeInfo{
+    color: $yellow;
+    background-color: $grey;
+    width: 90px;
+    margin-top: 1em;
+    border: none;
+    height: 30px;
+    font-size: 1em;
+  }
+
+  .modal{
+    width: 80%;
+    height: 80%;
+    background-color: pink;
+    position: absolute;
+  }
+}

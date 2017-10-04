@@ -114,6 +114,49 @@ table {
       margin-top: 120px;
       margin-left: -150px; }
 
+.Groups {
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  font-family: "ABeeZee", sans-serif; }
+  .Groups .header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #efefef;
+    font-size: 1.6em; }
+  .Groups .listOfGroups {
+    display: flex;
+    justify-content: space-around;
+    justify-content: flex-start;
+    margin-left: 30px;
+    width: 100%;
+    align-items: flex-start;
+    position: relative; }
+    .Groups .listOfGroups .nameContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 90px; }
+      .Groups .listOfGroups .nameContainer .groupName {
+        color: white;
+        font-size: 1.3em; }
+  .Groups .seeInfo {
+    color: #FEF36E;
+    background-color: #3a3a3a;
+    width: 90px;
+    margin-top: 1em;
+    border: none;
+    height: 30px;
+    font-size: 1em; }
+  .Groups .modal {
+    width: 80%;
+    height: 80%;
+    background-color: pink;
+    position: absolute; }
+
 #Home {
   background-color: #111;
   height: 100vh;
