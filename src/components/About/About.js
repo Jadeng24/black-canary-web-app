@@ -111,13 +111,13 @@ export default class About extends Component{
                 <section id="about">
                     <h1 onClick={()=> this.toggleSection('about')}>About</h1>
                     <div className="withinSection">
-                        <p>Ever been traveling, and had to text your mother, your best friend, your best 
+                        <p className="paragraphs">Ever been traveling, and had to text your mother, your best friend, your best 
                         friend's roommate, and...everyone and their dog...that you boarded the plane 
                         safely, and landed safely?</p>
-                        <p>Or gone for a night out and needed an easy way to 
+                        <p className="paragraphs">Or gone for a night out and needed an easy way to 
                             track the same three friends you always go out with?</p>
-                        <p>Or been walking home late at night, and felt unsafe?</p>
-                        <p>Black Canary is a web application designed designed to allow the user to 
+                        <p className="paragraphs">Or been walking home late at night, and felt unsafe?</p>
+                        <p className="paragraphs">Black Canary is a web application designed designed to allow the user to 
                             share their location with specifically chosen contacts or groups of contacts.</p> 
                         <div className="ulWrapper">
                             <ul>
@@ -130,7 +130,7 @@ export default class About extends Component{
                             </ul>
                             <img src={placeholder}/>
                         </div>
-                        <p>Your chosen recipients will be alerted as to your situation and will be updated 
+                        <p className="paragraphs">Your chosen recipients will be alerted as to your situation and will be updated 
                             in real-time as to your location. If you receive an alert from one of 
                             your contacts, you can view their location & situation on the home screen.
                         </p>
@@ -140,12 +140,12 @@ export default class About extends Component{
                 <section id="levels">
                     <h1 onClick={()=> this.toggleSection('levels')}>Situations</h1>
                     <div className="withinSection">
-                        <p>
+                        <p className="paragraphs">
                             Black Canary offers three levels of situations, for a variety 
                             of use cases.
                         </p>
 
-                        <p>
+                        <p className="paragraphs">
                             <em>Level One:</em> situations such as being out with friends, going for a run, 
                             traveling, going on a date, even a custom situation you can adjust to 
                             your needs. With Level One situations, colored grey on the situations 
@@ -153,7 +153,7 @@ export default class About extends Component{
                             time active.
                         </p>
 
-                        <p>
+                        <p className="paragraphs">
                             <em>Level Two:</em> for situations where you are in an uncomfortable 
                             situation or walking through a bad area, and you want to 
                             discretely alert certain people to your location and situation. In Level 
@@ -162,7 +162,7 @@ export default class About extends Component{
                             create on your profile page.
                         </p>
 
-                        <p>
+                        <p className="paragraphs">
                             <em>Level Three:</em> the emergency situation. Please note, this is NOT intended to 
                             replace calling 911! Rather, it is a discreet way to let your contacts 
                             know that you need them to contact you or come get you immediately -- 
@@ -198,12 +198,12 @@ export default class About extends Component{
                 <section id="creators">
                     <h1 onClick={()=> this.toggleSection('creators')}>Creators</h1>
                     <div className="withinSection">
-                        <p>
-                            <em>Emily Keator</em> 
+                        <div className="ulWrapper">
                             <div className="creatorImgWrapper">
                                 <img src={ekSilly}/>                            
                                 <img className="imgSerious" src={ek}/>
                             </div>
+                            <em>Emily Keator</em> 
                             <p>While creating the Black Canary web app, Emily was in 
                                 charge of the geolocation/Google Maps services, and 
                                 developed the design for the web app. She created and styled 
@@ -212,13 +212,13 @@ export default class About extends Component{
                                 javascript code and logic.
                                 Emily is a first-degree backbelt and is mildly obsessed with 
                                 Parmesan cheese (Andi often asks is she would like some pasta with her cheese).</p>
-                        </p>
-                        <p>
-                            <em>Andi Platter</em> 
+                        </div>
+                        <div className="ulWrapper"> 
                             <div className="creatorImgWrapper">
                                 <img src={apSilly}/>                            
                                 <img className="imgSerious" src={ap}/>
                             </div>
+                            <em>Andi Platter</em>
                             <p>Within the Black Canary team, Andi worked on both front
                                 and back-end. She helped create several React components, set up 
                                 the database, and create endpoints. Andi spearheaded the 
@@ -227,13 +227,13 @@ export default class About extends Component{
                                 Andi grew up in Idaho and California, and loves dogs, providing 
                                 daily dog facts for all of DevMountain.
                             </p>
-                        </p>
-                        <p>
-                            <em>Janise Suski</em>
+                        </div>
+                        <div className="ulWrapper">
                             <div className="creatorImgWrapper">
                                 <img src={jsSilly}/>                            
                                 <img className="imgSerious" src={js}/>
                             </div>
+                            <em>Janise Suski</em>
                             <p>Janise worked on the Black Canary team, primarily with the back-end. 
                                 She worked on setting up the server and Redux, and helped create the 
                                 database in PostgresSQL. While most of her work was on the server-side, 
@@ -241,13 +241,14 @@ export default class About extends Component{
                                 front-end, including collaborating on the design on endpoints.
                                 Janise served in the Peace Corps in Micronesia for 27 months 
                                 and EATS KIT-KATS LIKE A MONSTER. </p>
-                        </p>
-                        <p>
-                            <em>Abigail Thelin</em>
+                        </div>
+                        <div className="ulWrapper">
+                            
                             <div className="creatorImgWrapper">
                                 <img src={atSilly}/>                            
                                 <img className="imgSerious" src={at}/>
                             </div> 
+                            <em>Abigail Thelin</em>
                             <p>Abigail acted as a front-end developer for the Black Canary web app,
                                 creating and styling multiple components. She was particularly responsible for 
                                 implementing the design and creating the functionality for the 
@@ -255,11 +256,15 @@ export default class About extends Component{
                                 on the development of the message alert system. 
                                 Abigail grew up in Alpine, UT and loves to knit while watching the Lord of the Rings.
                             </p>
-                        </p>
+                        </div>
                     </div>
                 </section>
                 <footer>
-                    Contact the Creators
+                    <a href="emily linked in" target="_blank"><img src={ek} className="creatorImg"/></a>
+                    <a href="andi linked in" target="_blank"><img src={ap} className="creatorImg"/></a>
+                    <a href="janise linked in" target="_blank"><img src={js} className="creatorImg"/></a>
+                    <a href="abby linked in" target="_blank"><img src={at} className="creatorImg"/></a>
+                    <span>We do not own the name "Black Canary". This was created as a group project as DevMountain Student Developers.</span>
                 </footer>
             </div>
         )
