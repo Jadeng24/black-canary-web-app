@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
                 return done(null, user[0])
             } else {
             //if they're logging in with google, profilePic should be profile.picture
-                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile['_json']['picture_large'], profile.identities[0].user_id])
+                db.create_user([profile.nickname, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile.picture, profile.identities[0].user_id])
                 .then(user => {
                     return done(null, user[0])
                 })
