@@ -13,6 +13,9 @@ class Login extends Component {
     // let top = $('#spotlight1').css('top');
     // let left = $('#spotlight1').css('left');
     // console.log($('#spotlight2').css('top'), $('#spotlight2').css('left'));
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    TweenMax.to($('#login'), 0, {'height': window.innerHeight, 'width': window.innerWidth, delay: -1})
     TweenMax.to($('#spotlight1'), 0, {'top': '-100vh', 'left': '100vw', delay: -1})
     TweenMax.to($('#spotlight2'), 0, {'top': '100vh', 'left': '-50vw', delay: -1})
     TweenMax.to($('#spotlight1'), 1.5, {'top': '50vh', 'left': '10vw', delay: 1, ease: TweenMax.Power4.easeOut})

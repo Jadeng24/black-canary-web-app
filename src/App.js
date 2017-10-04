@@ -7,7 +7,7 @@ import router from './router'
 
 
 class App extends Component {
-  
+
   constructor(){
     super()
     this.state={
@@ -37,9 +37,9 @@ class App extends Component {
           ?
             <img className="menu" src={hamburger} alt="menu" onClick={()=>this.toggleMenu('on')}/>
           :
-          <Menu toggleMenu={this.toggleMenu}/>
+          <Menu toggleMenu={this.toggleMenu} amIOpen={this.state.menuModal}/>
         }
-          
+
        {router}
      </div>
     );
