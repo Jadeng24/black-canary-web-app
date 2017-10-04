@@ -37,9 +37,9 @@ class Home extends Component{
 
         return(
             <div id="Home">
-                <Link to='/alerts' className="bell">
-                    <img className="bellIcon" src={bell} alt="alert"/>
-                </Link>
+                <div className="bell">
+                    <Link to='/alerts'><img className="bellIcon" src={bell} alt="alert"/></Link>
+                </div>
 
                 <Login />
                 <div className='navContainer'>
