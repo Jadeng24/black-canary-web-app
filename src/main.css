@@ -224,8 +224,6 @@ table {
       color: #FEF36E; }
 
 .mapContainer {
-  width: 100vw;
-  height: 60vh;
   display: flex;
   justify-content: center; }
 
@@ -896,7 +894,7 @@ table {
   justify-content: center;
   align-items: center; }
   #About header {
-    margin: 20px 0;
+    margin: 50px 0 20px 0;
     width: 100vw;
     font-family: "ABeeZee", sans-serif;
     font-size: 1.7rem; }
@@ -957,7 +955,6 @@ table {
     #About #tech .withinSection,
     #About #creators .withinSection {
       width: 320px;
-      overflow: scroll;
       color: #111; }
     #About #about p, #About #about .ulWrapper,
     #About #levels p,
@@ -968,7 +965,6 @@ table {
     #About #creators .ulWrapper {
       text-align: center;
       width: 320px;
-      padding: 5px 10px;
       margin: 5px 0; }
       #About #about p em, #About #about .ulWrapper em,
       #About #levels p em,
@@ -979,12 +975,26 @@ table {
       #About #creators .ulWrapper em {
         text-transform: uppercase;
         color: #FEF36E; }
+      #About #about p p, #About #about .ulWrapper p,
+      #About #levels p p,
+      #About #levels .ulWrapper p,
+      #About #tech p p,
+      #About #tech .ulWrapper p,
+      #About #creators p p,
+      #About #creators .ulWrapper p {
+        padding: 0 20px; }
+    #About #about .paragraphs,
+    #About #levels .paragraphs,
+    #About #tech .paragraphs,
+    #About #creators .paragraphs {
+      padding: 10px 20px; }
     #About #about li,
     #About #levels li,
     #About #tech li,
     #About #creators li {
       width: 100%;
       color: #111;
+      padding: 0 20px;
       margin-bottom: 5px; }
       #About #about li:hover,
       #About #levels li:hover,
@@ -1009,7 +1019,7 @@ table {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px; }
+      margin: 20px 0; }
       #About #about .creatorImgWrapper img,
       #About #levels .creatorImgWrapper img,
       #About #tech .creatorImgWrapper img,
@@ -1025,7 +1035,26 @@ table {
       #About #creators .creatorImgWrapper .imgSerious:hover {
         opacity: 0; }
   #About footer {
-    width: 100vw; }
+    width: 100vw;
+    margin: 10px 0 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; }
+    #About footer a {
+      width: 75px;
+      height: 75px; }
+    #About footer .creatorImg {
+      height: 75px;
+      width: 75px;
+      margin-top: 0;
+      border-radius: 40px;
+      border: 2px solid #FEF36E; }
+    #About footer span {
+      width: 100vw;
+      font-size: 0.5rem;
+      text-align: center;
+      margin-top: 20px; }
 
 @media (min-width: 600px) {
   #About #about,
@@ -1050,8 +1079,7 @@ table {
     #About #tech .ulWrapper,
     #About #creators p,
     #About #creators .ulWrapper {
-      width: 550px;
-      padding: 40px 30px; } }
+      width: 550px; } }
 
 @media (min-width: 900px) {
   #About #about,
@@ -1076,8 +1104,7 @@ table {
     #About #tech .ulWrapper,
     #About #creators p,
     #About #creators .ulWrapper {
-      width: 700px;
-      padding: 40px 30px; } }
+      width: 700px; } }
 
 .FriendModal {
   letter-spacing: 1;
@@ -1188,15 +1215,15 @@ table {
     bottom: 0; }
 
 .Alert {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
   background-color: #111;
   text-transform: uppercase;
   font-family: "ABeeZee", sans-serif;
-  letter-spacing: .2em; }
+  letter-spacing: .2em;
+  margin: 30px 0; }
   .Alert .header {
-    width: 100%;
-    height: 13%;
+    width: 100vw;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1207,25 +1234,54 @@ table {
   width: 100%;
   height: auto;
   text-transform: uppercase;
-  letter-spacing: .3em; }
+  letter-spacing: .3em;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap; }
   .alertBubble .container {
-    width: 100%;
-    height: 120px;
-    background-color: red;
+    width: 320px;
+    border-radius: 10px;
     margin-top: 15px;
     display: flex;
     align-content: flex-start;
     flex-direction: column;
     justify-content: space-around; }
+    .alertBubble .container:hover {
+      background-color: #d13030; }
     .alertBubble .container .from {
-      margin-left: 20px;
-      color: #efefef; }
+      padding: 20px;
+      width: 100%;
+      color: #efefef;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px; }
+      .alertBubble .container .from em {
+        font-size: 3rem;
+        cursor: pointer;
+        margin-right: 10px; }
+        .alertBubble .container .from em:hover {
+          color: #111; }
     .alertBubble .container .messageContainer {
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      flex-wrap: wrap; }
       .alertBubble .container .messageContainer .message {
-        text-align: center; }
+        text-align: center;
+        width: 100%; }
+    .alertBubble .container .mapHere {
+      display: block;
+      width: 310px;
+      height: 400px; }
+
+@media (min-width: 600px) {
+  .alertBubble .container {
+    width: 600px; } }
+
+@media (min-width: 900px) {
+  .alertBubble .container {
+    width: 800px; } }
 
 body {
   background-color: #111; }
