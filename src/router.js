@@ -9,6 +9,7 @@ import LevelOne from './components/LevelOne/LevelOne'
 import LevelTwo from './components/LevelTwo/LevelTwo'
 import LevelThree from './components/LevelThree/LevelThree'
 import Contacts from './components/Contacts/Contacts'
+import About from './components/About/About'
 
 
 export default (
@@ -19,6 +20,7 @@ export default (
         <Route component={LevelOne} path='/levelOne/:id'/>
         <Route component={LevelTwo} path='/levelTwo/:id'/>
         <Route component={LevelThree} path='/levelThree/:id'/>
+        <Route component={About} path='/about'/>
         <Route component={Contacts} path='/contacts'/>
     </Switch>
 )

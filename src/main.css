@@ -8,6 +8,7 @@
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 @import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Crushed");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -797,6 +798,202 @@ table {
     #Situations button:hover {
       background-color: #FEF36E;
       color: #111; }
+
+#About {
+  width: 100vw;
+  min-height: 100vh;
+  color: #efefef;
+  letter-spacing: 0.2em;
+  line-height: 1.3em;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; }
+  #About header {
+    margin: 20px 0;
+    width: 100vw;
+    font-family: "ABeeZee", sans-serif;
+    font-size: 1.7rem; }
+    #About header .imgWrapper {
+      margin-bottom: 20px;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 320px; }
+    #About header #spotlight1 {
+      background-color: rgba(239, 239, 239, 0.3);
+      height: 320px;
+      width: 320px;
+      border-radius: 50%;
+      position: absolute;
+      top: none;
+      left: none; }
+    #About header #spotlight2 {
+      background-color: rgba(254, 243, 110, 0.3);
+      height: 320px;
+      width: 320px;
+      border-radius: 50%;
+      position: absolute;
+      top: none;
+      left: none; }
+    #About header img {
+      width: 300px;
+      z-index: 99; }
+    #About header h3 {
+      width: 100vw;
+      text-align: center; }
+  #About #about,
+  #About #levels,
+  #About #tech,
+  #About #creators {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(239, 239, 239, 0.3);
+    border-radius: 10px;
+    margin: 20px 0px; }
+    #About #about h1,
+    #About #levels h1,
+    #About #tech h1,
+    #About #creators h1 {
+      font-size: 1.9rem;
+      margin: 10px 0;
+      cursor: pointer;
+      width: 320px;
+      text-align: center;
+      text-transform: uppercase; }
+    #About #about .withinSection,
+    #About #levels .withinSection,
+    #About #tech .withinSection,
+    #About #creators .withinSection {
+      width: 320px;
+      overflow: scroll;
+      color: #111; }
+    #About #about p, #About #about .ulWrapper,
+    #About #levels p,
+    #About #levels .ulWrapper,
+    #About #tech p,
+    #About #tech .ulWrapper,
+    #About #creators p,
+    #About #creators .ulWrapper {
+      text-align: center;
+      width: 320px;
+      padding: 5px 10px;
+      margin: 5px 0; }
+      #About #about p em, #About #about .ulWrapper em,
+      #About #levels p em,
+      #About #levels .ulWrapper em,
+      #About #tech p em,
+      #About #tech .ulWrapper em,
+      #About #creators p em,
+      #About #creators .ulWrapper em {
+        text-transform: uppercase;
+        color: #FEF36E; }
+    #About #about li,
+    #About #levels li,
+    #About #tech li,
+    #About #creators li {
+      width: 100%;
+      color: #111;
+      margin-bottom: 5px; }
+      #About #about li:hover,
+      #About #levels li:hover,
+      #About #tech li:hover,
+      #About #creators li:hover {
+        color: #FEF36E; }
+    #About #about img,
+    #About #levels img,
+    #About #tech img,
+    #About #creators img {
+      width: 250px;
+      height: 537px;
+      border-radius: 40px;
+      margin-top: 20px; }
+    #About #about .creatorImgWrapper,
+    #About #levels .creatorImgWrapper,
+    #About #tech .creatorImgWrapper,
+    #About #creators .creatorImgWrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px; }
+      #About #about .creatorImgWrapper img,
+      #About #levels .creatorImgWrapper img,
+      #About #tech .creatorImgWrapper img,
+      #About #creators .creatorImgWrapper img {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        margin-top: 0;
+        border: 2px solid #FEF36E; }
+      #About #about .creatorImgWrapper .imgSerious:hover,
+      #About #levels .creatorImgWrapper .imgSerious:hover,
+      #About #tech .creatorImgWrapper .imgSerious:hover,
+      #About #creators .creatorImgWrapper .imgSerious:hover {
+        opacity: 0; }
+  #About footer {
+    width: 100vw; }
+
+@media (min-width: 600px) {
+  #About #about,
+  #About #levels,
+  #About #tech,
+  #About #creators {
+    width: 550px; }
+    #About #about .withinSection,
+    #About #levels .withinSection,
+    #About #tech .withinSection,
+    #About #creators .withinSection {
+      width: 550px; }
+    #About #about h1,
+    #About #levels h1,
+    #About #tech h1,
+    #About #creators h1 {
+      width: 550px; }
+    #About #about p, #About #about .ulWrapper,
+    #About #levels p,
+    #About #levels .ulWrapper,
+    #About #tech p,
+    #About #tech .ulWrapper,
+    #About #creators p,
+    #About #creators .ulWrapper {
+      width: 550px;
+      padding: 40px 30px; } }
+
+@media (min-width: 900px) {
+  #About #about,
+  #About #levels,
+  #About #tech,
+  #About #creators {
+    width: 700px; }
+    #About #about .withinSection,
+    #About #levels .withinSection,
+    #About #tech .withinSection,
+    #About #creators .withinSection {
+      width: 700px; }
+    #About #about h1,
+    #About #levels h1,
+    #About #tech h1,
+    #About #creators h1 {
+      width: 700px; }
+    #About #about p, #About #about .ulWrapper,
+    #About #levels p,
+    #About #levels .ulWrapper,
+    #About #tech p,
+    #About #tech .ulWrapper,
+    #About #creators p,
+    #About #creators .ulWrapper {
+      width: 700px;
+      padding: 40px 30px; } }
 
 body {
   background-color: #111; }
