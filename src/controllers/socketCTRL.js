@@ -82,3 +82,13 @@ const socket = io('http://localhost:3069');
         //on groups page
         socket.emit('rename group', group)
     }
+
+    // export function createEmergencyGroup(group){
+    //     //on settings page
+    //     socket.emit('create emergency group', group)
+    // }
+
+    // export function editEmergencyGroup(group){
+    //     //on settings page
+    //     socket.emit('edit emergency group', group)
+    // }

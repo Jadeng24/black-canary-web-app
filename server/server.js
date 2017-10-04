@@ -226,6 +226,10 @@ if(currentUser.id) {
         app.get('db').delete_group([groupId])
     })
 
+    // socket.on('edit emergency group', group=> {
+    //     app.get('db').edit_emergency_group([group.user_id, group.group_name])
+    // })
+
     socket.on('friend request', data=> {
         app.get('db').request_friend([data.userId, data.friendId])
     })
