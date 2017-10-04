@@ -26,7 +26,6 @@ export default class Alert extends Component{
             ]
         }
     }
-        
 
 
 
@@ -41,3 +40,4 @@ export default class Alert extends Component{
         )
     }
 }
+

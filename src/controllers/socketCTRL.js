@@ -38,18 +38,57 @@ const socket = io('http://localhost:3069');
     }
 
     export function editUser(user){ //on profile page, update username or safe haven and send the whole user object
-        socket.emit('update user info', {username: user.username, userId:user.id})
+        socket.emit('update user info', user)
     }
 
     export function deleteUser(userId){ //on profile page, delete user and send the user id to server
-        socket.emit('delete user', {userId})
+        socket.emit('delete user', userId)
     }
 
-    export function addFriendToGroup(group){ //on contact/group page
-        //in component, add friend id to array in reducer and send the array in socket.emit
-        socket.emit('add friend to group', group)
+    export function addGroup(userId, group){
+        socket.emit('add group', {userId, group})
+    }
+
+    export function addFriendToGroup(groupId, friendId){ //on contact/group page
+        //in component, send friend id and group id in socket.emit
+        socket.emit('add friend to group', {groupId, friendId})
+    }
+
+    export function removeFriendFromGroup(groupId, friendId){ //on group page
+        socket.emit('remove friend from group', {groupId, friendId})
+    }
+
+    export function requestFriend(userId, friendId){ //on contact page
+        socket.emit('friend request', {userId, friendId})
+    }
+
+    export function confirmFriendRequest(requestId){
+        //on profile or contacts page
+        socket.emit('confirm friend request', requestId)
+    }
+
+    export function declineFriendRequest(requestId){
+        //on profile or contacts page
+        //requestId is friend.id
+        socket.emit('decline friend request', requestId)
     }
 
     export function deleteGroup(groupId){
+        //on groups page
         socket.emit('delete group', groupId)
     }
+
+    export function renameGroup(group){
+        //on groups page
+        socket.emit('rename group', group)
+    }
+
+    // export function createEmergencyGroup(group){
+    //     //on settings page
+    //     socket.emit('create emergency group', group)
+    // }
+
+    // export function editEmergencyGroup(group){
+    //     //on settings page
+    //     socket.emit('edit emergency group', group)
+    // }
