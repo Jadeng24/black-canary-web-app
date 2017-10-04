@@ -4,15 +4,15 @@ const initialState = {
         firstName: '',
         lastName: '',
         email: '',
-        profilePic: '',
+        profilepic: '',
         auth_id: '',
         socket_id: '',
         id: '',
         location: '',
         safe_haven: '123 street'
     },
-    friends: [], //array of friend objects 
-    groups: [], //array of group objects {name, id, userId, friendIds}
+    friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_id, friend_status, friend_pic, user_id}] 
+    groups: [], //array of group objects [{groupId, groupName, members:[]}]
     activeLocations: [], //array of active locations with messages and fromUser
     userLoggedIn: false
 };

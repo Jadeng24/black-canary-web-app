@@ -48,7 +48,7 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.AUTH_CALLBACK
 },  function(accessToken, refreshToken, extraParams, profile, done) {
         const db = app.get('db')
-
+    // console.log(profile)
         db.find_user([profile.identities[0].user_id])
         .then( user => {
             if(user[0]) {
@@ -177,11 +177,11 @@ if(currentUser.id) {
 }
 
     socket.on('save socket_id', data => {
-        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
         currentUser.id ?
-            app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
+        app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
-            null;
+        null;
+        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
     })
 
     socket.on('send location', data => {
