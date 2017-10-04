@@ -251,7 +251,7 @@
             }
             height: 70%;
             position: absolute;
-            margin-top: -150px;
+            margin-top: -170px;
             animation: slideInLeft 1s;
 
             .close{
@@ -273,27 +273,31 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-around;
-                // height: 90%;
                 margin-top: 40px;
                 cursor: pointer;
 
                 .no{
                     width: 100%;
                     height: 80px;
-                    background-color: $red;
+                    background-color: $yellow;
                     font-size: 12px;
                     border: none;
                     letter-spacing: 0.2em;
                     font-family: $sans;
-                    color: $white;
+                    color: $black;
                     margin-top: 20px;
+                }
+
+                .no:hover{
+                    background-color: $black;
+                    color: $white;
                 }
 
                 .yes{
                     width: 100%;
                     border-radius: none;
                     height: 70px;
-                    background-color: $yellow;
+                    background-color: $red;
                     font-size: 12px;
                     border: none;
                     letter-spacing: 0.2em;
@@ -301,6 +305,13 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    margin-top: 20px;
+                    color: $white;
+                    text-decoration: none;
+                }
+                .yes:hover{
+                    background: $black;
+                    color: $yellow;
                 }
             }
         }

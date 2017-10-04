@@ -132,7 +132,7 @@ if(currentUser.id) {
                 // console.log('get user info', user)
                 userInfo = user[0];
             });
-            
+
         app.get('db').get_groups([currentUser.id])
             .then(data => {
                 let groupsObj = {};
