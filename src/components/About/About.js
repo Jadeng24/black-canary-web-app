@@ -10,8 +10,8 @@ import ek from './../../images/emilyKeator.png';
 import ekSilly from './../../images/emilyKeatorSilly.png';
 import ap from './../../images/andiPlatter.jpeg';
 import apSilly from './../../images/andiPlatterSilly.jpeg';
-import at from './../../images/abigailThelin.PNG';
-import atSilly from './../../images/abigailThelin.PNG';
+import at from './../../images/abigailThelin.JPG';
+import atSilly from './../../images/abigailThelinSilly.JPG';
 
 export default class About extends Component{
     constructor() {
@@ -96,6 +96,7 @@ export default class About extends Component{
                 break;
         }
     }
+    
     render(){
         return(
             <div id="About">
