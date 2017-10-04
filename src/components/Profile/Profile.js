@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import editIcon from '../../images/whiteEditIcon.svg'
 import {connect} from 'react-redux';
 import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
-import {editUser, updateUser, editSafeHaven, heartbeat} from './../../controllers/socketCTRL';
+import {editUser, updateUser, editSafeHaven, heartbeat, deleteUser} from './../../controllers/socketCTRL';
 
 const socket = io('http://localhost:3069');
 
@@ -117,7 +117,9 @@ class Profile extends Component{
 
     
                     <div className="imgContainer">
-                        <div className="imgPlaceholder"></div>
+                        <div>
+                            <img className="imgPlaceholder" src={this.props.user.profilepic} alt='user'/>
+                        </div>
                     </div>
                 
 
@@ -152,8 +154,8 @@ class Profile extends Component{
                             <img src={x} alt='close' className="close" onClick={()=> {this.deleteModal('nvm')}}/>
                             <p className="head">ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT?</p>
                             <div className="deleteBtns">
-                                <Link className="yes" to="/">YES, I WANT TO FEEL UNSAFE</Link>
                                 <button onClick={()=> {this.deleteModal('nvm')}} className="no">NO, I WANT TO CONTINUE FEELING SAFE</button>
+                                <Link className="yes" to="/"><button onClick={()=> deleteUser(this.props.user.id)}>YES, I WANT TO FEEL UNSAFE</button></Link>
                             </div>
                         </div>
                     }

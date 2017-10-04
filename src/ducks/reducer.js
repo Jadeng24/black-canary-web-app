@@ -4,7 +4,7 @@ const initialState = {
         firstName: '',
         lastName: '',
         email: '',
-        profilePic: '',
+        profilepic: '',
         auth_id: '',
         socket_id: '',
         id: '',
