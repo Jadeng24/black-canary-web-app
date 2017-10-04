@@ -124,7 +124,7 @@ io.on('connection', socket => {
 
 // heartbeat updates the connected user every second
 if(currentUser.id) {
-    setInterval(heartbeat, 10000);
+    setInterval(heartbeat, 500);
     function heartbeat(){
         //app.get all info from db to send in heartbeat
         app.get('db').get_user_info([currentUser.id])
@@ -197,9 +197,17 @@ if(currentUser.id) {
 
     socket.on('update user info', user => {
         //put the user info by user id to (users table) in db
+        console.log('server socket.on user,', user)
         app.get('db').update_username([user.username, user.userId])
             .then(user=> {
-                socket.emit('update user', {user})
+                socket.emit('update user', user)
+            })
+    })
+
+    socket.on('update safe haven', data=> {
+        app.get('db').update_safe_haven([data.userId, data.safeHaven])
+            .then(user=> {
+                socket.emit('update user', user)
             })
     })
 
