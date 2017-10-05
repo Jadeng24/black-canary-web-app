@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
 import TweenMax from 'gsap';
 import $ from 'jquery';
+import io from 'socket.io-client';
+import {connect} from 'react-redux';
+import {getUserInfo, updateUserLocation, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
+import {sendLocation} from './../../controllers/socketCTRL';
+const socket = io('http://localhost:3069');
 // const socket = io('http://localhost:3069');
 
 // import blackCanaryLogo from './../../images/canaryLogoWithoutWords.svg';
 
 
-export default class Level1 extends Component {
+class LevelOne extends Component {
   constructor() {
       super();
 
       this.state = {
         title: '',
         message: '',
-        recipients: [],
+        individualRecipients: [],
         timeActive: 0,
+        groupRecipients: [],
         timeOptions: [
           {
             time: 1,
@@ -168,7 +173,6 @@ export default class Level1 extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.match.params);
     let x = this.props.match.params.id.split("_").join(" ").toUpperCase()
     this.setState({
       title: x
@@ -183,33 +187,46 @@ export default class Level1 extends Component {
     console.log(this.state.title);
   }
 
-  toggleRecipient(event, userObj) {
-    let index = -1;
-    for (let i = 0; i < this.state.recipients.length; i++){
-      if(userObj.hasOwnProperty('groupName')) {
-        if (this.state.recipients[i].groupName === userObj.groupName) {
-          index = i;
-        }
-      } else {
-        if (this.state.recipients[i].username === userObj.username) {
-           index = i;
-        }
-      }
-    }
-
-    let r = this.state.recipients.slice(0);
+  toggleFriend(event, userObj) {
+    event.preventDefault()
+    let index = this.state.individualRecipients.indexOf(userObj.friend_id);
+  
+    let r = [...this.state.individualRecipients.slice(0)];
     if(index >= 0) {
       //remove from recip and change color back
-      TweenMax.to($(`#${userObj.username}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
+      TweenMax.to($(`#${userObj.friend_username}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
       r.splice(index, 1);
     } else {
       //to recip, change color
-      TweenMax.to($(`#${userObj.username}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
-      r.push(userObj);
+      TweenMax.to($(`#${userObj.friend_username}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
+      r.push(userObj.friend_id);
     }
 
     this.setState({
-      recipients: r
+      individualRecipients: r
+    })
+
+  }
+
+  toggleGroup(event, groupObj) {
+    event.preventDefault()
+    let index = this.state.groupRecipients.indexOf(groupObj.groupID);
+  
+    let gr = [...this.state.groupRecipients.slice(0)];
+    if(index >= 0) {
+      console.log('We, the '+groupObj.groupName+'are being removed')      
+      //remove from recip and change color back
+      TweenMax.to($(`#${groupObj.groupID}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
+      gr.splice(index, 1);
+    } else {
+      //to recip, change color
+      console.log('We, the '+groupObj.groupName+'were added')
+      TweenMax.to($(`#${groupObj.groupID}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
+      gr.push(groupObj.groupID);
+    }
+
+    this.setState({
+      groupRecipients: gr
     })
 
   }
@@ -217,6 +234,18 @@ export default class Level1 extends Component {
   chooseTime(val) {
     this.setState({
       timeActive: val
+    })
+  }
+
+  sendLocToSocket() {
+    sendLocation({
+      user_id: this.props.user.id,
+      user_coordinates: this.props.location,
+      situation: this.state.title,
+      situation_level: 1,
+      message: this.state.message,
+      individual_recip: this.state.individualRecipients,
+      group_recip: this.state.groupRecipients
     })
   }
 
@@ -237,14 +266,20 @@ export default class Level1 extends Component {
               <div className="recipWrapper">
                 <h3>To:</h3>
                 <div>
-                  {
-                    this.state.contacts.map(e => {
-                      if(e.hasOwnProperty('groupName')){
-                        return <button key={e.groupName} id={e.groupName} onClick={event => this.toggleRecipient(event, e)} >{e.groupName}</button>
-                      } else {
-                        return <button key={e.username} id={e.username} onClick={event => this.toggleRecipient(event, e)} >{`${e.firstName} ${e.lastName}`}</button>
-                      }
+                  { this.props.friends ?
+                    this.props.friends.map(e => {
+                      return <button key={e.friend_username} id={e.friend_username} onClick={event => this.toggleFriend(event, e)} >{`${e.friend_firstname} ${e.friend_lastname}`}</button>
                     })
+                    :
+                    null
+                  }
+                  {
+                    this.props.groups ?
+                    this.props.groups.map(e => {
+                      return <button key={e.groupID} id={e.groupID} onClick={event => this.toggleGroup(event, e)} >{`${e.groupName}`}</button>
+                    })
+                    :
+                    null
                   }
                 </div>
               </div>
@@ -257,7 +292,7 @@ export default class Level1 extends Component {
                 </select>
               </div>
               <div className="buttnWrapper">
-                <button>SEND</button>
+                <button onClick={() => {console.log('no fuk u'); this.sendLocToSocket()}}>SEND</button>
               </div>
             </section>
           </div>
@@ -265,3 +300,9 @@ export default class Level1 extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+export default connect(mapStateToProps)(LevelOne);
