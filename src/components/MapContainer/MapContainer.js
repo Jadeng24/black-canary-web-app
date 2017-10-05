@@ -7,6 +7,7 @@ import userIcon from './../../images/blackCanaryUser_35px.png';
 import friends from './../../images/blackCanaryFriends_30px.png';
 //CHANGE ONCE HOSTED
 // const socket = io('http://localhost:3069')
+
 export class MapContainer extends Component {
 
     constructor() {
@@ -60,8 +61,10 @@ export class MapContainer extends Component {
     //         })
     //     }, 2*60*1000);
     // }
+
     componentWillMount(){
         if (this.props.isHome) {
+            //update to be set Interval
             navigator.geolocation.getCurrentPosition(position =>
                 this.setState({
                     canary: {

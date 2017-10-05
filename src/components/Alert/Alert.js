@@ -3,31 +3,6 @@ import AlertBubble from './AlertBubble'
 
 export default class Alert extends Component{
 
-        constructor(){
-        super()
-        this.state={
-            
-            alerts:[
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'Janice', message: 'help, man following me'},     
-                {from: 'Janice', message: 'help, man following me'},
-                {from: 'mom', message: 'help, man following me'}
-            ]
-        }
-    }
-
-
 
     render(){
         return(
@@ -35,7 +10,7 @@ export default class Alert extends Component{
                 <div className="header">
                     <p>alerts</p>
                 </div>
-                <AlertBubble alerts={this.state.alerts}/>
+                <AlertBubble/>
             </div>
         )
     }

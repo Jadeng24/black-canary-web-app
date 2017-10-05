@@ -17,9 +17,19 @@
       width: 30px;
       height: 4px;
     }
+    .bell{
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
 
-    .line1 {
-
+        .bellIcon{
+            margin: 20px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            z-index: 7;
+        }
     }
 
     .line2 {

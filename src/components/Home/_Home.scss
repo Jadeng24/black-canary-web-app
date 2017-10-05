@@ -5,18 +5,7 @@
     height: 100vh;
     width: 100vw;
 
-    .bell{
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-
-        .bellIcon{
-            margin: 20px;
-            position: relative;
-            cursor: pointer;
-            z-index: 7;
-        }
-    }
+    
 
     .navContainer{
         width: 100vw;
