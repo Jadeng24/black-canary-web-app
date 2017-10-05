@@ -38,6 +38,8 @@ export default class Groups extends Component{
         })
     }
 
+
+
 render(){
 
   const allGroups = this.state.groupName.map((group,i) => {

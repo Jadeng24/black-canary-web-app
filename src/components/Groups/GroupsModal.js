@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png';
 import x from '../../images/x.png';
+import editIcon from '../../images/EDIT_ICON.svg'
 import Groups from './Groups'
 
 
@@ -11,9 +12,14 @@ export default class GroupsModal extends Component{
         super(props)
 
         this.state={
-            friends: props.group.friends
+            friends: props.group.friends,
+            groupName: this.props.group.name,
+            newGroupName:'',
+            editGroupName: false
         }
         this.deleteFriendFromGroup = this.deleteFriendFromGroup.bind(this)
+        this.toggleEdit = this.toggleEdit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     deleteFriendFromGroup(i){
@@ -24,10 +30,34 @@ export default class GroupsModal extends Component{
         })
     }
 
+    handleChange(e){
+        console.log(e.target.value)
+        this.setState({
+            newGroupName: e.target.value
+        })
+    }
+
+
+    toggleEdit(input){
+        if(input==='edit'){
+            this.setState({
+                editGroupName: true,
+            })
+        }else if(input==='add'){
+            this.setState({
+                editGroupName: false,
+                groupName: this.state.newGroupName
+            }, _=>{
+                console.log('this.state.newGroupName:', this.state.newGroupName)
+                console.log('this.groupName', this.state.groupName)
+            })
+        }
+    }
+
+
 
     render(){
-        let {group, exit} = this.props;
-        console.log(exit)
+        let {group, exit, toggleGroupName} = this.props;
 
         const membersOfGroup = this.state.friends.map((friends, i) => {
             return(
@@ -40,21 +70,37 @@ export default class GroupsModal extends Component{
             )
         })
 
-        console.log('groups modal props', group, 'exit:', exit)
         return(
             <div className='GroupsModal'>
                 <div className="groupsBox">
+
                     <div className="header">
                         <div className="closeModal">
                           <img className="close" onClick={_=>exit()} src={x} alt='close'/>
                         </div>
-                        <p className="head">GROUP: {group.name}</p>
+
+                        {
+                            this.state.editGroupName
+                            ?
+                            <div className='inputArea'>
+                                <input type="text" name="newGroupName" onChange={e=>this.handleChange(e)} value={this.state.newGroupName}/>
+                                <button className="addBtn" onClick={_=>this.toggleEdit('add')}>ADD</button>
+                            </div>
+                            :
+                            <div className="heady">
+                                <p className="head">GROUP: {this.state.groupName}</p>
+                                <img className="edit" onClick={_=>this.toggleEdit('edit')} src={editIcon} alt="edit"/>
+                            </div>
+                        }
+
                     </div>
+
                     <div>
                         <p className="title">members:</p>
                         <div className="list">{membersOfGroup}</div>
                     <button className="deleteButton">DELETE THIS GROUP</button>
                     </div>
+
                 </div>
             </div>
         )
