@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import './main.css';
 import hamburger from './images/pngHamburger.png'
+import bell from './images/bell.svg'
 import Menu from './components/Menu/Menu'
 import router from './router'
 import TweenMax from 'gsap'
@@ -66,10 +67,15 @@ class App extends Component {
           :
           <Menu toggleMenu={this.toggleMenu} amIOpen={this.state.menuModal}/>
         */}
-        <div className="menu" onClick={()=>this.toggleMenu('on')}>
-          <div className="hamburger line1"/>
-          <div className="hamburger line2"/>
-          <div className="hamburger line3"/>
+        <div>
+          <div className="menu" onClick={()=>this.toggleMenu('on')}>
+            <div className="hamburger line1"/>
+            <div className="hamburger line2"/>
+            <div className="hamburger line3"/>
+          </div>
+          <div className="bell">
+              <Link to='/alerts'><img className="bellIcon" src={bell} alt="alert"/></Link>
+          </div>
         </div>
         <Menu toggleMenu={this.toggleMenu} amIOpen={this.state.menuModal}/>
 

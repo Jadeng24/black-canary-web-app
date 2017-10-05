@@ -14,7 +14,51 @@ const initialState = {
     },
     friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_id, friend_status, friend_pic, user_id}] 
     groups: [], //array of group objects [{groupId, groupName, members:[]}]
-    activeLocations: [], //array of active locations with messages and fromUser
+    activeLocations: {
+        1: [
+            {
+                senderName: 'Janise',
+                coordinates: {
+                    lat: 37.437793, 
+                    lng: -122.133636
+                },
+                situation: 'Out with friends',
+                message: 'pls hlp they are trying to feed me rice'
+            },
+            {
+                senderName: 'Abby',
+                coordinates: {
+                    lat: 40.33503, 
+                    lng: -111.708984
+                },
+                situation: 'Running',
+                message: `Keep an eye on me? A bat bit me this morning and I'm afraid I might collapse`
+            }
+        ],
+        2: [
+            {
+                senderName: 'Alan',
+                coordinates: {
+                    lat: 80.43033, 
+                    lng: -93.867187
+                },
+                situation: 'Uncomfortable',
+                message: `a polar bear is nearby and I don't like the way Santa's Elves are looking at me`
+            }
+        ],
+        3: [
+            {
+                senderName: 'Andi',
+                coordinates: {
+                    lat: 48.657362, 
+                    lng: -121.824340
+                },
+                situation: 'Emergency',
+                message: `PLS HLP HEREAAM`
+            }
+        ]
+    }, //array of active locations with messages and fromUser {1: [{senderName, coordinates, situation, message, alertID}]}
+    //activeLocations: [], //array of active locations with messages and fromUser {senderName, coordinates, situation, message, alertID}
     emergencyGroup: {}, //{user_id, emergency_id, message, contact_id: []}
     userLoggedIn: false
 };

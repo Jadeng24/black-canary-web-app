@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import Alert from './Alert'
 import MapContainer from './../MapContainer/MapContainer';
+import {connect} from 'react-redux';
+import {getActiveLocations} from './../../ducks/reducer';
 import TweenMax from 'gsap'
 import $ from 'jquery'
 
-export default class AlertBubble extends Component{
+class AlertBubble extends Component{
 
 
     componentDidMount() {
@@ -29,16 +31,41 @@ export default class AlertBubble extends Component{
     }
 
     render(){
+        console.log(this.props)
         return(
             <div className="alertBubble">
-                    {this.props.alerts.map((alert, index) => {
+                    {this.props.activeLocations["3"].map((alert, index) => {
                         return (
-                            <div className="container" key={index} id={index}>
-                                <p className="from"><em onClick={() => this.toggleAlert(index)}>+</em> {alert.from}</p>
+                            <div className="container" style={{backgroundColor: '#d13030'}} key={`3${index}`} id={`3${index}`}>
+                                <p className="from"><em onClick={() => this.toggleAlert(`3${index}`)}>+</em> {alert.senderName} - {alert.situation}</p>
                                 <div className="messageContainer">
                                     <p className="message">{alert.message}</p>
-                                    <div id={`mapHere${index}`} className="mapHere" style={{width: '310px', height: '400px'}}>
-                                        <MapContainer isHome={false} styleMapContainer={{width: '310px', height: '400px'}} canary={{name: 'Janise', lat: 37.437793, lng: -122.133636}}/>
+                                    <div id={`mapHere3${index}`} className="mapHere" style={{width: '310px', height: '400px'}}>
+                                        <MapContainer isHome={false} styleMapContainer={{width: '310px', height: '400px'}} canary={{name: alert.senderName, lat: alert.coordinates.lat, lng: alert.coordinates.lng}}/>
+                                    </div>
+                                </div>
+                            </div>)
+                    })}
+                    {this.props.activeLocations["2"].map((alert, index) => {
+                        return (
+                            <div className="container" style={{backgroundColor: 'rgba(254, 243, 110, 0.3)'}} key={`2${index}`} id={`2${index}`}>
+                                <p className="from"><em onClick={() => this.toggleAlert(`2${index}`)}>+</em> {alert.senderName} - {alert.situation}</p>
+                                <div className="messageContainer">
+                                    <p className="message">{alert.message}</p>
+                                    <div id={`mapHere2${index}`} className="mapHere" style={{width: '310px', height: '400px'}}>
+                                        <MapContainer isHome={false} styleMapContainer={{width: '310px', height: '400px'}} canary={{name: alert.senderName, lat: alert.coordinates.lat, lng: alert.coordinates.lng}}/>
+                                    </div>
+                                </div>
+                            </div>)
+                    })}
+                    {this.props.activeLocations["1"].map((alert, index) => {
+                        return (
+                            <div className="container" key={`1${index}`} id={`1${index}`}>
+                                <p className="from"><em onClick={() => this.toggleAlert(`1${index}`)}>+</em> {alert.senderName} - {alert.situation}</p>
+                                <div className="messageContainer">
+                                    <p className="message">{alert.message}</p>
+                                    <div id={`mapHere1${index}`} className="mapHere" style={{width: '310px', height: '400px'}}>
+                                        <MapContainer isHome={false} styleMapContainer={{width: '310px', height: '400px'}} canary={{name: alert.senderName, lat: alert.coordinates.lat, lng: alert.coordinates.lng}}/>
                                     </div>
                                 </div>
                             </div>)
@@ -47,3 +74,13 @@ export default class AlertBubble extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+let outputActions = {
+    getActiveLocations
+}
+
+export default connect(mapStateToProps, outputActions)(AlertBubble);

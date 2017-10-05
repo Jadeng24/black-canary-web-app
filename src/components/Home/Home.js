@@ -8,7 +8,6 @@ import $ from 'jquery';
 import {connect} from 'react-redux';
 import {getUserInfo, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
 import {heartbeat, renameGroup} from './../../controllers/socketCTRL';
-import bell from './../../images/bell.svg'
 import map from '../../images/placeholder_map.gif'
 
 const socket = io('http://localhost:3069');
@@ -38,10 +37,7 @@ class Home extends Component{
             userLoggedIn: true
           })
         }
-        console.log(this.props.activeLocations);
 
-        // test socket
-        // socket.emit('rename group', {group_name: 'i will rename this group', id: 11} )
     }
 
 
@@ -53,9 +49,7 @@ class Home extends Component{
 
         return(
             <div id="Home">
-                <div className="bell">
-                    <Link to='/alerts'><img className="bellIcon" src={bell} alt="alert"/></Link>
-                </div>
+                
 
                 { (this.state.userLoggedIn) ? '' : <Login />}
                 <div className='navContainer'>
