@@ -128,11 +128,23 @@ table {
     position: absolute;
     color: #efefef;
     font-size: 1.6em; }
+    .Groups .header .head {
+      color: #efefef;
+      font-family: "ABeeZee", sans-serif;
+      letter-spacing: .1em;
+      font-size: 1.25em;
+      margin-left: 10px; }
+    .Groups .header .addGroup {
+      width: 22px;
+      height: 22px;
+      margin: .5em;
+      margin-top: 9px;
+      margin-right: 10px; }
   .Groups .listOfGroups {
     display: flex;
     justify-content: space-around;
     justify-content: flex-start;
-    margin-left: 30px;
+    margin-left: 20px;
     width: 100%;
     align-items: flex-start;
     position: relative; }
