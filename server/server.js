@@ -207,11 +207,21 @@ if(currentUser.id) {
     socket.on('send location', data => {
         // post data to active_locations table in db
 
-        app.get('db').add_active_location([data.user.userId, data.user.coordinates, data.user.situation, data.user.situation_level, data.message])
+        app.get('db').add_active_location([data.user_id, data.user_coordinates, data.situation, data.situation_level, data.message])
             .then(location=> {
                 console.log(location)
                 //loop through recipients array and add location for each recipient
-                app.get('db').add_location_recipient([location.id, data.recipients])
+                data.individual_recip.length > 0 ?
+                    location.map(individual => {
+                        app.get('db').add_location_recipient([location.id, individual])
+                    })
+                    : null;
+
+                data.group_recip.length > 0 ?
+                    location.map(group_member => {
+                        app.get('db').add_location_recipient([location.id, group_member])
+                    })
+                    : null;
             })
     })
 
