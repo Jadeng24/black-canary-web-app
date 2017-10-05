@@ -14,7 +14,7 @@
         size: 1.3rem;
     }
     header {
-        margin: 20px 0;
+        margin: 50px 0 20px 0;
         .imgWrapper {
             margin-bottom: 20px;
             width:100vw;
@@ -93,26 +93,36 @@
         .withinSection {
             width: 320px;
             // height: 300px;
-            overflow: scroll;
+            overflow: hidden;
             // height: 0;
             color: $black;
         }
         p, .ulWrapper {
             text-align: center;
             width: 320px;
-            padding: 5px 10px;
+            // padding: 0px 20px;
             // background-color: $white-translucent;
             margin: 5px 0;
-            // border-radius: 10px;
+            // border: 1px solid red;
             em {
                 text-transform: uppercase;
                 color: $yellow;
+                // margin: 10px;
+                // border: 1px solid red;
+                
             }
+            p {
+                padding: 0 20px;
+            }
+        }
+        .paragraphs {
+            padding: 10px 20px;
         }
 
         li {
             width: 100%;
             color: $black;
+            padding: 0 20px;
             // background-color: $yellow-translucent;
             &:hover {
                 color: $yellow;
@@ -136,7 +146,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+            margin: 20px 0;
              
             img {
                 height: 200px;
@@ -152,10 +162,35 @@
                 }
             }
         }
+
+        
         
     }
     footer {
         width: 100vw;
+        margin: 10px 0 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        a {
+            width: 75px;
+            height: 75px;
+        }
+        .creatorImg {
+            height: 75px;
+            width: 75px;
+            // position: absolute;
+            margin-top: 0;
+            border-radius: 40px;            
+            border: 2px solid $yellow;
+        }
+        span {
+            width: 100vw;
+            font-size: 0.5rem;
+            text-align: center;
+            margin-top: 20px;
+        }
     }
 }
 
@@ -174,7 +209,6 @@
             }
             p, .ulWrapper {
                 width: 550px;
-                padding: 40px 30px;
             }
         }
     }
@@ -195,7 +229,6 @@
             }
             p, .ulWrapper {
                 width: 700px;
-                padding: 40px 30px;
             }
         }
     }

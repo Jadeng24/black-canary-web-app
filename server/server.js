@@ -126,7 +126,6 @@ io.on('connection', socket => {
 if(currentUser.id) {
     setInterval(heartbeat, 500);
     function heartbeat(){
-        //app.get all info from db to send in heartbeat
         app.get('db').get_user_info([currentUser.id])
             .then(user=> {
                 // console.log('get user info', user)
@@ -234,9 +233,20 @@ if(currentUser.id) {
         app.get('db').delete_group([groupId])
     })
 
-    // socket.on('edit emergency group', group=> {
-    //     app.get('db').edit_emergency_group([group.user_id, group.group_name])
-    // })
+    socket.on('create emergency group', data=> {
+        app.get('db').create_emergency_group([data.userId, data.group.message])
+            .then(data=> {
+                console.log('data from emergency group creation', data)
+                app.get('db').add_emergency_contacts([data.emergency_id, data.group.recipient])
+            })
+    })
+
+    socket.on('edit emergency group', contacts=> {
+        contacts.map(contact=> {
+            app.get('db').edit_emergency_group([currentUser.id, contact])
+             
+        })
+    })
 
     socket.on('friend request', data=> {
         app.get('db').request_friend([data.userId, data.friendId])
@@ -258,33 +268,7 @@ if(currentUser.id) {
         app.get('db').remove_friend_from_group([data.groupId, data.friendId])
     })
 
-    // test queries
-    // socket.on('see groups', ()=> {
-    //     app.get('db').test()
-    //     .then(data => {
-    //         let groupsObj = {};
-    //         for(let i = 0; i < data.length; i++) {
-    //             if(groupsObj.hasOwnProperty(data[i].group_id)){
-    //                 groupsObj[data[i].group_id].members.push({ username: data[i].member_username,
-    //                 userID: data[i].member_user_id});
-    //             } else {
-    //                 groupsObj[data[i].group_id] = {
-    //                     groupID: data[i].group_id,
-    //                     groupName: data[i].group_name,
-    //                     members: [{username: data[i].member_username,
-    //                         userID: data[i].member_user_id}]
-    //                 }
-    //             }
-    //         }
-    //         let groups = [];
-    //         for (group in groupsObj) {
-    //             groups.push(groupsObj[group]);
-    //         }
-    //         //ultimate return: the array "groups" of object {groupName, groupID, members: [{username, userID}, {username, userID}]}
-    //         console.log('groups data line 197', groups)
-    //         socket.emit('', groups)
-    //     })
-    // })
+
 
     socket.on('disconnect', ()=> {
         console.log('A user has disconnected, socket ID: ', socket.id);

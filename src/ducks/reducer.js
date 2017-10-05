@@ -9,11 +9,13 @@ const initialState = {
         socket_id: '',
         id: '',
         location: '',
-        safe_haven: '123 street'
+        safe_haven: '123 street',
+        emergency_group_created: false
     },
     friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_id, friend_status, friend_pic, user_id}] 
     groups: [], //array of group objects [{groupId, groupName, members:[]}]
     activeLocations: [], //array of active locations with messages and fromUser
+    emergencyGroup: {}, //{user_id, emergency_id, message, contact_id: []}
     userLoggedIn: false
 };
 
