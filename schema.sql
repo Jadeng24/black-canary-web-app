@@ -105,11 +105,30 @@ CREATE TABLE IF NOT EXISTS active_locations (
     user_id INTEGER REFERENCES users,
     coordinates VARCHAR(200), -- {latitude, longitude}
     situation VARCHAR(50),
+    situation_level INTEGER,
     message VARCHAR(180)
 );
+
+INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
+VALUES (1, 'lat: 3290423, long:29032', 'running', 1, 'help man following me');
+INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
+VALUES (3, 'lat: 234, long:5231', 'in a bad area', 2, 'scary place')
+INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
+VALUES (4, 'lat: 329233, long:2232', 'on a date', 1, 'weirdo');
+INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
+VALUES (10, 'lat: 2234, long:231', 'emergency', 3, 'BATS')
 
 CREATE TABLE IF NOT EXISTS active_location_recipients (
     id SERIAL PRIMARY KEY,
     active_location_id INTEGER REFERENCES active_locations NOT NULL,
     recipient_id INTEGER REFERENCES users NOT NULL
 );
+
+INSERT INTO active_location_recipients (active_location_id, recipient_id)
+VALUES (1, 3);
+INSERT INTO active_location_recipients (active_location_id, recipient_id)
+VALUES (2, 1);
+INSERT INTO active_location_recipients (active_location_id, recipient_id)
+VALUES (3, 3);
+INSERT INTO active_location_recipients (active_location_id, recipient_id)
+VALUES (4, 1);

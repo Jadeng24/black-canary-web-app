@@ -35,9 +35,12 @@ export default class GroupsModal extends Component{
                     <p>{friends}</p>
                     <img className="deleteFriend" onClick={_=>this.deleteFriendFromGroup(i)} src={x} alt="delete"/>
 
+
                 </div>
             )
         })
+
+        console.log('groups modal props', group, 'exit:', exit)
         return(
             <div className='GroupsModal'>
                 <div className="groupsBox">
@@ -52,7 +55,6 @@ export default class GroupsModal extends Component{
                         <div className="list">{membersOfGroup}</div>
                     <button className="deleteButton">DELETE THIS GROUP</button>
                     </div>
-
                 </div>
             </div>
         )

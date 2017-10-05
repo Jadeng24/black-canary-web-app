@@ -38,7 +38,7 @@ class Home extends Component{
             userLoggedIn: true
           })
         }
-        console.log(this.props.user.id);
+        console.log(this.props.activeLocations);
 
         // test socket
         // socket.emit('rename group', {group_name: 'i will rename this group', id: 11} )
