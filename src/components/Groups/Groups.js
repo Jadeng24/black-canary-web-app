@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import io from 'socket.io-client';
-import addFriend from '../../images/addFriendIconReal.png';
+
+import addGroup from '../../images/addFriendIconReal.png';
+import x from '../../images/x.png';
 import GroupsModal from './GroupsModal'
 
 const socket = io('http://localhost:3069');
@@ -17,7 +19,8 @@ export default class Groups extends Component{
             {name: 'Emergency',
               friends: ['Monday', 'Jocelyn', 'Bailey']},
         ],
-        groupModal: false
+        groupModal: false,
+        newGroup: {name: "", friends:[]}
       }
       this.showModalMethod = this.showModalMethod.bind(this)
       this.exit = this.exit.bind(this)
@@ -31,6 +34,11 @@ export default class Groups extends Component{
       })
     }
 
+    addNewGroup(){
+      this.setState({
+        newGroup: {}
+      })
+    }
     exit(){
         console.log('exit')
         this.setState({
@@ -55,11 +63,11 @@ render(){
   })
   return(
       <div className='Groups'>
-          <div className='header'>
-            <p>GROUPS</p>
-          </div>
-
-            {
+        <div className='header'>
+          <header className='head'>GROUPS</header>
+          <img className="addGroup"src={addGroup} alt="addFriendIcon"/>
+        </div>
+              {
               !this.state.groupModal
               ?
                 <div>{allGroups}</div>
