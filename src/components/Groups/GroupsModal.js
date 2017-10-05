@@ -7,32 +7,54 @@ import Groups from './Groups'
 
 export default class GroupsModal extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+
+        this.state={
+            friends: props.group.friends
+        }
+        this.deleteFriendFromGroup = this.deleteFriendFromGroup.bind(this)
     }
+
+    deleteFriendFromGroup(i){
+        let friends=[...this.state.friends]
+        friends.splice(i, 1) 
+        this.setState({
+            friends 
+        })
+    }
+
 
     render(){
         let {group, exit} = this.props;
+        console.log(exit)
 
-        const membersOfGroup = group.friends.map((friends, i) => {
+        const membersOfGroup = this.state.friends.map((friends, i) => {
             return(
-                <div>
+                <div className="singleFriend" key={i}>
                     <p>{friends}</p>
+                    <img className="deleteFriend" onClick={_=>this.deleteFriendFromGroup(i)} src={x} alt="delete"/>
+
+
                 </div>
             )
         })
+
+        console.log('groups modal props', group, 'exit:', exit)
         return(
             <div className='GroupsModal'>
                 <div className="groupsBox">
-                    <img className="close" onClick={exit} src={x} alt='close'/>
                     <div className="header">
-                        <p>GROUP: {group.name}</p>
+                        <div className="closeModal">
+                          <img className="close" onClick={_=>exit()} src={x} alt='close'/>
+                        </div>
+                        <p className="head">GROUP: {group.name}</p>
                     </div>
                     <div>
                         <p className="title">members:</p>
                         <div className="list">{membersOfGroup}</div>
+                    <button className="deleteButton">DELETE THIS GROUP</button>
                     </div>
-
                 </div>
             </div>
         )
