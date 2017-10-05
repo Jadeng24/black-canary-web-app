@@ -1317,6 +1317,7 @@ table {
       flex-wrap: wrap; }
       .alertBubble .container .messageContainer .message {
         text-align: center;
+        line-height: 1.2em;
         width: 100%;
         padding: 0 30px; }
     .alertBubble .container .mapHere {

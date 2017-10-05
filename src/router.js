@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
 import Home from './components/Home/Home'
-// import Login from './components/Login/Login'
+import Login from './components/Login/Login'
 import Profile from './components/Profile/Profile'
 import Situations from './components/Situations/Situations'
 import LevelOne from './components/LevelOne/LevelOne'
@@ -18,7 +18,8 @@ import Groups from './components/Groups/Groups.js'
 
 export default (
     <Switch>
-        <Route component={Home} exact path='/'/>
+        <Route component={Login} exact path='/'/>
+        <Route component={Home} exact path='/home'/>
         <Route component={Profile} path='/profile'/>
         <Route component={Situations} path='/situations'/>
         <Route component={LevelOne} path='/levelOne/:id'/>

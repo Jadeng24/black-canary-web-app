@@ -8,7 +8,9 @@ import $ from 'jquery'
 
 class AlertBubble extends Component{
 
-
+    componentWillMount() {
+        // console.log('just logged on',this.props);
+    }
     componentDidMount() {
         TweenMax.to($('.messageContainer'), 0, {height: '0', opacity: 0});
         TweenMax.to($('.mapHere'), 0, { opacity: 0});
@@ -31,7 +33,7 @@ class AlertBubble extends Component{
     }
 
     render(){
-        console.log(this.props)
+        // console.log('in the render', this.props)
         return(
             <div className="alertBubble">
                     {this.props.activeLocations["3"].map((alert, index) => {

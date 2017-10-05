@@ -1,6 +1,6 @@
 const initialState = {
     user: {
-        username: 'abby',
+        username: 'Odysseus',
         firstName: '',
         lastName: '',
         email: '',
@@ -9,7 +9,7 @@ const initialState = {
         socket_id: '',
         id: '',
         location: '',
-        safe_haven: '123 street',
+        safe_haven: 'Calypso\'s Island',
         emergency_group_created: false
     },
     friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_id, friend_status, friend_pic, user_id}] 
@@ -65,6 +65,7 @@ const initialState = {
 
 
 const GET_USER_INFO = 'GET_USER_INFO',
+      UPDATE_USER_LOCATION = 'UPDATE_USER_LOCATION',
       GET_FRIENDS_LIST = 'GET_FRIENDS_LIST',
       GET_GROUPS = 'GET_GROUPS',
       GET_ACTIVE_LOCATIONS = 'GET_ACTIVE_LOCATIONS',
@@ -77,6 +78,14 @@ export function getUserInfo(user){
     return {
         type: GET_USER_INFO,
         payload: user 
+    }
+}
+
+//update user location, stored as 'lat*lng'
+export function updateUserLocation(locString){
+    return {
+        type: UPDATE_USER_LOCATION,
+        payload: locString 
     }
 }
 
@@ -119,8 +128,14 @@ export default function reducer(state = initialState, action){
 
     switch (action.type) {
         case GET_USER_INFO:
-        // console.log('reducer get user info', action.payload)
+            // console.log('reducer get user info', action.payload)
             return Object.assign({}, state, {user: action.payload})
+            break;
+        case UPDATE_USER_LOCATION:
+            // console.log('reducer get user info', action.payload)
+            let user = Object.assign({}, state.user);
+            user.location = action.payload;
+            return Object.assign({}, state, {user})
             break;
         case GET_FRIENDS_LIST:
         // console.log('reducer get friends',action.payload)
@@ -138,6 +153,6 @@ export default function reducer(state = initialState, action){
         default:
             break;
     }
-    
+    console.log(state)
     return state;
 }
