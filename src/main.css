@@ -157,15 +157,6 @@ table {
   background-color: #111;
   height: 100vh;
   width: 100vw; }
-  #Home .bell {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%; }
-    #Home .bell .bellIcon {
-      margin: 20px;
-      position: relative;
-      cursor: pointer;
-      z-index: 7; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -1249,6 +1240,17 @@ table {
     background-color: #efefef;
     width: 30px;
     height: 4px; }
+  .App .bell {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; }
+    .App .bell .bellIcon {
+      margin: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      z-index: 7; }
   .App .line2 {
     top: calc(13px); }
   .App .line3 {
@@ -1265,6 +1267,9 @@ table {
     width: 100vw;
     height: 80px;
     display: flex;
+    background-color: #111;
+    position: fixed;
+    top: 0;
     justify-content: center;
     align-items: center;
     color: #efefef;
@@ -1272,7 +1277,9 @@ table {
 
 .alertBubble {
   width: 100%;
-  height: auto;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  overflow: scroll;
   text-transform: uppercase;
   letter-spacing: .3em;
   justify-content: center;
@@ -1304,12 +1311,14 @@ table {
           color: #111; }
     .alertBubble .container .messageContainer {
       display: flex;
+      overflow: hidden;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap; }
       .alertBubble .container .messageContainer .message {
         text-align: center;
-        width: 100%; }
+        width: 100%;
+        padding: 0 30px; }
     .alertBubble .container .mapHere {
       display: block;
       width: 310px;

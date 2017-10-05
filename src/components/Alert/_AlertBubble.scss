@@ -1,6 +1,8 @@
     .alertBubble{
         width: 100%;
-        height: auto;
+        height: calc(100vh - 80px);
+        margin-top: 80px;
+        overflow: scroll;
         text-transform: uppercase;
         letter-spacing: .3em;
         justify-content: center;
@@ -45,6 +47,7 @@
             .messageContainer{
                 display: flex;
                 // height: 0px;
+                overflow: hidden;
                 justify-content: center;
                 align-items: center;
                 flex-wrap: wrap;
@@ -52,6 +55,7 @@
                 .message {
                     text-align: center;
                     width: 100%;
+                    padding: 0 30px;
                 }
             }
 
