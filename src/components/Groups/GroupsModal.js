@@ -14,13 +14,15 @@ export default class GroupsModal extends Component{
     render(){
         let {group, exit} = this.props;
 
-        const membersOfGroup = group.friends.map((friends, i) => {
+        const membersOfGroup = group.friends.map((friend, i) => {
             return(
                 <div>
-                    <p>{friends}</p>
+                    <p>{friend}</p>
                 </div>
             )
         })
+
+        console.log('groups modal props', group, 'exit:', exit)
         return(
             <div className='GroupsModal'>
                 <div className="groupsBox">
@@ -32,7 +34,6 @@ export default class GroupsModal extends Component{
                         <p className="title">members:</p>
                         <div className="list">{membersOfGroup}</div>
                     </div>
-
                 </div>
             </div>
         )

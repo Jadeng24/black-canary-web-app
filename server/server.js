@@ -161,6 +161,13 @@ if(currentUser.id) {
         app.get('db').get_friends([currentUser.id])
             .then(data=> {
                 // console.log('get friends', data)
+                
+                //format return data to send to front end
+
+
+
+
+
             friends = data
             });
 
@@ -180,7 +187,7 @@ if(currentUser.id) {
         app.get('db').update_socket_id([data.socketId, currentUser.auth_id])
         :
         null;
-        console.log('socket.on save socket_id. data', data,'current user:', currentUser)
+        // console.log('socket.on save socket_id. data', data,'current user:', currentUser)
     })
 
     socket.on('send location', data => {
