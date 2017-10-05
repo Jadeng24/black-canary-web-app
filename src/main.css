@@ -1344,17 +1344,42 @@ table {
       position: relative;
       color: #111;
       font-size: 1.7em; }
-      .GroupsModal .groupsBox .header .head {
-        margin-top: 20px;
+      .GroupsModal .groupsBox .header .heady {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
         position: absolute; }
+        .GroupsModal .groupsBox .header .heady .head {
+          margin-left: 20px; }
+        .GroupsModal .groupsBox .header .heady .edit {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+          z-index: 99;
+          margin-left: 10px; }
+      .GroupsModal .groupsBox .header .inputArea {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px; }
+        .GroupsModal .groupsBox .header .inputArea .addBtn {
+          cursor: pointer;
+          border: none;
+          color: #111;
+          margin-left: 10px; }
       .GroupsModal .groupsBox .header .closeModal {
-        width: 100%; }
+        width: 100%;
+        position: absolute; }
         .GroupsModal .groupsBox .header .closeModal .close {
           width: 15px;
           height: 15px;
           z-index: 99;
           cursor: pointer;
-          position: relative;
           margin-left: 10px;
           margin-top: 10px; }
     .GroupsModal .groupsBox .title {
