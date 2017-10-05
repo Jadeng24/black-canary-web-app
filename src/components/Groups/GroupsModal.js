@@ -43,7 +43,7 @@ export default class GroupsModal extends Component{
             this.setState({
                 editGroupName: true,
             })
-        }else if(input==='add'){
+        }else if(input==='added'){
             this.setState({
                 editGroupName: false,
                 groupName: this.state.newGroupName
@@ -73,18 +73,18 @@ export default class GroupsModal extends Component{
         return(
             <div className='GroupsModal'>
                 <div className="groupsBox">
+                    <div className="closeModal">
+                        <img className="close" onClick={_=>exit()} src={x} alt='close'/>
+                    </div>
 
                     <div className="header">
-                        <div className="closeModal">
-                          <img className="close" onClick={_=>exit()} src={x} alt='close'/>
-                        </div>
 
                         {
                             this.state.editGroupName
                             ?
                             <div className='inputArea'>
-                                <input type="text" name="newGroupName" onChange={e=>this.handleChange(e)} value={this.state.newGroupName}/>
-                                <button className="addBtn" onClick={_=>this.toggleEdit('add')}>ADD</button>
+                                <input type="text" className="newGroupName" onChange={e=>this.handleChange(e)} value={this.state.newGroupName}/>
+                                <button className="addBtn" onClick={_=>this.toggleEdit('added')}>ADD</button>
                             </div>
                             :
                             <div className="heady">
