@@ -15,7 +15,7 @@ export default class FriendModal extends Component{
             groupsToAdd: []
         }
     }
-
+    
 
     toggleGroupAdd(event, groupObj) {
         let index = -1;
