@@ -74,7 +74,7 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `http://localhost:3070/#/`,
+      successRedirect: `http://localhost:3070/#/home`,
       failureRedirect: `http://localhost:3070/#/`
   }));
 
@@ -173,16 +173,17 @@ if(currentUser.id) {
                     3: []
                 }
                 data.map(e => {
+                    // console.log(e);
                     let {message, situation} = e;
                     let coord = e.coordinates.split('*');
                     let coordinates = {lat: 1*coord[0], lng: 1*coord[1]};
-                    let senderName = `${senderFirstName} ${senderLastName}`;
+                    let senderName = `${e.senderfirstname} ${e.senderlastname}`;
 
                     activeLocations[e.situationlevel].push({senderName, coordinates, message, situation})
                 })
                 //"29348748*-983475"
 
-                activeLocations = data
+                // activeLocations = data
             });
 
         // app.get('db').get_emergency_group([currentUser.id])
