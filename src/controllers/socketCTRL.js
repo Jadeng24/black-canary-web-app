@@ -23,12 +23,12 @@ const socket = io('http://localhost:3069');
         })
     }
     
-    export function activeLocations(){ //on home page/landing page with map
-        //write socket.emit('show locations') from server to use the active_locations table to send to all recipients the active locations
-        socket.on('show locations', data => {
-            //use maps to show the data
-        })
-    }
+    // export function activeLocations(){ //on home page/landing page with map
+    //     //write socket.emit('show locations') from server to use the active_locations table to send to all recipients the active locations
+    //     socket.on('show locations', data => {
+    //         //use maps to show the data
+    //     })
+    // }
     
 
     //=============== emit sockets ===================//

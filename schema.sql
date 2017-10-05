@@ -33,7 +33,16 @@ CREATE TABLE IF NOT EXISTS emergency (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
     message VARCHAR(180)
-)
+);
+
+INSERT INTO emergency (user_id, message)
+VALUES (1, 'Eating rice, help');
+INSERT INTO emergency (user_id, message)
+VALUES (2, 'Bad area');
+INSERT INTO emergency (user_id, message)
+VALUES (3, 'Ran out of Parmesan cheese');
+INSERT INTO emergency (user_id, message)
+VALUES (4, 'Sample cups everywhere');
 
 
 -- EMERGENCY CONTACTS TABLE --
@@ -41,8 +50,20 @@ CREATE TABLE IF NOT EXISTS emergency_contacts (
     id SERIAL PRIMARY KEY,
     emergency_id INTEGER REFERENCES emergency,
     contact_id INTEGER REFERENCES users
-)
+);
 
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (1, 3);
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (2, 3);
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (3, 1);
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (4, 3);
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (4, 1);
+INSERT INTO emergency_contacts (emergency_id, contact_id)
+VALUES (2,1);
 
 
 -- FRIENDS TABLE --
@@ -110,13 +131,13 @@ CREATE TABLE IF NOT EXISTS active_locations (
 );
 
 INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
-VALUES (1, 'lat: 3290423, long:29032', 'running', 1, 'help man following me');
+VALUES (1, '32.90423*29.032', 'running', 1, 'help man following me');
 INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
-VALUES (3, 'lat: 234, long:5231', 'in a bad area', 2, 'scary place')
+VALUES (3, '2.34*-52.31', 'in a bad area', 2, 'scary place');
 INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
-VALUES (4, 'lat: 329233, long:2232', 'on a date', 1, 'weirdo');
+VALUES (4, '32.9233*22.32', 'on a date', 1, 'weirdo');
 INSERT INTO active_locations (user_id, coordinates, situation, situation_level, message)
-VALUES (10, 'lat: 2234, long:231', 'emergency', 3, 'BATS')
+VALUES (10, '-22.34*23.1', 'emergency', 3, 'BATS');
 
 CREATE TABLE IF NOT EXISTS active_location_recipients (
     id SERIAL PRIMARY KEY,
