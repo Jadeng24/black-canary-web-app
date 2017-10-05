@@ -38,6 +38,7 @@ export default class Groups extends Component{
       this.setState({
         newGroup: {}
       })
+    }
     exit(){
         this.setState({
             groupModal: false

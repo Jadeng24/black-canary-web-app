@@ -19,11 +19,12 @@
 @import './components/Situations/Situations';
 @import './components/Menu/Menu';
 @import './components/About/About';
-@import './components/FriendModal/_FriendModal.scss';
-@import './sass/_App.scss';
-@import './components/Alert/_Alert.scss';
-@import './components/Alert/_AlertBubble.scss';
-@import './components/Groups/_GroupsModal.scss';
+@import './components/FriendModal/FriendModal';
+@import './sass/App';
+@import './components/Alert/Alert';
+@import './components/Alert/AlertBubble';
+@import './components/Groups/GroupsModal';
+@import './components/FriendSearchModal/FriendSearchModal';
 
 
 body {
