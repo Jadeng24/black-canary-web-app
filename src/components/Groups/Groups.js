@@ -14,7 +14,7 @@ export default class Groups extends Component{
               friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
             {name: 'HAlp',
               friends: ['Abby', 'Janise', 'Ethan', 'Spencer', 'Emily']},
-            {name: 'Emergency Contacts',
+            {name: 'Emergency',
               friends: ['Monday', 'Jocelyn', 'Bailey']},
         ],
         groupModal: false
@@ -32,6 +32,7 @@ export default class Groups extends Component{
     }
 
     exit(){
+        console.log('exit')
         this.setState({
             groupModal: false
         })

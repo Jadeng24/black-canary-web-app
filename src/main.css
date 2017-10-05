@@ -1331,17 +1331,12 @@ table {
   align-items: center;
   font-family: "ABeeZee", sans-serif;
   letter-spacing: 1;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  z-index: 999; }
   .GroupsModal .groupsBox {
-    width: 80%;
+    width: 95%;
     height: 80%;
     background-color: #efefef; }
-    .GroupsModal .groupsBox .close {
-      width: 15px;
-      height: 15px;
-      margin: 15px;
-      z-index: 987654567890;
-      cursor: pointer; }
     .GroupsModal .groupsBox .header {
       width: 100%;
       display: flex;
@@ -1349,12 +1344,47 @@ table {
       position: relative;
       color: #111;
       font-size: 1.7em; }
+      .GroupsModal .groupsBox .header .head {
+        margin-top: 20px;
+        position: absolute; }
+      .GroupsModal .groupsBox .header .closeModal {
+        width: 100%; }
+        .GroupsModal .groupsBox .header .closeModal .close {
+          width: 15px;
+          height: 15px;
+          z-index: 99;
+          cursor: pointer;
+          position: relative;
+          margin-left: 10px;
+          margin-top: 10px; }
     .GroupsModal .groupsBox .title {
       font-size: 1.3em;
       margin-left: 20px; }
     .GroupsModal .groupsBox .list {
       margin-left: 40px;
       margin-top: 20px; }
+    .GroupsModal .groupsBox .singleFriend {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 20px; }
+      .GroupsModal .groupsBox .singleFriend .deleteFriend {
+        width: 10px;
+        height: 10px;
+        margin-left: 10px;
+        cursor: pointer; }
+    .GroupsModal .groupsBox .deleteButton {
+      width: 100%;
+      height: 100px;
+      border: none;
+      background-color: #d13030;
+      color: #efefef;
+      margin-top: 30px;
+      font-size: 1.2em;
+      cursor: pointer; }
+    .GroupsModal .groupsBox .deleteButton:hover {
+      background-color: #FEF36E;
+      color: #111; }
 
 body {
   background-color: #111; }
