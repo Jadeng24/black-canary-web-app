@@ -59,16 +59,16 @@ export default class GroupsModal extends Component{
     render(){
         let {group, exit, toggleGroupName} = this.props;
 
-        const membersOfGroup = this.state.friends.map((friends, i) => {
-            return(
-                <div className="singleFriend" key={i}>
-                    <p>{friends}</p>
-                    <img className="deleteFriend" onClick={_=>this.deleteFriendFromGroup(i)} src={x} alt="delete"/>
+        // const membersOfGroup = this.state.friends.map((friends, i) => {
+        //     return(
+        //         <div className="singleFriend" key={i}>
+        //             <p>{friends}</p>
+        //             <img className="deleteFriend" onClick={_=>this.deleteFriendFromGroup(i)} src={x} alt="delete"/>
 
 
-                </div>
-            )
-        })
+        //         </div>
+        //     )
+        // })
 
         return(
             <div className='GroupsModal'>
@@ -97,7 +97,7 @@ export default class GroupsModal extends Component{
 
                     <div>
                         <p className="title">members:</p>
-                        <div className="list">{membersOfGroup}</div>
+                        {/* <div className="list">{membersOfGroup}</div> */}
                     <button className="deleteButton">DELETE THIS GROUP</button>
                     </div>
 

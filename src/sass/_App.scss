@@ -1,13 +1,22 @@
 .App{
-    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
     height: 100vh;
 
+    .navbar {
+      width: 100vw;
+      height: 50px;
+      // border: 1px solid red;
+      position: fixed;
+      z-index: 7;
+      background-color: $black;
+    }
     .menu{
         width: 30px;
         height: 30px;
         position: fixed;
         margin: 15px;
-        z-index: 7;
+        // z-index: 7;
         cursor: pointer;
 
     }
@@ -28,7 +37,7 @@
             top: 0;
             right: 0;
             cursor: pointer;
-            z-index: 7;
+            // z-index: 7;
         }
     }
 

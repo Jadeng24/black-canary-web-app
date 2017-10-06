@@ -64,7 +64,8 @@ table {
   letter-spacing: 0.2em;
   font-family: "ABeeZee", sans-serif;
   background-color: #111;
-  width: 100%; }
+  width: 100vw;
+  padding-top: 50px; }
   .Contacts .header {
     display: flex;
     flex-direction: row;
@@ -73,7 +74,7 @@ table {
     width: 100%;
     height: 100px;
     position: absolute;
-    margin-left: 30px; }
+    margin-left: 20px; }
     .Contacts .header .head {
       color: #efefef;
       font-family: "ABeeZee", sans-serif;
@@ -119,7 +120,45 @@ table {
   width: 100%;
   height: 100%;
   background-color: #111;
-  font-family: "ABeeZee", sans-serif; }
+  font-family: "ABeeZee", sans-serif;
+  padding-top: 50px; }
+  .Groups .addGroupModal {
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px;
+    border-color: pink; }
+    .Groups .addGroupModal .modalBox {
+      width: 90%;
+      height: 90%;
+      background-color: #3a3a3a; }
+      .Groups .addGroupModal .modalBox .exit {
+        margin: 15px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer; }
+      .Groups .addGroupModal .modalBox .head {
+        color: white;
+        display: flex;
+        font-size: 1.2em;
+        justify-content: center;
+        align-items: flex-start;
+        letter-spacing: 1;
+        height: 50px; }
+      .Groups .addGroupModal .modalBox .inputField {
+        display: flex;
+        margin-top: 50px;
+        margin-left: 20px; }
+        .Groups .addGroupModal .modalBox .inputField .btn {
+          background-color: #111;
+          color: #FEF36E;
+          font-size: .8em;
+          border: none;
+          margin-left: 10px; }
   .Groups .header {
     width: 100%;
     height: 20%;
@@ -128,48 +167,82 @@ table {
     align-items: center;
     position: absolute;
     color: #efefef;
-    font-size: 1.6em; }
-    .Groups .header .head {
-      color: #efefef;
-      font-family: "ABeeZee", sans-serif;
-      letter-spacing: .1em;
-      font-size: 1.25em;
-      margin-left: 10px; }
-    .Groups .header .addGroup {
-      width: 22px;
-      height: 22px;
-      margin: .5em;
-      margin-top: 9px;
-      margin-right: 10px; }
+    font-size: 1.6em;
+    position: absolute; }
+    .Groups .header .addNewGroup {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+      z-index: 999; }
+      .Groups .header .addNewGroup .head {
+        color: #efefef;
+        font-family: "ABeeZee", sans-serif;
+        letter-spacing: .1em;
+        font-size: 1.25em;
+        margin-left: 10px; }
+      .Groups .header .addNewGroup .addGroup {
+        width: 22px;
+        height: 22px;
+        margin: .5em;
+        margin-top: 9px;
+        margin-right: 10px; }
+    .Groups .header .groupsbox {
+      width: 90%;
+      height: 55%;
+      padding: 5px;
+      background-color: #111;
+      border-radius: 10px;
+      border-color: #FEF36E;
+      border: 2px;
+      color: white; }
+      .Groups .header .groupsbox button {
+        background-color: rgba(239, 239, 239, 0.3);
+        border: none;
+        height: 30px;
+        padding: 7px;
+        margin: 5px 2px;
+        border-radius: 10px;
+        color: #efefef;
+        letter-spacing: 0.2em;
+        font-family: "ABeeZee", sans-serif;
+        font-size: 1rem; }
+        .Groups .header .groupsbox button:focus {
+          outline: none; }
+        .Groups .header .groupsbox button:hover {
+          background-color: #FEF36E;
+          color: #111; }
   .Groups .listOfGroups {
     display: flex;
     justify-content: space-around;
     justify-content: flex-start;
     margin-left: 20px;
+    margin-top: 100px;
     width: 100%;
     align-items: flex-start;
     position: relative; }
     .Groups .listOfGroups .nameContainer {
       display: flex;
       flex-direction: column;
-      margin-top: 90px; }
+      margin-top: 70px; }
       .Groups .listOfGroups .nameContainer .groupName {
-        color: white;
-        font-size: 1.3em; }
-  .Groups .seeInfo {
-    color: #FEF36E;
-    background-color: #3a3a3a;
-    width: 90px;
-    margin-top: 1em;
-    border: none;
-    height: 30px;
-    font-size: 1em;
-    cursor: pointer; }
+        color: #efefef;
+        letter-spacing: 1; }
+      .Groups .listOfGroups .nameContainer .seeInfo {
+        color: #FEF36E;
+        background-color: #3a3a3a;
+        width: 90px;
+        margin-top: 1em;
+        border: none;
+        height: 30px;
+        font-size: 1em;
+        cursor: pointer; }
 
 #Home {
   background-color: #111;
   height: 100vh;
-  width: 100vw; }
+  width: 100vw;
+  padding-top: 50px; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -846,13 +919,12 @@ table {
   height: 100%;
   font-family: "ABeeZee", sans-serif;
   font-size: 1.2em;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: flex-start;
   position: absolute;
   background-color: rgba(17, 17, 17, 0.93);
   z-index: 99;
-  right: 100vw;
   opacity: 0; }
   .Menu a {
     text-decoration: none; }
@@ -917,13 +989,6 @@ table {
         color: #efefef;
         background-color: #d13030; }
 
-@keyframes slideIn {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-
 #About {
   width: 100vw;
   min-height: 100vh;
@@ -967,7 +1032,7 @@ table {
       left: none; }
     #About header img {
       width: 300px;
-      z-index: 70; }
+      z-index: 6; }
     #About header h3 {
       width: 100vw;
       text-align: center; }
@@ -1239,14 +1304,20 @@ table {
           color: #111; }
 
 .App {
-  width: 100%;
+  width: 100vw;
+  overflow-x: hidden;
   height: 100vh; }
+  .App .navbar {
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    z-index: 7;
+    background-color: #111; }
   .App .menu {
     width: 30px;
     height: 30px;
     position: fixed;
     margin: 15px;
-    z-index: 7;
     cursor: pointer; }
   .App .hamburger {
     position: absolute;
@@ -1262,8 +1333,7 @@ table {
       position: fixed;
       top: 0;
       right: 0;
-      cursor: pointer;
-      z-index: 7; }
+      cursor: pointer; }
   .App .line2 {
     top: calc(13px); }
   .App .line3 {
@@ -1450,7 +1520,6 @@ table {
 
 .modalContainer {
   position: absolute;
-  width: 100%;
   background-color: #3a3a3a;
   z-index: 299; }
   .modalContainer .friendbuttn {
