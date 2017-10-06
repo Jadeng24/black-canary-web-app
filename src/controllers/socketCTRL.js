@@ -10,7 +10,7 @@ const socket = io('http://localhost:3069');
         })
     }
     
-    export function heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations){ //in home component 
+    export function heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations, getPendingFriendRequests){ //in home component 
         socket.on('heartbeat', data=> {
             // console.log('data in controller', data)
             //pass in action reducers to heartbeat function in component
@@ -18,6 +18,7 @@ const socket = io('http://localhost:3069');
             getUserInfo(data.userInfo);
             getGroups(data.groups);
             getActiveLocations(data.activeLocations);
+            getPendingFriendRequests(data.pendingFriendRequests);
         })
     }
 
@@ -81,12 +82,14 @@ const socket = io('http://localhost:3069');
 
     export function confirmFriendRequest(requestId){
         //on profile or contacts page
+        console.log('controller, confirm friend', requestId)
         socket.emit('confirm friend request', requestId)
     }
 
     export function declineFriendRequest(requestId){
         //on profile or contacts page
         //requestId is friend.id
+        console.log('controller, decline friend', requestId)
         socket.emit('decline friend request', requestId)
     }
 
