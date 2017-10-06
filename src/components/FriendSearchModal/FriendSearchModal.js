@@ -58,10 +58,12 @@ class FriendSearchModal extends Component{
           <button onClick={()=>requestFriend(c.id)}>Send Request</button>
           </div>
           <div className='text'>
-            <h3>First: {c.firstname}</h3>
-            <h3>Last: {c.lastname}</h3>
-            <h3>Username: {c.username}</h3>
-            <h4>Email: {c.email}</h4>
+            <div>
+              <h3>First: {c.firstname}</h3>
+              <h3>Last: {c.lastname}</h3>
+              <h3>Username: {c.username}</h3>
+              <h4>Email: {c.email}</h4>
+            </div>
           </div>
         </div>)
       })
@@ -69,10 +71,13 @@ class FriendSearchModal extends Component{
 
     return(
       <div className='modalContainer'>
-        <img className="x" onClick={_=>this.props.toggleSearch()} src={x} alt="close"/>
-        <input value={this.state.searchTerm} onChange={e=>this.handleChange(e.target.value)} className="input" placeholder='Name'></input>
-        <button onClick={_=>this.handleClick()} className="friendbuttn">Search</button>
-
+        <div className="imgWrap">
+          <img className="x" onClick={_=>this.props.toggleSearch()} src={x} alt="close"/>
+        </div>
+        <div className="searchWrap">
+          <input value={this.state.searchTerm} onChange={e=>this.handleChange(e.target.value)} className="input" placeholder='Name'></input>
+          <button onClick={_=>this.handleClick()} className="friendbuttn">Search</button>
+        </div>
         <div className='results'>
           {results}
         </div>
