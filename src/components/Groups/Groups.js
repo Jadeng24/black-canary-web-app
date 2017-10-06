@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import io from 'socket.io-client';
 
 import addGroup from '../../images/addFriendIconReal.png';
-import x from '../../images/x.png';
 import GroupsModal from './GroupsModal'
 import editIcon from '../../images/addFriendIconReal.png'
 import TweenMax from 'gsap';
@@ -95,7 +94,7 @@ class Groups extends Component{
 render(){
 
   let {groups, friends} = this.props
-
+console.log(groups)
   const allGroups = groups.map((group,i) => {
         return (
         <div className='listOfGroups' key={i}>

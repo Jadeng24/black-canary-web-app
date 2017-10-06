@@ -119,7 +119,8 @@ table {
   width: 100%;
   height: 100%;
   background-color: #111;
-  font-family: "ABeeZee", sans-serif; }
+  font-family: "ABeeZee", sans-serif;
+  padding-top: 50px; }
   .Groups .addGroupModal {
     width: 100%;
     height: 100%;
@@ -165,7 +166,6 @@ table {
     align-items: center;
     position: absolute;
     color: #efefef;
-<<<<<<< HEAD
     font-size: 1.6em;
     position: absolute; }
     .Groups .header .addNewGroup {
@@ -174,70 +174,68 @@ table {
       margin-left: 10px;
       cursor: pointer;
       z-index: 999; }
-=======
-    font-size: 1.6em; }
-    .Groups .header .head {
-      color: #efefef;
-      font-family: "ABeeZee", sans-serif;
-      letter-spacing: .1em;
-      font-size: 1.25em;
-      margin-left: 10px; }
-    .Groups .header .addGroup {
-      width: 22px;
-      height: 22px;
-      margin: .5em;
-      margin-top: 9px;
-      margin-right: 10px; }
->>>>>>> master
+      .Groups .header .addNewGroup .head {
+        color: #efefef;
+        font-family: "ABeeZee", sans-serif;
+        letter-spacing: .1em;
+        font-size: 1.25em;
+        margin-left: 10px; }
+      .Groups .header .addNewGroup .addGroup {
+        width: 22px;
+        height: 22px;
+        margin: .5em;
+        margin-top: 9px;
+        margin-right: 10px; }
+    .Groups .header .groupsbox {
+      width: 90%;
+      height: 55%;
+      padding: 5px;
+      background-color: #111;
+      border-radius: 10px;
+      border-color: #FEF36E;
+      border: 2px;
+      color: white; }
+      .Groups .header .groupsbox button {
+        background-color: rgba(239, 239, 239, 0.3);
+        border: none;
+        height: 30px;
+        padding: 7px;
+        margin: 5px 2px;
+        border-radius: 10px;
+        color: #efefef;
+        letter-spacing: 0.2em;
+        font-family: "ABeeZee", sans-serif;
+        font-size: 1rem; }
+        .Groups .header .groupsbox button:focus {
+          outline: none; }
+        .Groups .header .groupsbox button:hover {
+          background-color: #FEF36E;
+          color: #111; }
   .Groups .listOfGroups {
     display: flex;
     justify-content: space-around;
     justify-content: flex-start;
     margin-left: 20px;
+    margin-top: 100px;
     width: 100%;
     align-items: flex-start;
     position: relative; }
     .Groups .listOfGroups .nameContainer {
       display: flex;
       flex-direction: column;
-      margin-top: 90px; }
+      margin-top: 70px; }
       .Groups .listOfGroups .nameContainer .groupName {
-        color: white;
-        font-size: 1.3em; }
-  .Groups .seeInfo {
-    color: #FEF36E;
-    background-color: #3a3a3a;
-    width: 90px;
-    margin-top: 1em;
-    border: none;
-    height: 30px;
-    font-size: 1em;
-    cursor: pointer; }
-  .Groups .groupsbox {
-    width: 90%;
-    height: 55%;
-    padding: 5px;
-    background-color: #111;
-    border-radius: 10px;
-    border-color: #FEF36E;
-    border: 2px;
-    color: white; }
-    .Groups .groupsbox button {
-      background-color: rgba(239, 239, 239, 0.3);
-      border: none;
-      height: 30px;
-      padding: 7px;
-      margin: 5px 2px;
-      border-radius: 10px;
-      color: #efefef;
-      letter-spacing: 0.2em;
-      font-family: "ABeeZee", sans-serif;
-      font-size: 1rem; }
-      .Groups .groupsbox button:focus {
-        outline: none; }
-      .Groups .groupsbox button:hover {
-        background-color: #FEF36E;
-        color: #111; }
+        color: #efefef;
+        letter-spacing: 1; }
+      .Groups .listOfGroups .nameContainer .seeInfo {
+        color: #FEF36E;
+        background-color: #3a3a3a;
+        width: 90px;
+        margin-top: 1em;
+        border: none;
+        height: 30px;
+        font-size: 1em;
+        cursor: pointer; }
 
 #Home {
   background-color: #111;
