@@ -47,26 +47,27 @@ class Home extends Component{
             // console.log(`state username`, this.state.user.username);
             // console.log(`props username`, props.user.username);
             if(this.state.user.username !== props.user.username) {
-                // console.log('HELLO HERAAM', props.user)
+                console.log('HELLO HERAAM', props.user)
                 this.setState({
                     user: props.user,
                     userLoggedIn: true
                 })
                 setInterval(() => {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        this.setState({
-                            location: {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            }
-                        })
-                        props.updateUserLocation(`${position.coords.latitude}*${position.coords.longitude}`)
-                        
-                    })
+                    
                 }, 1000)
 
 
             }
+            navigator.geolocation.getCurrentPosition(position => {
+                this.setState({
+                    location: {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }
+                })
+                props.updateUserLocation(`${position.coords.latitude}*${position.coords.longitude}`)
+                
+            })
         }
     }
 
@@ -75,8 +76,8 @@ class Home extends Component{
 
 
     render(){
-        let {user, friends, groups, getActiveLocations} = this.props;
-        // console.log(user);
+        let {user, userLoc, friends, groups, getActiveLocations} = this.props;
+        // console.log(userLoc);
         return(
             <div id="Home">
                 

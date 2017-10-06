@@ -8,10 +8,10 @@ const initialState = {
         auth_id: '',
         socket_id: '',
         id: '',
-        location: '',
         safe_haven: 'Calypso\'s Island',
         emergency_group_created: false
     },
+    userLoc: '',
     friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_id, friend_status, friend_pic, user_id}] 
     groups: [], //array of group objects [{groupID, groupName, members:[]}]
     activeLocations: {
@@ -133,9 +133,7 @@ export default function reducer(state = initialState, action){
             break;
         case UPDATE_USER_LOCATION:
             // console.log('reducer get user info', action.payload)
-            let user = Object.assign({}, state.user);
-            user.location = action.payload;
-            return Object.assign({}, state, {user})
+            return Object.assign({}, state, {userLoc: action.payload})
             break;
         case GET_FRIENDS_LIST:
         // console.log('reducer get friends',action.payload)
