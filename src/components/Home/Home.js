@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
 import $ from 'jquery';
 import {connect} from 'react-redux';
 import {getUserInfo, updateUserLocation, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
-import {heartbeat, renameGroup} from './../../controllers/socketCTRL';
+import {heartbeat, renameGroup, socketOn} from './../../controllers/socketCTRL';
 import map from '../../images/placeholder_map.gif'
 
-const socket = io('http://localhost:3069');
+// const socket = io('http://localhost:3069');
 
 
 class Home extends Component{
@@ -29,10 +29,11 @@ class Home extends Component{
 
     componentDidMount(){
 
-        socket.on('connect', ()=> {
-            console.log('home socket id:',socket.id)
-            socket.emit('save socket_id', {socketId: socket.id})
-        })
+        // socket.on('connect', ()=> {
+        //     console.log('home socket id:',socket.id)
+        //     socket.emit('save socket_id', {socketId: socket.id})
+        // })
+        socketOn();
 
         let {getUserInfo, getFriendsList, getGroups, getActiveLocations} = this.props;
 
