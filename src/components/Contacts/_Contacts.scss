@@ -4,7 +4,8 @@
     letter-spacing: 0.2em;
     font-family: $sans;
     background-color: $black;
-    width: 100%;
+    width: 100vw;
+    padding-top: 50px;
 
     .header{
         display: flex;

@@ -34,6 +34,7 @@ const socket = io('http://localhost:3069');
     //=============== emit sockets ===================//
 
     export function sendLocation(alert){ //in situations, send objects with user info with user location, array of recipient ids to add to the active_locations table in db
+        console.log(alert)
         socket.emit('send location', alert)
     }
 
