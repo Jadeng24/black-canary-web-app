@@ -175,8 +175,14 @@ if(currentUser.id) {
                 data.map(e => {
                     // console.log(e);
                     let {message, situation} = e;
-                    let coord = e.coordinates.split('*');
-                    let coordinates = {lat: 1*coord[0], lng: 1*coord[1]};
+                    let coordinates;
+                    if(e.coordinates) {
+                        let coord = e.coordinates.split('*');
+                        coordinates = {lat: 1*coord[0], lng: 1*coord[1]};
+                    }else {
+                        coordinates ={lat: 40.226192, lng:  -111.660776}
+                    }
+                    
                     let senderName = `${e.senderfirstname} ${e.senderlastname}`;
 
                     activeLocations[e.situationlevel].push({senderName, coordinates, message, situation})
@@ -206,22 +212,22 @@ if(currentUser.id) {
 
     socket.on('send location', data => {
         // post data to active_locations table in db
-
+        console.log('data:', data)
         app.get('db').add_active_location([data.user_id, data.user_coordinates, data.situation, data.situation_level, data.message])
-            .then(location=> {
-                console.log(location)
-                //loop through recipients array and add location for each recipient
-                data.individual_recip.length > 0 ?
-                    location.map(individual => {
-                        app.get('db').add_location_recipient([location.id, individual])
+            .then(alert=> {
+                console.log('alert[0]', alert[0])
+                let all = [...data.individual_recip];
+                data.group_recip.map(group => {
+                    group.members.map(member => {
+                        all.push(member.userID)
                     })
-                    : null;
+                });
+                let x = new Set(all);
+                allRecip = Array.from(x);
 
-                data.group_recip.length > 0 ?
-                    location.map(group_member => {
-                        app.get('db').add_location_recipient([location.id, group_member])
-                    })
-                    : null;
+                allRecip.map(recip => {
+                    app.get('db').add_location_recipient([alert[0].id, recip])
+                })
             })
     })
 

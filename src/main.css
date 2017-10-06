@@ -64,7 +64,8 @@ table {
   letter-spacing: 0.2em;
   font-family: "ABeeZee", sans-serif;
   background-color: #111;
-  width: 100%; }
+  width: 100vw;
+  padding-top: 50px; }
   .Contacts .header {
     display: flex;
     flex-direction: row;
@@ -156,7 +157,8 @@ table {
 #Home {
   background-color: #111;
   height: 100vh;
-  width: 100vw; }
+  width: 100vw;
+  padding-top: 50px; }
   #Home .navContainer {
     width: 100vw;
     height: 30vh;
@@ -833,13 +835,12 @@ table {
   height: 100%;
   font-family: "ABeeZee", sans-serif;
   font-size: 1.2em;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: flex-start;
   position: absolute;
   background-color: rgba(17, 17, 17, 0.93);
   z-index: 99;
-  right: 100vw;
   opacity: 0; }
   .Menu a {
     text-decoration: none; }
@@ -904,13 +905,6 @@ table {
         color: #efefef;
         background-color: #d13030; }
 
-@keyframes slideIn {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-
 #About {
   width: 100vw;
   min-height: 100vh;
@@ -954,7 +948,7 @@ table {
       left: none; }
     #About header img {
       width: 300px;
-      z-index: 70; }
+      z-index: 6; }
     #About header h3 {
       width: 100vw;
       text-align: center; }
@@ -1226,14 +1220,20 @@ table {
           color: #111; }
 
 .App {
-  width: 100%;
+  width: 100vw;
+  overflow-x: hidden;
   height: 100vh; }
+  .App .navbar {
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    z-index: 7;
+    background-color: #111; }
   .App .menu {
     width: 30px;
     height: 30px;
     position: fixed;
     margin: 15px;
-    z-index: 7;
     cursor: pointer; }
   .App .hamburger {
     position: absolute;
@@ -1249,8 +1249,7 @@ table {
       position: fixed;
       top: 0;
       right: 0;
-      cursor: pointer;
-      z-index: 7; }
+      cursor: pointer; }
   .App .line2 {
     top: calc(13px); }
   .App .line3 {
