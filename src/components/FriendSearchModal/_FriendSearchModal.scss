@@ -26,7 +26,7 @@
 
     .input{
       margin-left: 15px;
-      width: 165px;
+      width: 210px;
       height: 35px;
       margin-bottom: 10px;
       border-radius: 4px;
@@ -73,8 +73,8 @@
        margin-top: 5px;
        margin-bottom: 13px;
        color: $white;
-       word-wrap: break-word;
-       overflow-x: scroll;
+      //  word-wrap: break-word;
+      //  overflow-x: scroll;
      }
 
     .result h4{
@@ -83,7 +83,7 @@
       margin-top: 5px;
       color: $white;
       // word-wrap: break-word;
-      overflow-x: scroll;
+      // overflow-x: scroll;
       
     }
 
@@ -109,6 +109,8 @@
       // margin-right: 5px;
       line-height: 1.1em;
       // overflow-x: scroll;
-      
+      div {
+        overflow-x: scroll;
+      }
     }
 }

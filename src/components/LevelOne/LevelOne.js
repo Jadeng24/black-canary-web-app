@@ -190,7 +190,7 @@ class LevelOne extends Component {
                 </select>
               </div>
               <div className="buttnWrapper">
-                <button onClick={() => {console.log('no fuk u'); this.sendLocToSocket()}}>SEND</button>
+                <button onClick={() => {console.log('no i hate u'); this.sendLocToSocket()}}>SEND</button>
               </div>
             </section>
           </div>
