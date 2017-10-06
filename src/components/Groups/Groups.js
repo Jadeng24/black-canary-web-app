@@ -16,11 +16,7 @@ class Groups extends Component{
     constructor(){
       super()
       this.state={
-<<<<<<< HEAD
-        friends:{name: 'abby', name: 'abby', name: 'abby', name: 'abby', name: 'abby'},
-        groupModal: false,
-        AddGroupModal: false
-=======
+
         groupName: [
             {name: 'urMom',
               friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
@@ -31,7 +27,6 @@ class Groups extends Component{
         ],
         groupModal: false,
         newGroup: {name: "", friends:[]}
->>>>>>> master
       }
       this.showModalMethod = this.showModalMethod.bind(this)
       this.exit = this.exit.bind(this)
