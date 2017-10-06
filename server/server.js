@@ -280,15 +280,30 @@ if(currentUser.id) {
     })
 
     socket.on('friend search', firstName => {
+        let results;
         app.get('db').search_by_firstName([firstName])
             .then(friends => {
                 console.log(friends)
-                socket.emit('search results', friends)
+                // friends.map(friend=> {
+                //     app.get('db').search_for_pending([friend.id])
+                //         .then(friend => {
+                //             if(friend) {
+                //                 if(friend.friend_status === false) {
+                //                     socket.emit('search results', )
+                //                 }
+                //             }
+                //         })
+                // })
+
+
+
+                socket.emit('search results', results)
             })
+
                 //see friends of current user, save to array
-        //loop through friends array to see if requested friends are the same
-        //if friends array[0].friend_status = false, send "pending"
-        //if true, splice that friend out of requested friends array
+                //loop through friends array to see if requested friends are the same
+                //if friends array[0].friend_status = false, send "pending"
+                //if true, splice that friend out of requested friends array
 
         
     })
