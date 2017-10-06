@@ -4,7 +4,12 @@ const socket = io('http://localhost:3069');
 //these functions are invoked in their components' componentsDidMount() life cycle method
 
 //========= socket.on listeners ==============//
-
+    export function socketOn(){
+        socket.on('connect', ()=> {
+            console.log(socket.id)
+        })
+    }
+    
     export function heartbeat(getFriendsList, getUserInfo, getGroups, getActiveLocations){ //in home component 
         socket.on('heartbeat', data=> {
             // console.log('data in controller', data)
@@ -20,6 +25,12 @@ const socket = io('http://localhost:3069');
         socket.on('update user', user=>{
             //pass in getUserInfo action reducer in component
             getUserInfo(user)
+        })
+    }
+
+    export function searchResults(saveToState){
+        socket.on('search results', data=> {
+            saveToState(data)
         })
     }
     
@@ -63,8 +74,8 @@ const socket = io('http://localhost:3069');
         socket.emit('remove friend from group', {groupId, friendId})
     }
 
-    export function requestFriend(userId, friendId){ //on contact page
-        socket.emit('friend request', {userId, friendId})
+    export function requestFriend(friendId){ //on contact page
+        socket.emit('friend request', friendId)
     }
 
     export function confirmFriendRequest(requestId){
@@ -99,3 +110,9 @@ const socket = io('http://localhost:3069');
     //     // contacts are an array of contact_ids
     //     socket.emit('edit emergency group', contacts)
     // }
+
+
+
+    export function friendSearch(firstName){
+        socket.emit('friend search', firstName);
+    }

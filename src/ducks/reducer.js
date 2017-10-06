@@ -153,6 +153,6 @@ export default function reducer(state = initialState, action){
         default:
             break;
     }
-    console.log(state)
+    // console.log(state)
     return state;
 }

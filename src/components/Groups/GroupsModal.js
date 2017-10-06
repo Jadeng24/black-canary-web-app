@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png';
 import x from '../../images/x.png';
 import editIcon from '../../images/EDIT_ICON.svg'
