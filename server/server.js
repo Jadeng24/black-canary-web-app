@@ -303,7 +303,7 @@ if(currentUser.id) {
 
 
 
-                socket.emit('search results', results)
+                socket.emit('search results', friends)
             })
 
                 //see friends of current user, save to array
