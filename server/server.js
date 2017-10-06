@@ -119,7 +119,7 @@ passport.use(new Auth0Strategy({
 
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
-    let userInfo, groups, friends, activeLocations, emergencyGroup;
+    let userInfo, groups, friends, activeLocations, emergencyGroup, pendingFriendRequests;
 
 // heartbeat updates the connected user every second
 if(currentUser.id) {
@@ -191,6 +191,12 @@ if(currentUser.id) {
 
                 // activeLocations = data
             });
+            
+            app.get('db').get_pending_friend_requests([currentUser.id])
+                .then(requests => {
+                    // console.log(requests)
+                    pendingFriendRequests = requests
+                })
 
         // app.get('db').get_emergency_group([currentUser.id])
         //     .then(data=> {
@@ -198,7 +204,7 @@ if(currentUser.id) {
         //     })
 
             // console.log('userInfo:', userInfo, 'groups:', groups, 'friends:', friends, 'activeLocations:', activeLocations)
-        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations, emergencyGroup})
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations, emergencyGroup, pendingFriendRequests})
     }
 }
 

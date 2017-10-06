@@ -105,7 +105,9 @@ class Contacts extends Component{
       })
     }
 
+ 
     render(){
+        // console.log(this.props.pendingFriendRequests)
 
     const allGroups = this.props.groups.map((group, i)=>{
         return(
@@ -114,7 +116,19 @@ class Contacts extends Component{
             </div>
         )
     })
-    const pendingFriends=[];
+
+    const pendingFriends= this.props.pendingFriendRequests.map((friend, i) => {
+        return (
+            <div key={i} className="listOfFriends">
+                <div><img className= "imgContainer" src={friend.friend_pic} alt="profile pic"/></div>
+                <div className='nameContainer'>
+                    <p className="name">{friend.friend_firstname}</p>
+                    <button onClick={()=>confirmFriendRequest(friend.friend_table_id)}>CONFIRM FRIEND REQUEST</button>
+                    <button onClick={()=>declineFriendRequest(friend.friend_table_id)}>DECLINE FRIEND REQUEST</button>
+                </div>
+            </div>)
+        });
+
     const allFriends = this.props.friends.map((friend, i)=>{
         if(friend.friend_status === true) {
             return(
@@ -126,18 +140,8 @@ class Contacts extends Component{
                         </div>
                     </div>
             )
-        } else if (friend.friend_status === false) {
-            pendingFriends.push(
-                <div key={i} className="listOfFriends">
-                    <div><img className= "imgContainer" src={friend.friend_pic} alt="profile pic"/></div>
-                    <div className='nameContainer'>
-                        <p className="name">{friend.friend_firstname}</p>
-                        <button onClick={()=> confirmFriendRequest(friend.friend_table_id)}>ADD FRIEND</button>
-                        <button onClick={()=> declineFriendRequest(friend.friend_table_id)}>DECLINE FRIEND REQUEST</button>
-                    </div>
-                </div>)
-            }
-        })
+        } 
+    })
 
         return(
             <div className="Contacts">
