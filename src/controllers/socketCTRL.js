@@ -23,18 +23,18 @@ const socket = io('http://localhost:3069');
         })
     }
     
-    export function activeLocations(){ //on home page/landing page with map
-        //write socket.emit('show locations') from server to use the active_locations table to send to all recipients the active locations
-        socket.on('show locations', data => {
-            //use maps to show the data
-        })
-    }
+    // export function activeLocations(){ //on home page/landing page with map
+    //     //write socket.emit('show locations') from server to use the active_locations table to send to all recipients the active locations
+    //     socket.on('show locations', data => {
+    //         //use maps to show the data
+    //     })
+    // }
     
 
     //=============== emit sockets ===================//
 
-    export function sendLocation(user, recipients){ //in situations, send objects with user info with user location, array of recipient ids to add to the active_locations table in db
-        socket.emit('send location', {user, recipients})
+    export function sendLocation(alert){ //in situations, send objects with user info with user location, array of recipient ids to add to the active_locations table in db
+        socket.emit('send location', alert)
     }
 
     export function editUser(user){ //on profile page, update username or safe haven and send the whole user object

@@ -117,7 +117,7 @@ export default class About extends Component{
                         <p className="paragraphs">Or gone for a night out and needed an easy way to 
                             track the same three friends you always go out with?</p>
                         <p className="paragraphs">Or been walking home late at night, and felt unsafe?</p>
-                        <p className="paragraphs">Black Canary is a web application designed designed to allow the user to 
+                        <p className="paragraphs">Black Canary is a web application designed to allow the user to 
                             share their location with specifically chosen contacts or groups of contacts.</p> 
                         <div className="ulWrapper">
                             <ul>
@@ -156,7 +156,7 @@ export default class About extends Component{
                         <p className="paragraphs">
                             <em>Level Two:</em> for situations where you are in an uncomfortable 
                             situation or walking through a bad area, and you want to 
-                            discretely alert certain people to your location and situation. In Level 
+                            discreetly alert certain people to your location and situation. In Level 
                             Two situations, you can add a message (or leave it blank) and set the time 
                             active. The alert will be sent to a pre-set list of contacts, which you can 
                             create on your profile page.
@@ -234,9 +234,9 @@ export default class About extends Component{
                                 <img className="imgSerious" src={js}/>
                             </div>
                             <em>Janise Suski</em>
-                            <p>Janise worked on the Black Canary team, primarily with the back-end. 
+                            <p>Janise's role on the Black Canary team was to work primarily with the back-end. 
                                 She worked on setting up the server and Redux, and helped create the 
-                                database in PostgresSQL. While most of her work was on the server-side, 
+                                database in PostgreSQL. While most of her work was on the server-side, 
                                 her work with websockets required interaction and preparation with the 
                                 front-end, including collaborating on the design on endpoints.
                                 Janise served in the Peace Corps in Micronesia for 27 months 

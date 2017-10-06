@@ -74,7 +74,7 @@ passport.use(new Auth0Strategy({
 
 //redirect user to home page
   app.get('/auth/callback', passport.authenticate('auth0', {
-      successRedirect: `http://localhost:3070/#/`,
+      successRedirect: `http://localhost:3070/#/home`,
       failureRedirect: `http://localhost:3070/#/`
   }));
 
@@ -91,7 +91,6 @@ passport.use(new Auth0Strategy({
       // console.log('deserialize', user)
          done(null, user[0])
       })
-
   });
 
   app.get('/auth/me', (req, res, next) => {
@@ -120,7 +119,7 @@ passport.use(new Auth0Strategy({
 
 io.on('connection', socket => {
     console.log('A user has connected, socket ID: ', socket.id);
-    let userInfo, groups, friends, activeLocations;
+    let userInfo, groups, friends, activeLocations, emergencyGroup;
 
 // heartbeat updates the connected user every second
 if(currentUser.id) {
@@ -161,24 +160,39 @@ if(currentUser.id) {
         app.get('db').get_friends([currentUser.id])
             .then(data=> {
                 // console.log('get friends', data)
-                
-                //format return data to send to front end
-
-
-
-
-
             friends = data
             });
 
         app.get('db').get_active_locations([currentUser.id])
             .then(data => {
                 // console.log('get active locations', data)
-                activeLocations = data
+                //change data and save to activeLocations
+                activeLocations = {
+                    1: [],
+                    2: [],
+                    3: []
+                }
+                data.map(e => {
+                    // console.log(e);
+                    let {message, situation} = e;
+                    let coord = e.coordinates.split('*');
+                    let coordinates = {lat: 1*coord[0], lng: 1*coord[1]};
+                    let senderName = `${e.senderfirstname} ${e.senderlastname}`;
+
+                    activeLocations[e.situationlevel].push({senderName, coordinates, message, situation})
+                })
+                //"29348748*-983475"
+
+                // activeLocations = data
             });
 
+        // app.get('db').get_emergency_group([currentUser.id])
+        //     .then(data=> {
+        //         emergencyGroup = data
+        //     })
+
             // console.log('userInfo:', userInfo, 'groups:', groups, 'friends:', friends, 'activeLocations:', activeLocations)
-        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations})
+        socket.emit('heartbeat', {userInfo, groups, friends, activeLocations, emergencyGroup})
     }
 }
 
@@ -193,11 +207,21 @@ if(currentUser.id) {
     socket.on('send location', data => {
         // post data to active_locations table in db
 
-        app.get('db').add_active_location([data.user.userId, data.user.coordinates, data.user.situation, data.message])
+        app.get('db').add_active_location([data.user_id, data.user_coordinates, data.situation, data.situation_level, data.message])
             .then(location=> {
                 console.log(location)
                 //loop through recipients array and add location for each recipient
-                app.get('db').add_location_recipient([location.id, data.recipients])
+                data.individual_recip.length > 0 ?
+                    location.map(individual => {
+                        app.get('db').add_location_recipient([location.id, individual])
+                    })
+                    : null;
+
+                data.group_recip.length > 0 ?
+                    location.map(group_member => {
+                        app.get('db').add_location_recipient([location.id, group_member])
+                    })
+                    : null;
             })
     })
 

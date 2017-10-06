@@ -5,6 +5,7 @@ import x from '../../images/x.png'
 import FriendModal from './../FriendModal/FriendModal';
 import {connect} from 'react-redux';
 import {getFriendsList, getGroups} from './../../ducks/reducer';
+import FriendSearchModal from '../FriendSearchModal/FriendSearchModal'
 const socket = io('http://localhost:3069');
 
 
@@ -17,7 +18,7 @@ class Contacts extends Component{
             //         firstName: 'Janise',
             //         lastName: 'Suski',
             //         username: 'janises',
-            //         userID: 1,            
+            //         userID: 1,
             //         socketID: '98734jbfhljabh38y7r8734oybfjsdhbfwp495bfuijfsgnk547',
             //         email: 'janises@janises.janises'
             //     },
@@ -25,7 +26,7 @@ class Contacts extends Component{
             //         firstName: 'Andi',
             //         lastName: 'Platter',
             //         username: 'meatGap',
-            //         userID: 2,                        
+            //         userID: 2,
             //         socketID: '98asjdfhauiwefnkjfgskrguroybfjsdhbf8734y534hgsdf63g263',
             //         email: 'andi@meat.gap'
             //     },
@@ -33,7 +34,7 @@ class Contacts extends Component{
             //         firstName: 'Abby',
             //         lastName: 'Thelin',
             //         username: 'noBats',
-            //         userID: 3,                                    
+            //         userID: 3,
             //         socketID: '732h5bd672bdhu5489dhj834hf743ihfbfjsdhbfwp495bfuijfsgnk547',
             //         email: 'abby@noBats.tuna'
             //     },
@@ -41,7 +42,7 @@ class Contacts extends Component{
             //         firstName: 'Alan',
             //         lastName: 'Miller',
             //         username: 'alien',
-            //         userID: 4,                                    
+            //         userID: 4,
             //         socketID: '732h98234f59e7634asdghf2946msndfblrehfsdhbfwp495bfuijfsgnk547',
             //         email: 'alan@theystillthinkimhuman.mothership'
             //     },
@@ -49,7 +50,7 @@ class Contacts extends Component{
             //         firstName: 'Mom',
             //         lastName: '',
             //         username: 'knk',
-            //         userID: 35,                                    
+            //         userID: 35,
             //         socketID: '732kasjdhf74qbafjlhskf7q98234hfkjdff743ihfbfjsdhbfwp495bfuijfsgnk547',
             //         email: 'mom@mom.mom'
             //     },
@@ -57,24 +58,26 @@ class Contacts extends Component{
             //         firstName: 'Jake',
             //         lastName: 'Keator',
             //         username: 'jakeSnake',
-            //         userID: 44,                                    
+            //         userID: 44,
             //         socketID: '7akjsdafhlao723hflakhf34fbajshfs3784kufhibfblrehfsdhbfwp495bfuijfsgnk547',
             //         email: 'brother@brother.brother'
             //     },
             // ],
             // groups: [
-            //     {name: 'starWars'}, 
-            //     {name: 'Pokemon'}, 
-            //     {name: 'Dev'}, 
+            //     {name: 'starWars'},
+            //     {name: 'Pokemon'},
+            //     {name: 'Dev'},
             //     {name: 'BLAHHHHH'},
             //     {name: 'gurlzzz'},
             //     {name: 'dumbBOYZ'}
             // ],
             friendModal: false,
-            friend: null
+            friend: null,
+            showSearch: false
         }
         this.showModalMethod = this.showModalMethod.bind(this)
         this.exit = this.exit.bind(this)
+        this.toggleSearch = this.toggleSearch.bind(this)
     }
 
     showModalMethod(friend){
@@ -92,6 +95,12 @@ class Contacts extends Component{
 
     toggleGroupAdd(event, groupObj) {
 
+    }
+
+    toggleSearch(){
+      this.setState({
+        showSearch: !this.state.showSearch
+      })
     }
 
     render(){
@@ -125,15 +134,21 @@ class Contacts extends Component{
                     <div>
                         {allFriends}
                     </div>
-                    : 
+                    :
                         <FriendModal exit={this.exit} friend={this.state.friend} groups={this.props.groups}/>
                 }
 
                     <div className='header'>
                         <header className='head'>FRIENDS</header>
-                        <img className="addFriend" src={addFriend} alt="addFriendIcon"/>
+                        <img className="addFriend" onClick={_=>this.toggleSearch()}src={addFriend} alt="addFriendIcon"/>
                     </div>
-
+                    {
+                      this.state.showSearch
+                      ?
+                      <FriendSearchModal toggleSearch={this.toggleSearch} />
+                      :
+                      null
+                    }
             </div>
         )
     }

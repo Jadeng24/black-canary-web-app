@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import io from 'socket.io-client';
-import addFriend from '../../images/addFriendIconReal.png';
+
+import addGroup from '../../images/addFriendIconReal.png';
+import x from '../../images/x.png';
 import GroupsModal from './GroupsModal'
 import editIcon from '../../images/addFriendIconReal.png'
 import TweenMax from 'gsap';
@@ -14,9 +16,22 @@ class Groups extends Component{
     constructor(){
       super()
       this.state={
+<<<<<<< HEAD
         friends:{name: 'abby', name: 'abby', name: 'abby', name: 'abby', name: 'abby'},
         groupModal: false,
         AddGroupModal: false
+=======
+        groupName: [
+            {name: 'urMom',
+              friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
+            {name: 'HAlp',
+              friends: ['Abby', 'Janise', 'Ethan', 'Spencer', 'Emily']},
+            {name: 'Emergency',
+              friends: ['Monday', 'Jocelyn', 'Bailey']},
+        ],
+        groupModal: false,
+        newGroup: {name: "", friends:[]}
+>>>>>>> master
       }
       this.showModalMethod = this.showModalMethod.bind(this)
       this.exit = this.exit.bind(this)
@@ -32,6 +47,11 @@ class Groups extends Component{
       })
     }
 
+    addNewGroup(){
+      this.setState({
+        newGroup: {}
+      })
+    }
     exit(){
         console.log('exit')
         this.setState({
@@ -94,6 +114,7 @@ render(){
   })
   return(
       <div className='Groups'>
+
           <div className='header'>
             <p>GROUPS</p>
             <img onClick={_=>this.addNewGroupModal("show")} className="addNewGroup" src={editIcon} alt=""/>
@@ -130,6 +151,7 @@ render(){
           }
 
             {
+
               !this.state.groupModal
               ?
                 <div>{allGroups}</div>

@@ -70,14 +70,30 @@
       margin-left: 10px;
       cursor: pointer;
       z-index: 999;
+
+    .head{
+        color: $white;
+        font-family: $sans;
+        letter-spacing: .1em;
+        font-size: 1.25em;
+        margin-left: 10px;
+    }
+
+    .addGroup{
+      width: 22px;
+      height: 22px;
+      margin: .5em;
+      margin-top: 9px;
+      margin-right: 10px;
     }
   }
+
 
   .listOfGroups{
     display: flex;
     justify-content: space-around;
     justify-content: flex-start;
-    margin-left: 30px;
+    margin-left: 20px;
     // margin-top: 100px;
     width: 100%;
     align-items: flex-start;
