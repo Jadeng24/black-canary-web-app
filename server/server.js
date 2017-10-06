@@ -320,10 +320,12 @@ if(currentUser.id) {
     })
 
     socket.on('confirm friend request', requestId=> {
+        console.log('server, confirm friend', requestId)
         app.get('db').confirm_friend([requestId])
     })
 
     socket.on('decline friend request', requestId=> {
+        console.log('server, decline friend', requestId)
         app.get('db').decline_friend([requestId])
     })
 

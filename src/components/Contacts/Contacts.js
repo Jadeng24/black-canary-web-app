@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png'
 import x from '../../images/x.png'
 import FriendModal from './../FriendModal/FriendModal';
 import {connect} from 'react-redux';
 import {getFriendsList, getGroups} from './../../ducks/reducer';
 import FriendSearchModal from '../FriendSearchModal/FriendSearchModal'
-const socket = io('http://localhost:3069');
+import {confirmFriendRequest, declineFriendRequest} from './../../controllers/socketCTRL';
+
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:3069');
 
 
 class Contacts extends Component{
@@ -112,26 +114,42 @@ class Contacts extends Component{
             </div>
         )
     })
-
+    const pendingFriends=[];
     const allFriends = this.props.friends.map((friend, i)=>{
-        return(
+        if(friend.friend_status === true) {
+            return(
+                    <div key={i} className="listOfFriends">
+                        <div><img className= "imgContainer" src={friend.friend_pic} alt="profile pic"/></div>
+                        <div className='nameContainer'>
+                            <p className="name">{friend.friend_firstname}</p>
+                            <button className="seeInfo" onClick={_=>this.showModalMethod(friend)}>SEE INFO</button>
+                        </div>
+                    </div>
+            )
+        } else if (friend.friend_status === false) {
+            pendingFriends.push(
                 <div key={i} className="listOfFriends">
                     <div><img className= "imgContainer" src={friend.friend_pic} alt="profile pic"/></div>
                     <div className='nameContainer'>
                         <p className="name">{friend.friend_firstname}</p>
-                        <button className="seeInfo" onClick={_=>this.showModalMethod(friend)}>SEE INFO</button>
+                        <button onClick={()=> confirmFriendRequest(friend.friend_table_id)}>ADD FRIEND</button>
+                        <button onClick={()=> declineFriendRequest(friend.friend_table_id)}>DECLINE FRIEND REQUEST</button>
                     </div>
-                </div>
-        )
+                </div>)
+            }
         })
 
         return(
             <div className="Contacts">
 
+            {/* NEED A PLACE TO SHOW PENDING FRIEND REQUESTS AND CONFIRM OR DECLINE REQUEST.
+            IF YOU MAP THROUGH THIS.PROPS.FRIENDS, FRIEND_STATUS = FALSE MEANS THAT THE FRIEND REQUEST IS PENDING */}
+
                 {
                     !this.state.friendModal
                     ?
                     <div>
+                        {pendingFriends}
                         {allFriends}
                     </div>
                     :

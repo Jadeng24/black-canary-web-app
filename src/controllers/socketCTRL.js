@@ -81,12 +81,14 @@ const socket = io('http://localhost:3069');
 
     export function confirmFriendRequest(requestId){
         //on profile or contacts page
+        console.log('controller, confirm friend', requestId)
         socket.emit('confirm friend request', requestId)
     }
 
     export function declineFriendRequest(requestId){
         //on profile or contacts page
         //requestId is friend.id
+        console.log('controller, decline friend', requestId)
         socket.emit('decline friend request', requestId)
     }
 
