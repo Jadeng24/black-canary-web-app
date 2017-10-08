@@ -107,7 +107,7 @@ class Groups extends Component{
             members: r
           } 
       })
-      // console.log(this.state.groupsToAdd)
+      console.log(this.state.newGroup)
   }
 
 
@@ -115,7 +115,7 @@ class Groups extends Component{
 render(){
   let {groups, friends} = this.props
   // console.log(groups)
-  console.log(this.state.newGroup)
+  // console.log(this.state.newGroup)
   const allGroups = groups.map((group,i) => {
         return (
         <div className='listOfGroups' key={i}>

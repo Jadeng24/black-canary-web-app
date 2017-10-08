@@ -299,7 +299,7 @@ if(currentUser.id) {
         let results;
         app.get('db').search_by_firstName([firstName])
             .then(friends => {
-                console.log(friends)
+                console.log('friend search, friends', friends)
                 // friends.map(friend=> {
                 //     app.get('db').search_for_pending([friend.id])
                 //         .then(friend => {
