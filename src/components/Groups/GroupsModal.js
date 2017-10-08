@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-// import io from 'socket.io-client';
 import addFriend from '../../images/addFriendIconReal.png';
 import x from '../../images/x.png';
 import editIcon from '../../images/EDIT_ICON.svg'
 import Groups from './Groups'
 import {friendSearch, searchResults, deleteGroup, renameGroup, removeFriendFromGroup, addFriendToGroup} from './../../controllers/socketCTRL';
+
+// import io from 'socket.io-client';
 
 export default class GroupsModal extends Component{
 

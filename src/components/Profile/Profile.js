@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import x from '../../images/x.png'
-import io from 'socket.io-client';
 import marauder from './../../images/placeholder_map.gif';
 import editIcon from '../../images/whiteEditIcon.svg'
 import {connect} from 'react-redux';
 import {getUserInfo} from './../../ducks/reducer';
 import {editUser, updateUser, editSafeHaven, heartbeat, deleteUser} from './../../controllers/socketCTRL';
 
-const socket = io('http://localhost:3069');
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:3069');
 
 class Profile extends Component{
     constructor(){
@@ -105,9 +105,9 @@ class Profile extends Component{
         this.props.getUserInfo({user:{username: '', firstName: '', lastName: '', email: '', profilepic: '', auth_id: '', socket_id: '', id: '', location: '', safe_haven: ''}})
     }
 
-    componentDidMount(){
-        socket.emit('save socket_id', {socketID: socket.id})
-    }
+    // componentDidMount(){
+    //     socket.emit('save socket_id', {socketID: socket.id})
+    // }
 
     render(){
         let {user} = this.props;
