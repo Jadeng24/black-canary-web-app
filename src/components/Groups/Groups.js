@@ -1,38 +1,48 @@
 import React, {Component} from 'react';
-import io from 'socket.io-client';
-
-import addGroup from '../../images/addFriendIconReal.png';
+// import addGroup from '../../images/addFriendIconReal.png';
 import GroupsModal from './GroupsModal'
 import editIcon from '../../images/addFriendIconReal.png'
 import TweenMax from 'gsap';
 import $ from 'jquery';
 import x from '../../images/X.svg'
 import {connect} from 'react-redux'
-
-const socket = io('http://localhost:3069');
+import {friendSearch, searchResults, deleteGroup, addGroup} from './../../controllers/socketCTRL';
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:3069');
 
 class Groups extends Component{
     constructor(){
       super()
       this.state={
 
-        groupName: [
-            {name: 'urMom',
-              friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
-            {name: 'HAlp',
-              friends: ['Abby', 'Janise', 'Ethan', 'Spencer', 'Emily']},
-            {name: 'Emergency',
-              friends: ['Monday', 'Jocelyn', 'Bailey']},
-        ],
+        // groupName: [
+        //     {name: 'urMom',
+        //       friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
+        //     {name: 'HAlp',
+        //       friends: ['Abby', 'Janise', 'Ethan', 'Spencer', 'Emily']},
+        //     {name: 'Emergency',
+        //       friends: ['Monday', 'Jocelyn', 'Bailey']},
+        // ],
         groupModal: false,
-        newGroup: {name: "", friends:[]}
+        newGroup: {group_name: "", members:[]}
       }
       this.showModalMethod = this.showModalMethod.bind(this)
       this.exit = this.exit.bind(this)
       this.addNewGroupModal = this.addNewGroupModal.bind(this)
       this.toggleFriendAdd = this.toggleFriendAdd.bind(this)
+      this.handleChange = this.handleChange.bind(this)
     }
 
+
+    handleChange(e){
+      this.setState({
+        newGroup: {
+          group_name: e.target.value,
+          members: [...this.state.newGroup.members]
+        }
+      })
+
+    }
 
     showModalMethod(group){
       this.setState({
@@ -42,10 +52,15 @@ class Groups extends Component{
     }
 
     addNewGroup(){
+      addGroup(this.state.newGroup)
       this.setState({
-        newGroup: {}
+        newGroup: {
+          group_name: '',
+          members: []
+        }
       })
     }
+
     exit(){
         console.log('exit')
         this.setState({
@@ -65,26 +80,31 @@ class Groups extends Component{
       }
     }
 
-    toggleFriendAdd(event, groupObj) {
+//=============== SOMETHING WEIRD GOING ON PLS HELP ================//
+
+    toggleFriendAdd(event, friend) {
       let index = -1;
-      for (let i = 0; i < this.state.groupsToAdd.length; i++){
-          if (this.state.groupsToAdd[i].name === groupObj.name) {
+      for (let i = 0; i < this.state.newGroup.members.length; i++){
+          if (this.state.newGroup.members[i].username === friend.username) {
               index = i;
           }
       }
 
-      let r = this.state.groupsToAdd.slice(0);
+      let r = this.state.newGroup.members.slice(0);
       if(index >= 0) {
           //remove from recip and change color back
-          TweenMax.to($(`#${groupObj.name}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
+          TweenMax.to($(`#${friend.friend_user_id}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
           r.splice(index, 1);
       } else {
           //to recip, change color
-          TweenMax.to($(`#${groupObj.name}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
-          r.push(groupObj);
+          TweenMax.to($(`#${friend.friend_user_id}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
+          r.push(friend);
       }
       this.setState({
-          groupsToAdd: r
+          newGroup: {
+            ...this.state.newGroup,
+            members: r
+          } 
       })
       // console.log(this.state.groupsToAdd)
   }
@@ -92,9 +112,9 @@ class Groups extends Component{
 
 
 render(){
-
   let {groups, friends} = this.props
-console.log(groups)
+  // console.log(groups)
+  console.log(this.state.newGroup)
   const allGroups = groups.map((group,i) => {
         return (
         <div className='listOfGroups' key={i}>
@@ -106,6 +126,7 @@ console.log(groups)
         </div>
         )
   })
+
   return(
       <div className='Groups'>
 
@@ -125,20 +146,20 @@ console.log(groups)
                 <p className="head" >ADD NEW GROUP</p>
 
                 <div className="inputField">
-                  <input type="text"/>
-                  <button className="btn">ADD GROUP NAME</button>
+                  <input onChange={(e)=> this.handleChange(e)} type="text"/>
+                  {/* <button className="btn">ADD GROUP NAME</button> */}
                 </div>
 
                 <div className="inputField">
                   <p>ADD GROUP MEMBERS</p>
                   <div className="groupsbox">
-                         {/* {this.state.friends.map((e, i) => {
-                        return <button className="friendNames" key={i} id={e.freindid} onClick={event => this.toggleGroupAdd(event, e)}>{e.groupName.toUpperCase()}</button>
-                      })}    */}
+                         {friends.map((friend, i) => {
+                        return <button className="friendNames" key={i} id={friend.friend_user_id} onClick={event => this.toggleFriendAdd(event, friend)}>{friend.friend_username.toUpperCase()}</button>
+                      })}   
                   </div>
                 </div>
                       <div>
-                        <button>ADD GROUP TO GROUPS</button>
+                        <button onClick={()=> this.addNewGroup()}>ADD GROUP</button>
                       </div>
               </div>
             </div>
@@ -150,7 +171,7 @@ console.log(groups)
               ?
                 <div>{allGroups}</div>
               :
-              <GroupsModal exit={this.exit} group={groups}/>
+              <GroupsModal exit={this.exit} group={this.state.group}/>
             }
       </div>
   )

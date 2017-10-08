@@ -254,21 +254,25 @@ if(currentUser.id) {
     })
 
     socket.on('delete user', userId => {
-        console.log(userId)
+        // console.log(userId)
         app.get('db').delete_user([userId])
     })
 
-    socket.on('add group', data=> {
-        // console.log('data:', data)
-        app.get('db').add_group([data.userId, data.group.group_name])
-        .then(group=> {
+    socket.on('add group', group=> {
+        // console.log('group:', group)
+        app.get('db').add_group([currentUser.id, group.group_name])
+        .then(returnedGroup=> {
             // console.log('group',group)
-            app.get('db').add_friend_to_group([group[0].id, data.group.friendId])
+            //loop through group.members => 
+            group.members.map(member=> {
+                // console.log('returned group:', returnedGroup)
+                app.get('db').add_friend_to_group([returnedGroup[0].id, member.friend_user_id])
+            })
         })
     })
 
     socket.on('rename group', group=> {
-        console.log('rename group:',group)
+        console.log('rename group:', group)
         app.get('db').rename_group([group.group_name, group.id]);
     })
 
