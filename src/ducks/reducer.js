@@ -13,7 +13,7 @@ const initialState = {
     },
     userLoc: '',
     friends: [], //array of friend objects [{friend_username, friend_firstname, friend_lastname, friend_email, friend_user_id, friend_status, friend_pic, current_user_id, friend_table_id}] 
-    groups: [], //array of group objects [{groupID, groupName, members:[]}]
+    groups: [], //array of group objects [{groupID, groupName, members:[{username, userID}]}]
     pendingFriendRequests: [],
     activeLocations: {
         1: [

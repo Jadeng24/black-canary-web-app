@@ -63,8 +63,8 @@ const socket = io('http://localhost:3069');
         socket.emit('delete user', userId)
     }
 
-    export function addGroup(userId, group){
-        socket.emit('add group', {userId, group})
+    export function addGroup(group){
+        socket.emit('add group', group)
     }
 
     export function addFriendToGroup(groupId, friendId){ //on contact/group page
@@ -95,6 +95,7 @@ const socket = io('http://localhost:3069');
 
     export function deleteGroup(groupId){
         //on groups page
+        // console.log('scktctrl delete group id',groupId)
         socket.emit('delete group', groupId)
     }
 
