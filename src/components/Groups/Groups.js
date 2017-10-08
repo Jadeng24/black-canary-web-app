@@ -7,6 +7,7 @@ import $ from 'jquery';
 import x from '../../images/X.svg'
 import {connect} from 'react-redux'
 import {friendSearch, searchResults, deleteGroup, addGroup} from './../../controllers/socketCTRL';
+
 // import io from 'socket.io-client';
 // const socket = io('http://localhost:3069');
 
@@ -106,7 +107,7 @@ class Groups extends Component{
             members: r
           } 
       })
-      // console.log(this.state.groupsToAdd)
+      console.log(this.state.newGroup)
   }
 
 
@@ -114,7 +115,7 @@ class Groups extends Component{
 render(){
   let {groups, friends} = this.props
   // console.log(groups)
-  console.log(this.state.newGroup)
+  // console.log(this.state.newGroup)
   const allGroups = groups.map((group,i) => {
         return (
         <div className='listOfGroups' key={i}>

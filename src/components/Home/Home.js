@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-// import io from 'socket.io-client';
 import MapContainer from './../MapContainer/MapContainer';
 import Login from '../Login/Login';
 import TweenMax from 'gsap';
@@ -10,6 +9,7 @@ import {getUserInfo, updateUserLocation, getFriendsList, getGroups, getActiveLoc
 import {heartbeat, renameGroup, socketOn} from './../../controllers/socketCTRL';
 import map from '../../images/placeholder_map.gif'
 
+// import io from 'socket.io-client';
 // const socket = io('http://localhost:3069');
 
 

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import TweenMax from 'gsap';
 import $ from 'jquery';
-import io from 'socket.io-client';
 import {connect} from 'react-redux';
 import {getUserInfo, updateUserLocation, getFriendsList, getGroups, getActiveLocations} from './../../ducks/reducer';
 import {sendLocation} from './../../controllers/socketCTRL';
-const socket = io('http://localhost:3069');
-// const socket = io('http://localhost:3069');
-
 // import blackCanaryLogo from './../../images/canaryLogoWithoutWords.svg';
+
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:3069');
 
 
 class LevelOne extends Component {

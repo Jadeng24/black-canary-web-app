@@ -218,10 +218,10 @@ if(currentUser.id) {
 
     socket.on('send location', data => {
         // post data to active_locations table in db
-        console.log('data:', data)
+        console.log('send location data:', data)
         app.get('db').add_active_location([data.user_id, data.user_coordinates, data.situation, data.situation_level, data.message])
             .then(alert=> {
-                console.log('alert[0]', alert[0])
+                console.log('send location alert[0]', alert[0])
                 let all = [...data.individual_recip];
                 data.group_recip.map(group => {
                     group.members.map(member => {
@@ -299,7 +299,7 @@ if(currentUser.id) {
         let results;
         app.get('db').search_by_firstName([firstName])
             .then(friends => {
-                console.log(friends)
+                console.log('friend search, friends', friends)
                 // friends.map(friend=> {
                 //     app.get('db').search_for_pending([friend.id])
                 //         .then(friend => {
