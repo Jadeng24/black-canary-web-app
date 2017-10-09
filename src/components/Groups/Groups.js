@@ -15,24 +15,24 @@ class Groups extends Component{
     constructor(){
       super()
       this.state={
-
-        groupName: [
-            {name: 'urMom',
-              friends: ['Abby', 'Janise', 'Emily', 'Duck Smith', 'Carl']},
-            {name: 'HAlp',
-              friends: ['Abby', 'Janise', 'Ethan', 'Spencer', 'Emily']},
-            {name: 'Emergency',
-              friends: ['Monday', 'Jocelyn', 'Bailey']},
-        ],
+        friends: [{name: 'abby'}, {name: 'abby'}, {name: 'abby'}, {name: 'abby'}],
         groupModal: false,
-        newGroup: {name: "", friends:[]}
+        newGroupName: "", 
+        friendsInGroup: []
       }
       this.showModalMethod = this.showModalMethod.bind(this)
       this.exit = this.exit.bind(this)
       this.addNewGroupModal = this.addNewGroupModal.bind(this)
-      this.toggleFriendAdd = this.toggleFriendAdd.bind(this)
+      this.toggleGroupAdd = this.toggleGroupAdd.bind(this)
+      this.handleChange = this.handleChange.bind(this)
     }
 
+    handleChange(){
+      console.log('new name')
+      this.setState({
+        
+      })
+    }
 
     showModalMethod(group){
       this.setState({
@@ -46,6 +46,7 @@ class Groups extends Component{
         newGroup: {}
       })
     }
+
     exit(){
         console.log('exit')
         this.setState({
@@ -65,28 +66,24 @@ class Groups extends Component{
       }
     }
 
-    toggleFriendAdd(event, groupObj) {
-      let index = -1;
-      for (let i = 0; i < this.state.groupsToAdd.length; i++){
-          if (this.state.groupsToAdd[i].name === groupObj.name) {
-              index = i;
-          }
-      }
+    toggleGroupAdd(event, friendID) {
+      event.preventDefault();
 
-      let r = this.state.groupsToAdd.slice(0);
+      let index = this.state.friendsInGroup.indexOf(friendID);
+
+      let r = this.state.friendsInGroup.slice(0);
       if(index >= 0) {
           //remove from recip and change color back
-          TweenMax.to($(`#${groupObj.name}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
+          TweenMax.to($(`#${friendID}`), 0, { backgroundColor: 'rgba(239, 239, 239, 0.3)', color: '#efefef', ease: TweenMax.Power1.easeInOut})
           r.splice(index, 1);
       } else {
           //to recip, change color
-          TweenMax.to($(`#${groupObj.name}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
-          r.push(groupObj);
+          TweenMax.to($(`#${friendID}`), 0, { backgroundColor: '#fef36e', color: '#111', ease: TweenMax.Power1.easeInOut})
+          r.push(friendID);
       }
       this.setState({
-          groupsToAdd: r
+          friendsInGroup: r
       })
-      // console.log(this.state.groupsToAdd)
   }
 
 
@@ -94,7 +91,7 @@ class Groups extends Component{
 render(){
 
   let {groups, friends} = this.props
-console.log(groups)
+
   const allGroups = groups.map((group,i) => {
         return (
         <div className='listOfGroups' key={i}>
@@ -122,23 +119,25 @@ console.log(groups)
             <div className="addGroupModal">
               <div className="modalBox">
                 <img className="exit" onClick={_=>this.addNewGroupModal("hide")} src={x} alt="close"/>
-                <p className="head" >ADD NEW GROUP</p>
+                <p className="head">ADD NEW GROUP</p>
 
                 <div className="inputField">
-                  <input type="text"/>
-                  <button className="btn">ADD GROUP NAME</button>
+                  <p className="btn">GROUP NAME:</p>
+                  <input onChange={this.handleChange} type="text"/>
                 </div>
 
-                <div className="inputField">
-                  <p>ADD GROUP MEMBERS</p>
+              <div className='groupsBoxContainer'>
+                  <p>ADD GROUP MEMBERS:</p>
                   <div className="groupsbox">
-                         {/* {this.state.friends.map((e, i) => {
-                        return <button className="friendNames" key={i} id={e.freindid} onClick={event => this.toggleGroupAdd(event, e)}>{e.groupName.toUpperCase()}</button>
-                      })}    */}
+  
+                      {friends.map((e, i) => {
+                        return <button className="friendNames" key={i} id={e.friend_user_id} onClick={event => this.toggleGroupAdd(event, e.friend_user_id)}>{e.friend_username}</button>
+                      })}     
                   </div>
-                </div>
-                      <div>
-                        <button>ADD GROUP TO GROUPS</button>
+
+              </div>
+                      <div className="addBtns">
+                        <button className='added'>ADD NEW GROUP</button>
                       </div>
               </div>
             </div>

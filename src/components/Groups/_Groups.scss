@@ -42,16 +42,62 @@
         display: flex;
         margin-top: 50px;
         margin-left: 20px;
+        align-items: center;
+        justify-content: center;
+        margin-left: -20px;
 
         .btn{
-          background-color: $black;
           color: $yellow;
           font-size: .8em;
           border: none;
-          margin-left: 10px;
+          margin-right: 10px;
         }
       }
+      .groupsBoxContainer{
+        width: 100%;
+        height: 50%;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: $yellow;
+
+        .groupsbox{
+          width: 90%;
+          height: 55%;
+          padding: 5px;
+          // margin-top: 10px;
+          background-color: $black;
+          border-radius: 10px;
+          border-color: $yellow;
+          border: 2px; 
+          color: white;
+          margin-top: 10px;
+
+          .friendNames{
+            color: $white;
+            font-size: .8em;
+          }
+      }
+      }
+    .addBtns{
+      width: 100%;
+      background-color: $yellow;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3em;
+
+      .added{
+        font-size: 1em;
+      }
     }
+    .addBtns:hover{
+      background-color: $black;
+    }
+  }
   }
 
   .header{
@@ -91,16 +137,7 @@
 
 
 
-              .groupsbox{
-                width: 90%;
-                height: 55%;
-                padding: 5px;
-                // margin-top: 10px;
-                background-color: $black;
-                border-radius: 10px;
-                border-color: $yellow;
-                border: 2px; 
-                color: white;
+
 
                 button {
                     background-color: $white-translucent;
@@ -124,7 +161,7 @@
                     }
                 }
               }
-}
+
     .listOfGroups{
       display: flex;
       justify-content: space-around;

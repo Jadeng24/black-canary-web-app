@@ -12,7 +12,7 @@ export default class GroupsModal extends Component{
         super(props)
 
         this.state={
-            friends: props.group.friends,
+            friends: this.props.group.friends,
             groupName: this.props.group.name,
             newGroupName:'',
             editGroupName: false
